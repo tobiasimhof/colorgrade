@@ -469,11 +469,15 @@
     .li-axes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
     .li-ax { background: var(--bg-card-2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; }
     .li-ax b { color: var(--accent-2); font-size: 13px; }
+    .li-ax em { color: var(--text); font-style: normal; font-size: 12.5px; font-weight: 600; }
     .li-ax span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
     .li-h { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin: 4px 0 8px; }
-    .li-ex { margin: 0 0 13px; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
-    .li-ex li { font-size: 13px; line-height: 1.45; color: #dcdce0; }
-    .li-ex b { color: var(--accent-2); }
+    .li-connect { margin: 0 0 15px; font-size: 13px; line-height: 1.5; color: #dcdce0; }
+    .li-look { background: var(--bg-card-2); border: 1px solid var(--line); border-radius: 12px; padding: 11px 12px; margin-bottom: 10px; }
+    .li-look-h { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+    .li-look-h b { color: var(--accent-2); font-size: 14px; }
+    .li-look-h span { font-size: 12px; color: var(--muted); }
+    .li-look-f { margin: 8px 0 0; font-size: 12px; line-height: 1.45; color: var(--muted); }
     .li-note { background: rgba(255,159,69,.10); border: 1px solid rgba(255,159,69,.28);
       border-radius: 10px; padding: 10px 12px; font-size: 12.5px; line-height: 1.5; color: #dcdce0; }
     .li-note b { color: var(--accent-2); }
@@ -581,20 +585,17 @@
     <section id="tab-rezepte" class="tab-panel">
       <p class="lead">Fertige <b>Bild-Looks</b> mit Kurvenarbeit und Begründung je Schritt – als Startpunkt für deinen eigenen Stil. <i>Video-Rezepte sind jetzt drüben im Video-Bereich unter „Rezepte".</i></p>
       <details class="look-intro" open>
-        <summary><b>Jeder Look = 3 Achsen</b> · so übersetzt du „wie soll es aussehen?" in Werte</summary>
+        <summary><b>Jeder Look = 3 Regler</b> · so baust du einen Stil auf – oder liest ihn ab</summary>
         <div class="li-body">
-          <p>Ein Look ist keine Zufallssache, sondern die Kombination aus drei Entscheidungen. Kennst du die drei, kannst du jeden Stil selbst bauen – und du erkennst bei jedem Rezept unten, warum es so wirkt.</p>
+          <p>Ein Look entsteht nicht zufällig – er ist die Einstellung von <b>drei Reglern</b>. Dreh an den dreien, und du baust jeden Stil selbst. Umgekehrt kannst du jeden fertigen Look „auslesen": Wo steht er auf den drei Reglern?</p>
           <div class="li-axes">
-            <div class="li-ax"><b>Farbverhältnis</b><span>Harmonie (Farben nah beieinander) ↔ Spannung (Komplementär, z. B. Orange ↔ Blau)</span></div>
-            <div class="li-ax"><b>Kontrast</b><span>flach ↔ knackig</span></div>
-            <div class="li-ax"><b>Sättigung</b><span>dezent ↔ kräftig</span></div>
+            <div class="li-ax"><b>1 · Farbverhältnis</b> <em>– die Grundstimmung</em><span>Harmonie (Farben nah beieinander) = ruhig &amp; stimmig ↔ Spannung (Komplementär, z. B. Orange ↔ Blau) = das Motiv springt heraus.</span></div>
+            <div class="li-ax"><b>2 · Kontrast</b> <em>– die Härte</em><span>flach = weich, verträumt, „faded" ↔ knackig = dramatisch, tiefe Schatten.</span></div>
+            <div class="li-ax"><b>3 · Sättigung</b> <em>– die Lautstärke der Farben</em><span>dezent = edel, zurückhaltend ↔ kräftig = poppig, plakativ.</span></div>
           </div>
-          <div class="li-h">Namen in Werte übersetzt</div>
-          <ul class="li-ex">
-            <li><b>Cinematic</b> = Komplementärspannung (Teal-Orange) + entsättigt + tiefe Schatten</li>
-            <li><b>Märchenhaft / Traum</b> = warme Harmonie + angehobene Schatten (nichts tiefschwarz) + leichte Überstrahlung</li>
-            <li><b>Nordisch / melancholisch</b> = kühle Harmonie + flacher Kontrast + entsättigt</li>
-          </ul>
+          <p class="li-connect">Die drei zusammen ergeben den Look – und sie sind unabhängig: dieselbe Farbwahl wirkt mit <b>flachem</b> Kontrast verträumt, mit <b>knackigem</b> Kontrast dramatisch. Deshalb legst du am besten alle drei bewusst fest.</p>
+          <div class="li-h">Und so sind unsere 3 Looks eingestellt</div>
+          <div id="lookModel"></div>
           <div class="li-note">⚠️ <b>Zwei getrennte Achsen:</b> warm/kühl (Grundstimmung) und Harmonie/Spannung (Farbverhältnis) sind <b>nicht</b> dasselbe. Ein Bild kann warm <i>und</i> spannungsvoll sein.</div>
         </div>
       </details>
@@ -4707,6 +4708,25 @@
         ${a.formel ? `<div class="la-formel">${rich(a.formel)}</div>` : ''}
       </div>`;
   }
+  // Die 3 Leit-Looks als Einstellung der 3 Regler – verbindet Achsen und Look-Namen.
+  const LOOK_MODEL = [
+    { em: '🎬', n: 'Cinematic', eff: 'Motiv springt heraus, dramatisch', farb: 90, kontrast: 70, satt: 40,
+      formel: 'Komplementärspannung (Teal-Orange) + knackiger Kontrast mit tiefen Schatten + eher entsättigt.' },
+    { em: '🧚', n: 'Märchenhaft', eff: 'weich, warm, verträumt', farb: 20, kontrast: 20, satt: 48,
+      formel: 'Warme Harmonie + flacher Kontrast (Schatten angehoben, nichts tiefschwarz) + weiche Sättigung.' },
+    { em: '🧊', n: 'Nordisch', eff: 'kühl, ruhig, nüchtern', farb: 28, kontrast: 28, satt: 20,
+      formel: 'Kühle Harmonie + flacher Kontrast + stark entsättigt.' }
+  ];
+  function renderLookModel() {
+    const box = el('lookModel'); if (!box) return;
+    box.innerHTML = LOOK_MODEL.map(l => `<div class="li-look">
+        <div class="li-look-h"><b>${l.em} ${l.n}</b><span>${l.eff}</span></div>
+        ${axisRow('Farbverhältnis', 'Harmonie', 'Spannung', l.farb)}
+        ${axisRow('Kontrast', 'flach', 'knackig', l.kontrast)}
+        ${axisRow('Sättigung', 'dezent', 'kräftig', l.satt)}
+        <p class="li-look-f">${rich(l.formel)}</p>
+      </div>`).join('');
+  }
   function recipeCardHTML(r) {
     return `
       <div class="card" data-id="${esc(r.id)}">
@@ -5531,6 +5551,7 @@
   renderCgList();
   updateVorlagenInfo();
   renderPalette();
+  renderLookModel();
   // Zuletzt gewählten Modus (Bild/Video) und Tab wiederherstellen
   setMode(LS.get('fw_mode', 'foto'));
 
