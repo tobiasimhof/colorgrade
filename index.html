@@ -4429,7 +4429,7 @@
   }
   function renderMotifs() {
     motifGrid.innerHTML = ADVISOR.map(m =>
-      `<button class="motif" data-id="${m.id}"><span class="em">${m.em}</span><span>${rich(m.name)}</span></button>`).join('');
+      `<button class="motif" data-id="${m.id}"><span>${rich(m.name)}</span></button>`).join('');
     motifGrid.querySelectorAll('.motif').forEach(b =>
       b.addEventListener('click', () => showAdvice(b.dataset.id)));
   }
@@ -4616,7 +4616,7 @@
     if (!m) return;
     motifGrid.querySelectorAll('.motif').forEach(b =>
       b.classList.toggle('active', b.dataset.id === id));
-    const head = `<h3><span>${m.em}</span> ${rich(m.name)}</h3>`;
+    const head = `<h3>${rich(m.name)}</h3>`;
     if (m.learn) {
       const hasZiel = !!ZIEL[m.id];
       adviceBox.innerHTML = `<div class="advice">${head}
@@ -5223,9 +5223,7 @@
       const id = a.dataset.lek, done = read.indexOf(id) > -1, cur = id === firstUnread;
       const tag = done ? 'gelesen' : (cur ? 'weiter' : 'offen');
       return `<button class="lk-item${done ? ' done' : ''}${cur ? ' current' : ''}" data-open="${id}">
-        <span class="lk-num">${done ? '✓' : (i + 1)}</span>
-        <span class="lk-em">${a.dataset.em}</span>
-        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
+        <span class="lk-num">${done ? '✓' : (i + 1)}</span>        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
         <span class="lk-tag">${tag}</span></button>`;
     }).join('');
     const doneCount = read.filter(id => lkOrder.indexOf(id) > -1).length;
@@ -5298,9 +5296,7 @@
       const id = a.dataset.vg, done = read.indexOf(id) > -1, cur = id === firstUnread;
       const tag = done ? 'gelesen' : (cur ? 'weiter' : 'offen');
       html += `<button class="lk-item${done ? ' done' : ''}${cur ? ' current' : ''}" data-vgopen="${id}">
-        <span class="lk-num">${done ? '✓' : (i + 1)}</span>
-        <span class="lk-em">${a.dataset.em}</span>
-        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
+        <span class="lk-num">${done ? '✓' : (i + 1)}</span>        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
         <span class="lk-tag">${tag}</span></button>`;
     });
     vgListEl.innerHTML = html;
@@ -5354,7 +5350,7 @@
   const vbArticles = [].slice.call(document.querySelectorAll('#vbDetail [data-vb]'));
   function renderVbGrid() {
     vbGridEl.innerHTML = vbArticles.map(a =>
-      `<button class="motif" data-vbopen="${a.dataset.vb}"><span class="em">${a.dataset.em}</span><span>${esc(a.dataset.name)}</span></button>`).join('');
+      `<button class="motif" data-vbopen="${a.dataset.vb}"><span>${esc(a.dataset.name)}</span></button>`).join('');
     el('vbSoon').textContent = vbArticles.length <= 1
       ? 'Weitere Situationen folgen.'
       : `${vbArticles.length} Situationen`;
@@ -5410,9 +5406,7 @@
       const id = a.dataset.cg, done = read.indexOf(id) > -1, cur = id === firstUnread;
       const tag = done ? 'gelesen' : (cur ? 'weiter' : 'offen');
       return `<button class="lk-item${done ? ' done' : ''}${cur ? ' current' : ''}" data-cgopen="${id}">
-        <span class="lk-num">${done ? '✓' : (i + 1)}</span>
-        <span class="lk-em">${a.dataset.em}</span>
-        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
+        <span class="lk-num">${done ? '✓' : (i + 1)}</span>        <span class="lk-txt"><b>${esc(a.dataset.title)}</b><span>${esc(a.dataset.sub)}</span></span>
         <span class="lk-tag">${tag}</span></button>`;
     }).join('');
     const doneCount = read.filter(id => cgOrder.indexOf(id) > -1).length;
@@ -5474,9 +5468,7 @@
       const id = a.dataset.fl, done = read.indexOf(id) > -1, cur = id === firstUnread;
       const tag = done ? 'gelesen' : (cur ? 'weiter' : 'offen');
       return `<button class="lk-item${done ? ' done' : ''}${cur ? ' current' : ''}" data-fl-open="${id}">
-        <span class="lk-num">${done ? '✓' : (i + 1)}</span>
-        <span class="lk-em">${a.dataset.em}</span>
-        <span class="lk-txt"><b>${a.dataset.title}</b><span>${a.dataset.sub}</span></span>
+        <span class="lk-num">${done ? '✓' : (i + 1)}</span>        <span class="lk-txt"><b>${a.dataset.title}</b><span>${a.dataset.sub}</span></span>
         <span class="lk-tag">${tag}</span></button>`;
     }).join('');
     const doneCount = read.filter(id => flOrder.indexOf(id) > -1).length;
