@@ -168,6 +168,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v36** | **Feedback & „Über die App"**: neue „Über ColorGrade"-Ecke am Ende der Wissen-Startseite (was es ist, warum kostenlos, kein Tracking) mit Button „Feedback geben" (Tally-Formular, öffnet extern). Dazu ein dezenter „Über & Feedback"-Link im Kopf, von jedem Bereich erreichbar. |
 | **v35** | Weitere Politur: **Lektions- und Kachel-Icons entfernt** (Nutzer-Feedback). Ohne Icon jetzt: alle Lektionslisten (Wissen, Farblehre, Video-Grundlagen, Video-Farbe) und die Motiv-/Situations-Kacheln (Berater, Video-Berater) inkl. Motiv-Überschrift. Behalten: untere Navigation + Modus-Umschalter. |
 | **v34** | Auftritt entschlackt vor dem Launch: dekorative Emojis aus Fließtext, Labels, Überschriften und Buttons entfernt (kontext-genau). **Funktional bleiben:** untere Navigation, Modus-Umschalter, Motiv-Kacheln, Lektions-Icons sowie Häkchen (✓) und Schließen-Kreuze (✕). Außerdem meta-/TODO-Notizen raus („Video-Rezepte jetzt drüben …", „hier kommt später …", „Prototyp …"). |
 | **v33** | Rezepte-Kopf „3 Achsen" mit rotem Faden (Nutzer-Feedback): jede Achse sagt jetzt, **was sie steuert** (Grundstimmung/Härte/Lautstärke), und die 3 Looks (Cinematic/Märchenhaft/Nordisch) werden **direkt auf denselben 3 Reglern** gezeigt (`LOOK_MODEL`/`renderLookModel`) – Achsen und Look-Namen sind damit verbunden statt zwei getrennte Listen. |

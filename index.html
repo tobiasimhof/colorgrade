@@ -41,6 +41,21 @@
       background: conic-gradient(red, orange, yellow, lime, cyan, blue, magenta, red);
       box-shadow: inset 0 0 0 4px var(--bg-elev); flex: none; }
     header p { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
+    .hdr-top { display: flex; align-items: center; gap: 10px; }
+    .hdr-link { margin-left: auto; flex: none; font-size: 12px; font-weight: 600;
+      color: var(--muted); background: none; border: none; cursor: pointer;
+      font-family: inherit; padding: 4px 2px; white-space: nowrap; }
+    .hdr-link:hover { color: var(--accent-2); }
+    .about { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
+    .about-h { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .about p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: #dcdce0; }
+    .about p b { color: var(--accent-2); }
+    .about .about-priv { font-size: 12.5px; color: var(--muted); }
+    .about-fb { display: inline-block; text-decoration: none; margin: 4px 0 8px;
+      font-size: 15px; font-weight: 650; color: #201400; background: var(--accent);
+      padding: 11px 18px; border-radius: 12px; }
+    .about-fb:active { transform: scale(.98); }
+    .about .about-fb-sub { font-size: 12px; color: var(--muted); margin: 0; }
     /* Modus-Umschalter (Bild / Video) direkt im Header */
     .modeswitch { display: flex; gap: 6px; margin: 12px 0 0; }
     .modebtn { flex: 1; background: var(--bg-card); border: 1px solid var(--line);
@@ -557,7 +572,10 @@
 </head>
 <body>
   <header>
-    <h1><span class="dot"></span> ColorGrade</h1>
+    <div class="hdr-top">
+      <h1><span class="dot"></span> ColorGrade</h1>
+      <button class="hdr-link" id="aboutLink" type="button">Über &amp; Feedback</button>
+    </div>
     <div class="modeswitch" id="modeSwitch" role="tablist" aria-label="Bereich wählen">
       <button class="modebtn active" data-mode="foto" role="tab">📷 Bildbearbeitung</button>
       <button class="modebtn" data-mode="video" role="tab">🎬 Videobearbeitung</button>
@@ -936,6 +954,14 @@
           <p class="lead">Bildbearbeitung von Grund auf – <b>Schritt für Schritt</b>, in der Reihenfolge, in der du später auch arbeitest. Tippe eine Lektion an.</p>
           <p class="info" id="lkProg"></p>
           <div class="lk-list" id="lkList"></div>
+          <section class="about" id="aboutBox" aria-label="Über ColorGrade">
+            <div class="about-h">Über ColorGrade</div>
+            <p>ColorGrade ist ein kostenloses Lern- und Nachschlagewerkzeug für Bild- und Videobearbeitung. Es bringt dir die Grundlagen bei – Licht, Farbe, Bildaufbau, Color Grading – anwendbar in jedem Bearbeitungsprogramm.</p>
+            <p><b>Warum kostenlos?</b> Grundlagen sollten frei zugänglich sein. Du brauchst keinen teuren Kurs, um die Basics zu lernen.</p>
+            <p class="about-priv">Kein Tracking, keine Anmeldung – dein Fortschritt bleibt lokal auf deinem Gerät.</p>
+            <a class="about-fb" href="https://tally.so/r/81BOXA" target="_blank" rel="noopener">Feedback geben</a>
+            <p class="about-fb-sub">Zwei Minuten, anonym. Sag mir, was hilfreich war und was gefehlt hat – so wird die App besser.</p>
+          </section>
         </div>
 
         <div id="lernLesson" hidden>
@@ -5543,6 +5569,20 @@
   updateVorlagenInfo();
   renderPalette();
   renderLookModel();
+  function openAbout() {
+    goTab('spick');
+    const seg = el('wisSeg');
+    if (seg) [].forEach.call(seg.querySelectorAll('.segbtn'), x => x.classList.toggle('active', x.dataset.wview === 'lernen'));
+    const wl = el('wview-lernen'), wn = el('wview-nach');
+    if (wl) wl.hidden = false;
+    if (wn) wn.hidden = true;
+    const ll = el('lernLesson'), lst = el('lernList');
+    if (ll) ll.hidden = true;
+    if (lst) lst.hidden = false;
+    requestAnimationFrame(() => { const a = el('aboutBox'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
+  const aboutLinkEl = el('aboutLink');
+  if (aboutLinkEl) aboutLinkEl.addEventListener('click', openAbout);
   // Zuletzt gewählten Modus (Bild/Video) und Tab wiederherstellen
   setMode(LS.get('fw_mode', 'foto'));
 
