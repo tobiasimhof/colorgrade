@@ -168,6 +168,8 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v38** | Video-Berater bekommt zwei Modi (Umschalter oben): **Grundlagen** (neu, Standard) und **Situationen** (die 10 wie bisher). Der Grundlagen-Berater setzt Punkt B–E des Video-Leitfadens um: Coverage & Fluss (Beats, 3 Größen, 6 Fluss-Prinzipien als **abhakbare Checkliste**, lokal gespeichert), die 3 Schnittregeln (180°/30°/Match-Cut), Story-Gerüst & Rhythmus (5-Shot), Reihenfolge im Schnitt (Ton vor Farbe). |
+| **v37** | Feedback-Button im „Über"-Bereich rechtsbündig statt links. |
 | **v36** | **Feedback & „Über die App"**: neue „Über ColorGrade"-Ecke am Ende der Wissen-Startseite (was es ist, warum kostenlos, kein Tracking) mit Button „Feedback geben" (Tally-Formular, öffnet extern). Dazu ein dezenter „Über & Feedback"-Link im Kopf, von jedem Bereich erreichbar. |
 | **v35** | Weitere Politur: **Lektions- und Kachel-Icons entfernt** (Nutzer-Feedback). Ohne Icon jetzt: alle Lektionslisten (Wissen, Farblehre, Video-Grundlagen, Video-Farbe) und die Motiv-/Situations-Kacheln (Berater, Video-Berater) inkl. Motiv-Überschrift. Behalten: untere Navigation + Modus-Umschalter. |
 | **v34** | Auftritt entschlackt vor dem Launch: dekorative Emojis aus Fließtext, Labels, Überschriften und Buttons entfernt (kontext-genau). **Funktional bleiben:** untere Navigation, Modus-Umschalter, Motiv-Kacheln, Lektions-Icons sowie Häkchen (✓) und Schließen-Kreuze (✕). Außerdem meta-/TODO-Notizen raus („Video-Rezepte jetzt drüben …", „hier kommt später …", „Prototyp …"). |

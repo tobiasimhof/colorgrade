@@ -56,6 +56,30 @@
       padding: 11px 18px; border-radius: 12px; }
     .about-fb:active { transform: scale(.98); }
     .about .about-fb-sub { font-size: 12px; color: var(--muted); margin: 0; }
+    /* Video-Grundlagen-Berater */
+    .vbg { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
+    .vbg > summary { list-style: none; cursor: pointer; padding: 13px 15px; font-size: 14px; font-weight: 650; color: var(--text); }
+    .vbg > summary::-webkit-details-marker { display: none; }
+    .vbg[open] > summary { border-bottom: 1px solid var(--line); color: var(--accent-2); }
+    .vbg-body { padding: 13px 15px 15px; }
+    .vbg-body > p { margin: 0 0 11px; font-size: 13.5px; line-height: 1.55; color: #dcdce0; }
+    .vbg-body > p:last-child { margin-bottom: 0; }
+    .vbg-body b { color: var(--text); }
+    .vbg-sizes { display: flex; flex-direction: column; gap: 6px; margin: 0 0 12px; }
+    .vbg-sizes > div { background: var(--bg-card-2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 11px; font-size: 12.5px; color: var(--muted); }
+    .vbg-sizes b { color: var(--accent-2); }
+    .vbg-h { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin: 4px 0 8px; }
+    .vbg-check { display: flex; flex-direction: column; gap: 7px; }
+    .vbg-item { display: flex; gap: 10px; align-items: flex-start; background: var(--bg-card-2);
+      border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; cursor: pointer; }
+    .vbg-item.done { border-color: rgba(123,216,143,.4); }
+    .vbg-item:active { transform: scale(.995); }
+    .vbg-box { flex: none; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--line);
+      display: flex; align-items: center; justify-content: center; color: var(--green); font-weight: 700; font-size: 13px; margin-top: 1px; }
+    .vbg-item.done .vbg-box { border-color: var(--green); background: rgba(123,216,143,.14); }
+    .vbg-txt { font-size: 13px; color: #dcdce0; }
+    .vbg-txt b { display: block; color: var(--text); font-size: 13px; }
+    .vbg-txt span { display: block; font-size: 12px; color: var(--muted); margin-top: 1px; }
     /* Modus-Umschalter (Bild / Video) direkt im Header */
     .modeswitch { display: flex; gap: 6px; margin: 12px 0 0; }
     .modebtn { flex: 1; background: var(--bg-card); border: 1px solid var(--line);
@@ -2197,6 +2221,67 @@
 
     <!-- ===================== VIDEO · BEREICH B: BERATER (Situationen) ===================== -->
     <section id="tab-vberater" class="tab-panel">
+      <div class="seg" id="vbSeg" role="tablist">
+        <button class="segbtn active" data-vbmode="grundlagen" role="tab">Grundlagen</button>
+        <button class="segbtn" data-vbmode="situationen" role="tab">Situationen</button>
+      </div>
+
+      <!-- GRUNDLAGEN-BERATER (so denkst du beim Drehen & Schneiden) -->
+      <div id="vbmode-grundlagen">
+        <p class="lead"><b>Fluss entsteht beim Drehen, nicht im Schnitt.</b> Beim Drehen denkst du nicht „ich filme eine Handlung", sondern „ich liefere mir selbst Schnittpunkte". Geh das hier einmal durch, bevor du eine Situation wählst.</p>
+
+        <details class="vbg" open>
+          <summary>1 · Coverage &amp; Fluss beim Drehen</summary>
+          <div class="vbg-body">
+            <p>Ein <b>Beat</b> ist ein Handlungsschritt (Knopf drücken, Schuh anziehen). Filme jeden Beat aus mehreren <b>Größen</b> und Winkeln – und immer <b>überlappend</b>: jede Version zeigt die ganze Bewegung, nicht „weit die erste Hälfte, nah die zweite".</p>
+            <div class="vbg-sizes">
+              <div><b>Weit</b> (Totale) – wo sind wir?</div>
+              <div><b>Halbnah</b> (Medium) – die Aktion</div>
+              <div><b>Nah</b> (Detail) – was genau passiert</div>
+            </div>
+            <p><b>Innerhalb eines Beats</b> zwischen den Größen schneiden. <b>Zwischen Beats</b> Größe und/oder Winkel deutlich ändern.</p>
+            <h6 class="vbg-h">Die 6 Fluss-Prinzipien – zum Abhaken am Set</h6>
+            <div class="vbg-check" id="vbFlowCheck"></div>
+          </div>
+        </details>
+
+        <details class="vbg">
+          <summary>2 · Die 3 Schnittregeln</summary>
+          <div class="vbg-body">
+            <ol class="steps">
+              <li><b>180°-Regel (Handlungsachse):</b> auf einer Seite der gedachten Linie bleiben, dann bleibt die Orientierung erhalten. Seitenwechsel = Achsensprung.</li>
+              <li><b>30°-Regel:</b> beim selben Motiv die Kamera um mindestens 30° umsetzen oder die Größe deutlich ändern (am besten beides), sonst Jump Cut. <b>Sichere Zone:</b> der Bogen von 30° bis 180° auf deiner Seite.</li>
+              <li><b>Match-Cut auf Bewegung:</b> dieselbe Bewegung läuft über den Schnitt nahtlos weiter. Volle Bewegung in beiden Größen filmen, dann am gemeinsamen Moment (Hand berührt, Fuß hebt) schneiden – einen Hauch früher, Frame für Frame justieren.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="vbg">
+          <summary>3 · Story-Gerüst &amp; Rhythmus</summary>
+          <div class="vbg-body">
+            <p><b>5-Shot-Struktur:</b> Establishing → Detail → Action (Held) → Reaction → Abschluss. In jedem Shot lebt etwas – die Kamera bewegt sich, das Motiv bewegt sich oder etwas im Bild (Dampf, Licht, Flüssigkeit). Eine Quelle pro Shot reicht.</p>
+            <p><b>Rhythmus:</b> Bewegungs- und Info-Shots kurz (2–4 Sek.), Held- und Atmosphäre-Shots lang (5–6 Sek.). Weit = ruhige, lange Töne; nah = schnelle Schläge. Oft: weit → eng-eng-eng → weit.</p>
+            <p><b>Komposition:</b> Drittelregel – Wichtiges auf die Linien, nicht in die Mitte; Leerraum in Blickrichtung lassen. Für zwei Personen (oder Mensch + Objekt): <b>Shot/Reverse-Shot</b> – Person links, Raum nach rechts, Gegenschnitt spiegelbildlich; braucht die Blickachse (180°).</p>
+          </div>
+        </details>
+
+        <details class="vbg">
+          <summary>4 · Reihenfolge im Schnitt</summary>
+          <div class="vbg-body">
+            <ol class="steps">
+              <li><b>Feinschnitt</b> – auf Bewegung schneiden, Match-Cuts bauen.</li>
+              <li><b>Ton</b> – Musik (gibt Tempo &amp; Stimmung) plus SFX (Schritte, Klirren, Guss – das macht es immersiv).</li>
+              <li><b>Schnitt auf den Takt</b> der Musik.</li>
+              <li><b>Farbe / Color Grading.</b></li>
+              <li><b>Feinschliff</b> – Vignette, Fade in/out.</li>
+            </ol>
+            <div class="li-note" style="margin-top:11px"><b>Ton vor Farbe:</b> Ton bringt mehr Emotion als jede Farbkorrektur. Extra-Kniff: <b>J-/L-Cuts</b> – der Ton des nächsten Clips beginnt schon vor dem Bild (oder läuft nach) = profinerer Fluss.</div>
+          </div>
+        </details>
+      </div>
+
+      <!-- SITUATIONEN-BERATER (die 10 Dreh-Situationen) -->
+      <div id="vbmode-situationen" hidden>
       <div id="vbList_wrap">
         <p class="lead">Du kennst die <b>Grundlagen</b> – hier siehst du sie in echten Dreh-Situationen. Wähle eine Situation: Du bekommst den kompletten Plan (Technik, Einstellungen, Story, Worauf-achten) und am Ende einen <b>Übungs-Dreh</b> zum Nachdrehen.</p>
         <div class="motif-grid" id="vbGrid"></div>
@@ -2885,6 +2970,7 @@
           <div class="vb-shoot"><span class="h">Nachdrehen – dein Übungs-Dreh</span><p>Denk dir einen <b>15-Sekunden-POV</b> oder Mini-Sketch mit einer Pointe aus. Schreib eine Shotlist (4–5 Shots), dreh je 2 Takes, achte auf Continuity. Schneide auf Timing/Sound, die Pointe ans Ende.</p></div>
         </article>
 
+      </div>
       </div>
     </section>
 
@@ -5393,7 +5479,35 @@
     el('vbList_wrap').hidden = false;
     window.scrollTo({ top: 0 });
   }
+  function switchVbMode(mode) {
+    const seg = el('vbSeg'); if (!seg) return;
+    [].forEach.call(seg.querySelectorAll('.segbtn'), x => x.classList.toggle('active', x.dataset.vbmode === mode));
+    el('vbmode-grundlagen').hidden = mode !== 'grundlagen';
+    el('vbmode-situationen').hidden = mode !== 'situationen';
+    if (mode === 'situationen') closeVb();
+    window.scrollTo({ top: 0 });
+  }
+  const FLOW = [
+    { id: 'overlap',   t: 'Überlappend drehen', s: 'die ganze Bewegung in jeder Größe – Basis für Match-Cuts.' },
+    { id: 'onmove',    t: 'Auf Bewegung schneiden', s: 'Bewegung bewusst einplanen, um im Schnitt darauf zu schneiden.' },
+    { id: 'enterexit', t: 'Enter/Exit Frame', s: 'Motiv ins Bild hinein- und wieder herauslaufen lassen = unsichtbare Schnitte.' },
+    { id: 'direction', t: 'Konstante Bewegungsrichtung', s: 'geht der Fuß nach rechts, bleibt er nach rechts.' },
+    { id: 'handles',   t: 'Handles', s: '2–3 Sek. Puffer vor und nach jeder Handlung.' },
+    { id: 'settle',    t: 'Ruhe rein, Ruhe raus', s: 'Kamera nach dem Auslösen erst beruhigen, dann die Handlung.' }
+  ];
+  function renderFlowChecklist() {
+    const box = el('vbFlowCheck'); if (!box) return;
+    const st = LS.get('fw_vbflow', {});
+    box.innerHTML = FLOW.map((f, i) =>
+      `<div class="vbg-item ${st[f.id] ? 'done' : ''}" data-flow="${f.id}"><span class="vbg-box">${st[f.id] ? '✓' : ''}</span><span class="vbg-txt"><b>${i + 1}. ${rich(f.t)}</b><span>${rich(f.s)}</span></span></div>`
+    ).join('') + `<button class="btn ghost small" id="vbFlowReset" type="button" style="margin-top:10px">Checkliste zurücksetzen</button>`;
+  }
   el('tab-vberater').addEventListener('click', e => {
+    const seg = e.target.closest('#vbSeg .segbtn');
+    if (seg) { switchVbMode(seg.dataset.vbmode); return; }
+    if (e.target.closest('#vbFlowReset')) { LS.set('fw_vbflow', {}); renderFlowChecklist(); return; }
+    const flowItem = e.target.closest('#vbFlowCheck [data-flow]');
+    if (flowItem) { const st = LS.get('fw_vbflow', {}); st[flowItem.dataset.flow] = !st[flowItem.dataset.flow]; LS.set('fw_vbflow', st); renderFlowChecklist(); return; }
     const open = e.target.closest('[data-vbopen]');
     if (open) { openVb(open.dataset.vbopen); return; }
     if (e.target.closest('#vbBack')) { closeVb(); return; }
@@ -5406,6 +5520,7 @@
     openVg(id);
   }
   renderVbGrid();
+  renderFlowChecklist();
 
   //=========================================================================
   //  VIDEO · Bereich C: Farbe / Color Grading (gespiegeltes lk-Muster)
