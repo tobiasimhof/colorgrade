@@ -1,7 +1,7 @@
 // Offline-Cache für ColorGrade.
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Nutzer
 // automatisch die neue Version bekommen.
-const CACHE = 'colorgrade-v38';
+const CACHE = 'colorgrade-v39';
 const ASSETS = [
   './',
   './index.html',
@@ -28,7 +28,7 @@ self.addEventListener('activate', event => {
 // Strategie:
 //  • Die App-Seite (HTML/Navigation) = NETWORK-FIRST: online immer die neueste
 //    Fassung holen und in den Cache legen, offline aus dem Cache fallen lassen.
-//    So schlägt ein neues Deployment sofort beim nächsten Öffnen durch – der
+//    So schlägt ein neues Deployment sofort beim nächsten Öffnen durch, der
 //    alte Trick „Cache erst, nie aktualisieren" entfällt.
 //  • Alle anderen Dateien (Icons, Manifest) = CACHE-FIRST, mit Netz-Nachladen.
 self.addEventListener('fetch', event => {

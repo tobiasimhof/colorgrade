@@ -2,7 +2,7 @@
 """Erzeugt die App-Icons (Farbrad auf dunklem Grund) ohne externe Bibliotheken.
 
 Reines Python (nur zlib/struct aus der Standardbibliothek), damit es in jeder
-Umgebung laeuft. Rendert ein HSV-Farbrad – passend zum Thema Farb-Grading.
+Umgebung laeuft. Rendert ein HSV-Farbrad, passend zum Thema Farb-Grading.
 """
 import math
 import struct
