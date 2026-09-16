@@ -34,7 +34,7 @@ zusammenfallen; Pfeile, die neben ihrem Ziel enden. Werkzeug dafür liegt bereit
 
 ---
 
-## Aktueller Stand (Cache `v43`, Details im Änderungsverlauf unten)
+## Aktueller Stand (Cache `v44`, Details im Änderungsverlauf unten)
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
@@ -198,6 +198,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v44** | Den erklärenden Schlusssatz unter dem Quellen-Verzeichnis entfernt (Nutzer-Feedback); die Liste steht jetzt für sich. Ungenutzte `.src-note`-CSS-Regel mit raus. |
 | **v43** | Ausklappbares **„Quellen & Literatur“** im Über-Bereich (`.about-src`, `<details>` unter dem „Alle Fakten…“-Satz). Sieben echte, verifizierte Publikationen in drei Gruppen: Kunst & Wahrnehmung (Prette, *Kunst verstehen*), Fotografie & Bild (Itten *Kunst der Farbe*, Freeman *The Photographer’s Eye*, Peterson *Understanding Exposure*), Videografie & Film (Brown *Cinematography*, Murch *In the Blink of an Eye*, Van Hurkman *Color Correction Handbook*). Alle Angaben per Websuche geprüft, keine erfundenen Quellen. |
 | **v42** | Kopf-Link „Über & Feedback“ heißt jetzt nur noch **„Feedback“** (klarer, dass es zum Feedback führt; der Über-Text ist Zusatz). Der Klick scrollt jetzt mittig auf den **Feedback-Button** (`.about-fb`) statt an den Anfang des langen Über-Textes. |
 | **v41** | SVG-Feinschliff, zweiter Durchlauf (Nutzer-Feedback). **(1)** Kamerabewegung (Video A9): der Schwenk-Bogen lief von oben nach unten und der Pfeil zeigte zurück; jetzt ein Bogen, der klar von links nach rechts sweept, mit Pfeil in Schwenk-Richtung. **(2)** J/L-Cut (Video A11, Ton & Schnitt): die Beschriftung „Ton läuft über den Bildschnitt (L-Cut)“ klebte auf der Ton-Spur (`viewBox` zu niedrig); `viewBox`-Höhe erhöht und Text mit Abstand darunter gesetzt. |
