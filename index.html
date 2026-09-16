@@ -56,6 +56,23 @@
       padding: 11px 18px; border-radius: 12px; }
     .about-fb:active { transform: scale(.98); }
     .about .about-fb-sub { font-size: 12px; color: var(--muted); margin: 0; }
+    .about-src { margin: 4px 0 14px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .about-src > summary { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer;
+      padding: 11px 14px; font-size: 13px; font-weight: 650; color: var(--text); }
+    .about-src > summary::-webkit-details-marker { display: none; }
+    .about-src > summary .chev { margin-left: auto; }
+    .about-src[open] > summary { border-bottom: 1px solid var(--line); color: var(--accent-2); }
+    .about-src[open] > summary .chev { transform: rotate(90deg); }
+    .about-src .src-body { padding: 12px 14px; }
+    .about-src .src-group { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--muted); margin: 12px 0 6px; }
+    .about-src .src-group:first-child { margin-top: 0; }
+    .about-src ul { margin: 0; padding: 0; list-style: none; }
+    .about-src li { font-size: 12.5px; line-height: 1.5; color: #dcdce0; margin: 0 0 7px; padding-left: 13px; position: relative; }
+    .about-src li::before { content: "•"; position: absolute; left: 0; color: var(--accent-2); }
+    .about-src li i { color: var(--text); font-style: italic; }
+    .about-src li span { color: var(--muted); }
+    .about-src .src-note { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; line-height: 1.5; }
     /* Video-Grundlagen-Berater */
     .vbg { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
     .vbg > summary { list-style: none; cursor: pointer; padding: 13px 15px; font-size: 14px; font-weight: 650; color: var(--text); }
@@ -985,6 +1002,28 @@
             <p>Ich versuche mit dieser Plattform herauszufinden, wie Menschen an dieses Thema herangehen. Social Media wird immer wichtiger, und da ich Digital Marketing (Social Media Marketing und Marketing Intelligence) studiere, würde es mir enorm helfen, eine wissenschaftliche Entscheidungsgrundlage für meine spätere Forschung in Bezug auf meine Bachelorarbeit zu legen.</p>
             <p>ColorGrade ist und bleibt für immer kostenlos und soll als Informationsplattform dienen. Du musst dich nirgends anmelden, dein Fortschritt bleibt auf deinem Gerät. Ich würde mich riesig freuen, wenn du an der kostenlosen, anonymen Umfrage teilnimmst. Schreib dort gerne alles rein, was dir einfällt: was dir fehlt, was besser werden soll, was dir gefällt.</p>
             <p class="about-priv">Alle Fakten in dieser App beruhen auf wissenschaftlichen Veröffentlichungen, zum Beispiel „Kunst verstehen“ von Maria Carla Prette, und auf weiteren in der Wissenschaft anerkannten Publikationen.</p>
+            <details class="about-src">
+              <summary>Quellen &amp; Literatur<span class="chev">▶</span></summary>
+              <div class="src-body">
+                <div class="src-group">Kunst &amp; Wahrnehmung</div>
+                <ul>
+                  <li><i>Maria Carla Prette: Kunst verstehen.</i> <span>Naumann &amp; Göbel. Aufbau eines Werks, Form und Symbolik, die Funktion der Farbe.</span></li>
+                </ul>
+                <div class="src-group">Fotografie &amp; Bild</div>
+                <ul>
+                  <li><i>Johannes Itten: Kunst der Farbe.</i> <span>Ravensburg 1961. Farblehre, Farbkreis und Farbharmonien.</span></li>
+                  <li><i>Michael Freeman: The Photographer’s Eye.</i> <span>Ilex 2007. Bildaufbau und Komposition.</span></li>
+                  <li><i>Bryan Peterson: Understanding Exposure.</i> <span>Amphoto Books. Licht und das Zusammenspiel von Blende, Zeit und ISO.</span></li>
+                </ul>
+                <div class="src-group">Videografie &amp; Film</div>
+                <ul>
+                  <li><i>Blain Brown: Cinematography. Theory and Practice.</i> <span>Focal Press. Kameratechnik und Bildgestaltung im Video.</span></li>
+                  <li><i>Walter Murch: In the Blink of an Eye.</i> <span>Silman-James Press 1992. Schnitt und Montage.</span></li>
+                  <li><i>Alexis Van Hurkman: Color Correction Handbook.</i> <span>Peachpit Press. Farbkorrektur und Color Grading für Video und Film.</span></li>
+                </ul>
+                <p class="src-note">Die Inhalte sind allgemein anerkannte Grundlagen, die sich in diesen und weiteren Standardwerken übereinstimmend finden.</p>
+              </div>
+            </details>
             <a class="about-fb" href="https://tally.so/r/81BOXA" target="_blank" rel="noopener">Feedback geben</a>
             <p class="about-fb-sub">Zwei Minuten, anonym.</p>
           </section>
