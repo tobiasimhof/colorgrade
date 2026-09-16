@@ -21,22 +21,20 @@ Bearbeitung, Farbe und den eigenen Stil.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Die drei Punkte aus dem letzten Chat (Über-Text, Video-Gruppen umhängen,
-> Lead-Texte) sind mit **v39** erledigt. Offen sind noch:
+> Stand nach **v40**: Über-Text, Video-Nachschlagen und Lead-Texte (v39) sind
+> erledigt, Bereich D ist als Rezepte/Zusammenfassung abgehakt, und der erste
+> SVG-Feinschliff-Durchlauf ist durch (fünf Grafiken korrigiert, siehe unten).
+> Aktuell nichts fest Geplantes offen. Laufend im Blick:
 
-**1. Video-Bereich D zur „Zusammenfassung“ ausbauen**
+**SVG-Feinschliff (laufend)**
 
-Bereich D enthält bisher nur die Video-Rezepte. Geplant ist zusätzlich eine
-kompakte Zusammenfassung der Bereiche A bis C auf einen Blick.
-
-**2. Feinschliff**
-
-Einige SVG-Grafiken sauberer machen, dazu Kleinigkeiten, die beim Durchklicken
-auffallen.
+Grafiken beim Durchklicken prüfen: Text, der aus einer Box läuft; Punkte, die
+zusammenfallen; Pfeile, die neben ihrem Ziel enden. Werkzeug dafür liegt bereit
+(siehe „SVG-Grafiken prüfen" unter Arbeitsweise).
 
 ---
 
-## Aktueller Stand (Cache `v39`, Details im Änderungsverlauf unten)
+## Aktueller Stand (Cache `v40`, Details im Änderungsverlauf unten)
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
@@ -78,14 +76,9 @@ der zuletzt gewählte Modus wird lokal gemerkt.
 
 - 🧪 **Bereich D · Rezepte**, errichtet und mit den **Video-Rezepten** (Setup, Story-5-Shots,
   B-Roll, Reel) aus dem Bild-Bereich befüllt; eigene Video-Rezepte speicherbar. Damit hat
-  Video wie Bild **vier Bereiche A bis D**. *(Geplant: hier zusätzlich eine kompakte
-  Zusammenfassung von A bis C.)*
+  Video wie Bild **vier Bereiche A bis D** und dient zugleich als kompakte Zusammenfassung.
 
 Damit sind **Video A bis D** inhaltlich gefüllt.
-
-**Als Nächstes / offen:**
-- 📋 **Bereich D zur „Zusammenfassung" ausbauen**: A bis C kurz & knapp auf einen Blick.
-- 🔧 **Feinschliff:** einige SVG-Grafiken sauberer machen und Kleinigkeiten, die auffallen.
 
 ---
 
@@ -185,6 +178,13 @@ Konzept jederzeit zur Grundlage springen kann.
   auf Konsolen-/Seitenfehler prüfen und die geänderten Stellen durchklicken.
   Fallstrick: In JS-Strings **typografische** Anführungszeichen `„…"` benutzen, keine
   geraden `"` (die beenden den String und brechen das Script).
+- **SVG-Grafiken prüfen:** Die ~65 Grafiken sind handgezeichnete SVGs (Koordinaten im
+  Code), da rutscht schnell Text aus einer Box oder ein Pfeil endet neben dem Ziel. Zum
+  Sichten alle `<figure>` mit SVG in eine Audit-Seite mit der App-CSS extrahieren und
+  einzeln screenshotten, statt im Code zu raten. Merke: `text-anchor` (`start`/`middle`/`end`)
+  plus x-Koordinate bestimmen, ob Text in der Box bleibt; Beschriftungen sollen innerhalb
+  der `viewBox` liegen. Bei Platznot lieber die `viewBox`-Höhe erhöhen als Text überlappen
+  lassen.
 - **Nach dem Live-Gehen** dem Nutzer sagen: 1 bis 2 Min auf den Pages-Build warten, dann
   die installierte App einmal schließen & neu öffnen (oder im privaten Fenster prüfen),
   damit der neue Service-Worker greift.
@@ -198,6 +198,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v40** | SVG-Feinschliff, erster Durchlauf: alle ~65 Grafiken einzeln gerendert und gesichtet, fünf mit fehlplatziertem Text korrigiert. **(1)** Farbkreis (Farblehre L2): „Blau“/„Grün“ liefen am Rand aus der `viewBox`, jetzt zentriert und in Bounds. **(2)** Kurven-Diagramm (Wissen L4): „heller ↑ Lichter“ lag auf der Kurve/Diagonale, jetzt frei über dem Plot. **(3)** Auswahl (Wissen L10): Beschriftung überlappte die Figur, jetzt oben. **(4)** Seitenverhältnis (Video A5): „hoch · Reel“ stand neben dem 9:16-Kasten (plus ein leeres `<text>`-Element), jetzt mittig im Kasten. **(5)** Vlog „in die Linse“ (Video B): „nicht aufs Bild schauen“ überlappte die Figur, `viewBox` erhöht und Text darunter gesetzt. Bereich D als Zusammenfassung abgehakt. |
 | **v39** | Drei Punkte aus dem Textfeinschliff: **(1)** Der „Über ColorGrade“-Text ist neu und persönlich (Tobias, Digital Marketing, Forschung/Bachelorarbeit, kostenlos für immer, Bitte um Feedback, Quellenhinweis auf wissenschaftliche Veröffentlichungen wie „Kunst verstehen“ von Maria Carla Prette). **(2)** Die zwei Video-Gruppen sind aus dem Bild-Nachschlagen heraus; Video-Bereich A hat jetzt einen eigenen Umschalter **Lernen / Nachschlagen** mit Video-Spickzettel (`WISSEN`-Gruppen mit `v: true`, `buildGroups(video)`, eigener Eintrag merkt sich die Welt). **(3)** Alle Kapitel-Leads sind schlichte Beschreibungen statt Werbesätze. Dazu app-weit: **alle 705 Gedankenstriche entfernt** (Komma, Doppelpunkt oder neuer Satz; Zahlenbereiche als „bis“). |
 | **v38** | Video-Berater bekommt zwei Modi (Umschalter oben): **Grundlagen** (neu, Standard) und **Situationen** (die 10 wie bisher). Der Grundlagen-Berater setzt Punkt B bis E des Video-Leitfadens um: Coverage & Fluss (Beats, 3 Größen, 6 Fluss-Prinzipien als **abhakbare Checkliste**, lokal gespeichert), die 3 Schnittregeln (180°/30°/Match-Cut), Story-Gerüst & Rhythmus (5-Shot), Reihenfolge im Schnitt (Ton vor Farbe). |
 | **v37** | Feedback-Button im „Über"-Bereich rechtsbündig statt links. |
