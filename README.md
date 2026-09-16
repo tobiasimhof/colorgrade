@@ -34,7 +34,7 @@ zusammenfallen; Pfeile, die neben ihrem Ziel enden. Werkzeug dafür liegt bereit
 
 ---
 
-## Aktueller Stand (Cache `v41`, Details im Änderungsverlauf unten)
+## Aktueller Stand (Cache `v42`, Details im Änderungsverlauf unten)
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
@@ -198,6 +198,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v42** | Kopf-Link „Über & Feedback“ heißt jetzt nur noch **„Feedback“** (klarer, dass es zum Feedback führt; der Über-Text ist Zusatz). Der Klick scrollt jetzt mittig auf den **Feedback-Button** (`.about-fb`) statt an den Anfang des langen Über-Textes. |
 | **v41** | SVG-Feinschliff, zweiter Durchlauf (Nutzer-Feedback). **(1)** Kamerabewegung (Video A9): der Schwenk-Bogen lief von oben nach unten und der Pfeil zeigte zurück; jetzt ein Bogen, der klar von links nach rechts sweept, mit Pfeil in Schwenk-Richtung. **(2)** J/L-Cut (Video A11, Ton & Schnitt): die Beschriftung „Ton läuft über den Bildschnitt (L-Cut)“ klebte auf der Ton-Spur (`viewBox` zu niedrig); `viewBox`-Höhe erhöht und Text mit Abstand darunter gesetzt. |
 | **v40** | SVG-Feinschliff, erster Durchlauf: alle ~65 Grafiken einzeln gerendert und gesichtet, fünf mit fehlplatziertem Text korrigiert. **(1)** Farbkreis (Farblehre L2): „Blau“/„Grün“ liefen am Rand aus der `viewBox`, jetzt zentriert und in Bounds. **(2)** Kurven-Diagramm (Wissen L4): „heller ↑ Lichter“ lag auf der Kurve/Diagonale, jetzt frei über dem Plot. **(3)** Auswahl (Wissen L10): Beschriftung überlappte die Figur, jetzt oben. **(4)** Seitenverhältnis (Video A5): „hoch · Reel“ stand neben dem 9:16-Kasten (plus ein leeres `<text>`-Element), jetzt mittig im Kasten. **(5)** Vlog „in die Linse“ (Video B): „nicht aufs Bild schauen“ überlappte die Figur, `viewBox` erhöht und Text darunter gesetzt. Bereich D als Zusammenfassung abgehakt. |
 | **v39** | Drei Punkte aus dem Textfeinschliff: **(1)** Der „Über ColorGrade“-Text ist neu und persönlich (Tobias, Digital Marketing, Forschung/Bachelorarbeit, kostenlos für immer, Bitte um Feedback, Quellenhinweis auf wissenschaftliche Veröffentlichungen wie „Kunst verstehen“ von Maria Carla Prette). **(2)** Die zwei Video-Gruppen sind aus dem Bild-Nachschlagen heraus; Video-Bereich A hat jetzt einen eigenen Umschalter **Lernen / Nachschlagen** mit Video-Spickzettel (`WISSEN`-Gruppen mit `v: true`, `buildGroups(video)`, eigener Eintrag merkt sich die Welt). **(3)** Alle Kapitel-Leads sind schlichte Beschreibungen statt Werbesätze. Dazu app-weit: **alle 705 Gedankenstriche entfernt** (Komma, Doppelpunkt oder neuer Satz; Zahlenbereiche als „bis“). |

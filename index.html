@@ -598,7 +598,7 @@
   <header>
     <div class="hdr-top">
       <h1><span class="dot"></span> ColorGrade</h1>
-      <button class="hdr-link" id="aboutLink" type="button">Über &amp; Feedback</button>
+      <button class="hdr-link" id="aboutLink" type="button">Feedback</button>
     </div>
     <div class="modeswitch" id="modeSwitch" role="tablist" aria-label="Bereich wählen">
       <button class="modebtn active" data-mode="foto" role="tab">📷 Bildbearbeitung</button>
@@ -5746,7 +5746,11 @@
     const ll = el('lernLesson'), lst = el('lernList');
     if (ll) ll.hidden = true;
     if (lst) lst.hidden = false;
-    requestAnimationFrame(() => { const a = el('aboutBox'); if (a) a.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    requestAnimationFrame(() => {
+      const fb = document.querySelector('.about-fb'), a = el('aboutBox');
+      const target = fb || a;
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   }
   const aboutLinkEl = el('aboutLink');
   if (aboutLinkEl) aboutLinkEl.addEventListener('click', openAbout);
