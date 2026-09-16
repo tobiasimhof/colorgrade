@@ -19,7 +19,73 @@ Bearbeitung, Farbe und den eigenen Stil.
 
 ---
 
-## Aktueller Stand (Cache `v25`)
+## Offene Aufgaben für den nächsten Chat
+
+> Diese drei Punkte sind besprochen, aber **noch nicht gebaut**. Erst wenn der
+> Über-Text final ist (Punkt 1), wird er in `index.html` eingebaut.
+
+**1. „Über ColorGrade"-Text menschlicher machen (Entwurf unten – im nächsten Chat feilen, dann einbauen)**
+
+Der aktuelle Text (im `#aboutBox` am Ende der Wissen-Startseite) klingt zu „KI-haft".
+Neu soll er persönlich sein: *Student für Digital Marketing*, kostenlose Plattform als
+Einstieg in Bild- & Videobearbeitung (Bilder/Videos sind omnipräsent, fast jeder nutzt
+Social Media → es zählt, dass Bilder/Videos funktionieren und **warum** sie funktionieren),
+und offen gesagt auch **Forschung**: Feedback sammeln, wissenschaftlich auswerten, evtl.
+Bachelorarbeit. Der Satz „Kein Tracking, keine Anmeldung …" soll menschlicher werden
+(„hey, ich bin Student und ich forsche"). **Vorschlags-Entwurf:**
+
+> **Über ColorGrade**
+>
+> Hi, ich bin Tobias und studiere Digital Marketing. ColorGrade ist ein Projekt von
+> mir – eine kostenlose Plattform, mit der ich dir den Einstieg in die Bild- und
+> Videobearbeitung leichter machen möchte.
+>
+> Warum? Bilder und Videos sind heute überall. Fast jeder nutzt Social Media, und
+> damit entscheidet oft schon ein einzelnes Bild oder ein kurzer Clip, ob etwas
+> ankommt oder untergeht. Mir ist dabei wichtig, dass du nicht nur weißt, welchen
+> Regler du ziehst – sondern verstehst, warum ein Bild funktioniert. Denn das Warum
+> kannst du überall anwenden, egal mit welchem Programm.
+>
+> Ehrlich gesagt steckt für mich auch ein Stück Forschung dahinter. Ich möchte
+> herausfinden, wie Menschen an diese Themen herangehen – was sie schon wissen, wo
+> es hakt, ob überhaupt jemand auf Farben, Bildaufbau oder Harmonie achtet. Deine
+> Rückmeldung hilft mir, das wissenschaftlich auszuwerten; vielleicht schreibe ich
+> am Ende sogar meine Bachelorarbeit darüber.
+>
+> Deshalb kein Kleingedrucktes: Ich verkaufe dir nichts und du musst dich nirgends
+> anmelden. Dein Fortschritt bleibt auf deinem Gerät. Was mir wirklich weiterhilft,
+> ist deine ehrliche Meinung über die kurze Umfrage – zwei Minuten, anonym.
+>
+> [Feedback geben]
+
+*Offene Entscheidung fürs Feilen:* Vorname „Tobias" drin lassen oder raus? (macht es
+persönlicher, ist aber optional). Länge okay oder kürzer? Ton passt?
+
+**2. Zwei Video-Gruppen aus dem Bild-Nachschlagen nach Video verschieben**
+
+In **Bild → Wissen → Nachschlagen** stehen aktuell noch **zwei Gruppen fürs Video**
+(der Spickzettel hat 19 Gruppen inkl. dieser zwei). Die gehören in die
+**Videobearbeitung**, nicht ins Bild. → Im `WISSEN`-Datenobjekt (ca. Zeile 4117) die
+zwei Video-Gruppen identifizieren und in den Video-Modus umhängen (ggf. ein eigenes
+Video-Nachschlagen anlegen bzw. an passender Stelle im Video-Bereich einbinden).
+
+**3. Kapitel-Beschreibungstexte („Lead"-Texte) einfacher / weniger KI-haft**
+
+Die Einleitungssätze der Bereiche (z. B. *„Bildbearbeitung von Grund auf – Schritt
+für Schritt, in der Reihenfolge in der du später auch arbeitest. Tippe eine Lektion
+an."*) sollen **schlichte Kapitel-Beschreibungen** sein statt werblicher KI-Sätze.
+Betroffen sind die `<p class="lead">`-Texte (u. a. Zeilen ~618 Berater, ~628 Rezepte,
+~978 Wissen/Lernen, ~1657 Nachschlagen, ~1678 Video-Grundlagen). Kurz, sachlich,
+menschlich formulieren.
+
+---
+
+## Aktueller Stand (Cache `v38` – Details im Änderungsverlauf unten)
+
+> Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
+> (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
+> Feedback & „Über", Video-Berater mit Grundlagen/Situationen …), steht vollständig im
+> **Änderungsverlauf** ab v26.
 
 Ganz oben schaltet ein **Kopf-Umschalter** zwischen zwei Welten: **📷 Bildbearbeitung**
 und **🎬 Videobearbeitung**. Die untere Navigation zeigt je Modus die passenden Bereiche;
