@@ -1,40 +1,48 @@
-# allgemein
+# ColorGrade
 
-Code auf dem Tablet.
+Portfolio von **Tobias**: Fotografie, Videografie und eigene Apps. Die Seite ist
+der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Mediengestalter
+Bild und Ton**. Man öffnet die Startseite, wählt eine Kachel und landet im
+passenden Bereich.
 
-## 🎨 ColorGrade (PWA)
-
-Ein Lern- und Nachschlagewerkzeug für **Bild- und Videobearbeitung** fürs Tablet, 
-installierbar als App (PWA), funktioniert offline, speichert alle Daten lokal auf
-dem Gerät. Die App ist als **Lernsystem für Einsteiger** aufgebaut: Sie nimmt einen
-kompletten Neuling an die Hand und führt ihn Schritt für Schritt durch Aufnahme,
-Bearbeitung, Farbe und den eigenen Stil.
+Unter `app/` liegt zusätzlich **ColorGrade**, das Lerntagebuch zu Bild, Video und
+Farbe als installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät).
+Es ist kein Produkt für andere, sondern das Nachschlagewerk, das beim Einarbeiten
+in Fotografie und Videografie entstanden ist.
 
 > **Für Claude / neue Chats:** Diese README ist der aktuelle Projektstand **und**
-> die Arbeitsanleitung. Lies sie zuerst, dann weißt du, was ColorGrade ist, wie
-> wir arbeiten und wo wir stehen. Zwei Regeln sind Pflicht bei jeder Änderung:
+> die Arbeitsanleitung. Lies sie zuerst. Vier Regeln sind Pflicht:
 > **(1)** `service-worker.js` die Cache-Version um eins hochzählen, **(2)** unten im
-> **Änderungsverlauf** eine Zeile ergänzen. So bleibt der Stand über Chats hinweg
-> nachvollziehbar.
-
----
+> **Änderungsverlauf** eine Zeile ergänzen, **(3)** keine Gedankenstriche im Text,
+> **(4)** **keine privaten Daten auf die Seite**: Vorname und E-Mail genügen, keine
+> Anschrift, keine Telefonnummer. Das Repo ist öffentlich, alles darin ist lesbar.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v40**: Über-Text, Video-Nachschlagen und Lead-Texte (v39) sind
-> erledigt, Bereich D ist als Rezepte/Zusammenfassung abgehakt, und der erste
-> SVG-Feinschliff-Durchlauf ist durch (fünf Grafiken korrigiert, siehe unten).
-> Aktuell nichts fest Geplantes offen. Laufend im Blick:
+> Stand nach **v45**: Schritt 1 ist fertig, die Struktur steht und die Startseite
+> mit den vier Kacheln läuft. Alle Inhalte sind noch Platzhalter.
 
-**SVG-Feinschliff (laufend)**
+**Schritt 2 · Fotografie**
+Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
+bauen, je Serie einen Titel und je Bild eine kurze Unterschrift.
 
-Grafiken beim Durchklicken prüfen: Text, der aus einer Box läuft; Punkte, die
-zusammenfallen; Pfeile, die neben ihrem Ziel enden. Werkzeug dafür liegt bereit
-(siehe „SVG-Grafiken prüfen" unter Arbeitsweise).
+**Schritt 3 · Videografie**
+Showreel und zwei bis drei Clips einbinden. Kurze Dateien nach `assets/video/`,
+längere über einen Hoster. Grenze bei GitHub: 100 MB je Datei.
 
----
+**Schritt 4 · Apps**
+Warenwirtschaftssystem für den Winzer beschreiben, Screenshots ergänzen. Dazu die
+offene Entscheidung: Soll die ColorGrade App unter `app/` öffentlich verlinkt sein?
+Falls ja, vorher in der App den Plattform-Text und die Tally-Umfrage entfernen und
+auf Lerntagebuch umstellen. Falls sie gar nicht ausgeliefert werden soll: Ordner
+in `_app/` umbenennen, GitHub Pages lässt Ordner mit Unterstrich weg.
 
-## Aktueller Stand (Cache `v44`, Details im Änderungsverlauf unten)
+**Schritt 5 · Feinschliff**
+Über-mich-Texte zuschneiden, E-Mail eintragen, Vorschaubild für geteilte Links
+(Open Graph), eigenes Favicon, 404-Seite.
+
+**Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
+## Die App unter `app/` (ColorGrade Lerntagebuch)
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
@@ -159,38 +167,40 @@ Konzept jederzeit zur Grundlage springen kann.
 
 ## Arbeitsweise (wichtig für neue Chats)
 
-- **Eine Datei:** Die ganze App steckt in `index.html` (HTML + CSS + JS zusammen).
-  PWA, offline-fähig, Zustand in `localStorage`. Keine Build-Tools, kein Framework.
-- **Live gehen:** GitHub Pages veröffentlicht von **`main`**. Deshalb wird jede fertige
-  Änderung **direkt live** gebracht: auf dem zugewiesenen Feature-Branch committen,
-  dann per **Fast-Forward in `main`** mergen und `main` pushen; den Feature-Branch
-  nachziehen. (So kann der Nutzer sofort in der App testen.)
-- **Schreibweise (Nutzer-Vorgabe):** **keine Gedankenstriche** im Text. Statt eines Strichs
-  mitten im Satz ein Komma, einen Doppelpunkt oder einen neuen Satz setzen. Gilt für
-  App-Texte, Commit-Nachrichten und diese README. Zahlenbereiche als „18 bis 55 mm“.
-  Werbliche KI-Sätze vermeiden: Kapitel-Leads sind schlichte Beschreibungen.
-- **Cache-Version:** Nach **jeder** inhaltlichen Änderung an der App die Konstante
-  `CACHE` in `service-worker.js` um eins hochzählen (`colorgrade-vNN`), sonst laden
-  installierte Geräte die alte Fassung.
-- **Änderungsverlauf:** Bei **jeder** Version unten eine Zeile ergänzen (siehe Regel dort).
-- **Testen vor dem Push:** Chromium ist vorinstalliert (`/opt/pw-browsers/chromium-1194/chrome-linux/chrome`),
-  Playwright global unter `/opt/node22/lib/node_modules`. Vor dem Push die App laden,
-  auf Konsolen-/Seitenfehler prüfen und die geänderten Stellen durchklicken.
-  Fallstrick: In JS-Strings **typografische** Anführungszeichen `„…"` benutzen, keine
-  geraden `"` (die beenden den String und brechen das Script).
-- **SVG-Grafiken prüfen:** Die ~65 Grafiken sind handgezeichnete SVGs (Koordinaten im
-  Code), da rutscht schnell Text aus einer Box oder ein Pfeil endet neben dem Ziel. Zum
-  Sichten alle `<figure>` mit SVG in eine Audit-Seite mit der App-CSS extrahieren und
-  einzeln screenshotten, statt im Code zu raten. Merke: `text-anchor` (`start`/`middle`/`end`)
-  plus x-Koordinate bestimmen, ob Text in der Box bleibt; Beschriftungen sollen innerhalb
-  der `viewBox` liegen. Bei Platznot lieber die `viewBox`-Höhe erhöhen als Text überlappen
-  lassen.
+- **Zwei Teile:** Das **Portfolio** sind mehrere kleine Seiten im Wurzelverzeichnis
+  mit einem gemeinsamen `assets/style.css`. Die **App** steckt komplett in
+  `app/index.html` (HTML + CSS + JS in einer Datei). Keine Build-Tools, kein Framework.
+- **Live gehen:** GitHub Pages veröffentlicht von **`main`**. Jede fertige Änderung
+  auf dem zugewiesenen Feature-Branch committen, dann per **Fast-Forward in `main`**
+  mergen und `main` pushen; den Feature-Branch nachziehen.
+- **Schreibweise (Nutzer-Vorgabe):** **keine Gedankenstriche** im Text. Statt eines
+  Strichs mitten im Satz ein Komma, einen Doppelpunkt oder einen neuen Satz setzen.
+  Gilt für Seitentexte, App-Texte, Commit-Nachrichten und diese README. Zahlenbereiche
+  als „18 bis 55 mm". Werbliche KI-Sätze vermeiden.
+- **Privatsphäre:** Keine Anschrift, keine Telefonnummer, keine Tracker, keine externen
+  Schriften. Alle Seiten tragen `<meta name="robots" content="noindex" />`. Das ist eine
+  bewusste Entscheidung, damit die Seite nur über den Link im Lebenslauf erreicht wird.
+- **Cache-Version:** Nach **jeder** inhaltlichen Änderung die Konstante `CACHE` in
+  `service-worker.js` um eins hochzählen (`colorgrade-vNN`), sonst laden installierte
+  Geräte die alte Fassung. Neue Dateien zusätzlich in die `ASSETS`-Liste eintragen.
+- **Änderungsverlauf:** Bei **jeder** Version unten eine Zeile ergänzen.
+- **Testen vor dem Push:** Chromium ist vorinstalliert, Playwright global unter
+  `/opt/node22/lib/node_modules`. Lokal `python3 -m http.server 8099` starten, dann jede
+  Seite in 1280 und in 390 Pixel Breite laden und prüfen auf: HTTP 200, keine
+  Konsolenfehler, kein horizontales Scrollen
+  (`document.documentElement.scrollWidth > window.innerWidth`). Der Überlauf-Test ist
+  nicht optional, genau daran ist die Galerie beim ersten Anlauf gescheitert.
+  Fallstrick in der App: In JS-Strings **typografische** Anführungszeichen „…" benutzen,
+  keine geraden, die beenden den String und brechen das Script.
+- **SVG-Grafiken prüfen:** Die ~65 Grafiken in der App sind handgezeichnete SVGs
+  (Koordinaten im Code), da rutscht schnell Text aus einer Box oder ein Pfeil endet
+  neben dem Ziel. Zum Sichten alle `<figure>` mit SVG in eine Audit-Seite mit der
+  App-CSS extrahieren und einzeln screenshotten, statt im Code zu raten. Merke:
+  `text-anchor` plus x-Koordinate bestimmen, ob Text in der Box bleibt. Bei Platznot
+  lieber die `viewBox`-Höhe erhöhen als Text überlappen lassen.
 - **Nach dem Live-Gehen** dem Nutzer sagen: 1 bis 2 Min auf den Pages-Build warten, dann
   die installierte App einmal schließen & neu öffnen (oder im privaten Fenster prüfen),
   damit der neue Service-Worker greift.
-
----
-
 ## Änderungsverlauf
 
 > **Regel:** Jede Änderung zählt die Cache-Version (`service-worker.js`) um eins hoch
@@ -198,6 +208,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v45** | **Umbau zum Portfolio.** Die Startseite ist jetzt ein Portfolio mit vier Kacheln (Fotografie, Videografie, PWA und Apps, Über mich), dazu je eine Unterseite und ein gemeinsames `assets/style.css`. Die bisherige Lern-App ist unverändert nach `app/` gezogen und hat ein eigenes Manifest, die Pfade für Icon und Service-Worker sind nachgezogen. Der Service-Worker bleibt im Wurzelverzeichnis, cacht jetzt Portfolio und App und legt jede Seite unter ihrer eigenen Adresse ab statt alles unter `index.html`. Alle Seiten stehen auf `noindex`, Inhalte sind noch Platzhalter. Gefunden und behoben beim Testen: `aspect-ratio` in einem Grid ohne `align-items: start` streckte die Galerie-Kacheln und sprengte die Seitenbreite. |
 | **v44** | Den erklärenden Schlusssatz unter dem Quellen-Verzeichnis entfernt (Nutzer-Feedback); die Liste steht jetzt für sich. Ungenutzte `.src-note`-CSS-Regel mit raus. |
 | **v43** | Ausklappbares **„Quellen & Literatur“** im Über-Bereich (`.about-src`, `<details>` unter dem „Alle Fakten…“-Satz). Sieben echte, verifizierte Publikationen in drei Gruppen: Kunst & Wahrnehmung (Prette, *Kunst verstehen*), Fotografie & Bild (Itten *Kunst der Farbe*, Freeman *The Photographer’s Eye*, Peterson *Understanding Exposure*), Videografie & Film (Brown *Cinematography*, Murch *In the Blink of an Eye*, Van Hurkman *Color Correction Handbook*). Alle Angaben per Websuche geprüft, keine erfundenen Quellen. |
 | **v42** | Kopf-Link „Über & Feedback“ heißt jetzt nur noch **„Feedback“** (klarer, dass es zum Feedback führt; der Über-Text ist Zusatz). Der Klick scrollt jetzt mittig auf den **Feedback-Button** (`.about-fb`) statt an den Anfang des langen Über-Textes. |
@@ -235,30 +246,33 @@ Konzept jederzeit zur Grundlage springen kann.
 
 ## Auf dem Tablet als App installieren
 
+Das betrifft die App unter `app/`, nicht das Portfolio.
+
 1. **Veröffentlichen** über GitHub Pages: Repo-Einstellungen → *Pages* → Source
    `Deploy from a branch`, Branch `main`, Ordner `/ (root)`. Nach ein bis zwei
-   Minuten liegt die App unter `https://<benutzername>.github.io/allgemein/`.
-   Hinweis: Bei einem **privaten** Repo braucht GitHub Pages einen Bezahlplan, 
-   bei einem kostenlosen Konto das Repo dafür auf öffentlich stellen oder einen
-   anderen Static-Host (Netlify, Cloudflare Pages) verwenden.
-2. Die Adresse am Tablet im Browser öffnen.
-3. **Zum Startbildschirm hinzufügen**, fertig, eigenes App-Icon (Farbrad),
-   Vollbild ohne Browserleiste, funktioniert offline.
+   Minuten liegt das Portfolio unter `https://<benutzername>.github.io/colorgrade/`
+   und die App unter `.../colorgrade/app/`.
+   Hinweis: Bei einem **privaten** Repo braucht GitHub Pages einen Bezahlplan.
+2. Die Adresse `.../colorgrade/app/` am Tablet im Browser öffnen.
+3. **Zum Startbildschirm hinzufügen**, fertig: eigenes Icon, Vollbild, offline nutzbar.
 
----
-
+> Wer die App schon vor v45 installiert hatte, muss sie einmal neu hinzufügen: Die
+> alte Verknüpfung zeigt auf die Wurzel und öffnet jetzt das Portfolio. Der
+> gespeicherte Fortschritt bleibt erhalten, er liegt unter derselben Domain.
 ## Dateien
 
 | Datei | Zweck |
 |-------|-------|
-| `index.html` | die komplette App (HTML, CSS, JS in einer Datei) |
-| `manifest.webmanifest` | App-Name, Icon, Standalone-Anzeige |
-| `service-worker.js` | Offline-Cache (Cache-Version hier hochzählen) |
-| `icons/` | App-Icons (aus `scripts/make_icons.py` erzeugt) |
+| `index.html` | Portfolio-Startseite mit den vier Kacheln |
+| `fotografie.html` · `video.html` · `apps.html` · `ueber.html` | die vier Bereiche |
+| `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
+| `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
+| `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
+| `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |
+| `manifest.webmanifest` | Manifest des Portfolios |
+| `service-worker.js` | Offline-Cache für Portfolio **und** App (Version hier hochzählen) |
+| `icons/` | Icons (aus `scripts/make_icons.py` erzeugt) |
 | `scripts/make_icons.py` | erzeugt die Icons neu (reines Python) |
-
----
-
 ## Technische Notizen (Orientierung im Code)
 
 - **Lektionen (Wissen):** `<article class="lk-lesson" data-lek="N">` in `#lernLesson`;

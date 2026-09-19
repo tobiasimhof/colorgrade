@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Über mich · ColorGrade</title>
+  <meta name="description" content="Über mich und Kontakt." />
+  <meta name="theme-color" content="#1c1c1e" />
+  <meta name="robots" content="noindex" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <header class="site-hd">
+    <div class="hd-in">
+      <a class="brand" href="index.html"><span class="dot"></span> ColorGrade</a>
+      <nav class="site-nav" aria-label="Bereiche">
+        <a href="fotografie.html">Fotografie</a>
+        <a href="video.html">Videografie</a>
+        <a href="apps.html">Apps</a>
+        <a href="ueber.html" aria-current="page">Über mich</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1 class="page-h">Über mich</h1>
+    <p class="lead">Kurz und ehrlich. Der Text unten ist ein Entwurf, den wir gemeinsam auf dich zuschneiden.</p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Wer ich bin</h3>
+        <p>Ich heiße Tobias und beschäftige mich seit einiger Zeit intensiv mit Bild und Ton: fotografieren, filmen, schneiden und die Farbe am Ende so setzen, dass ein Bild die Stimmung trägt, die es tragen soll.</p>
+        <p>Was ich mir dabei erarbeitet habe, habe ich nicht nur nachgelesen, sondern aufgeschrieben und in eine eigene App gebaut, damit es sitzt. Genau das möchte ich jetzt zum Beruf machen.</p>
+      </article>
+
+      <article class="card">
+        <h3>Was ich suche</h3>
+        <p>Eine Ausbildung zum Mediengestalter Bild und Ton. Mitbringen kann ich Erfahrung in Fotografie und Videografie, sicheren Umgang mit Schnitt und Color Grading und die Bereitschaft, mich in Technik hineinzuarbeiten, bis ich sie verstanden habe.</p>
+      </article>
+    </div>
+
+    <h2 class="sec-h">Kontakt</h2>
+    <div class="card">
+      <!-- Hier deine E-Mail eintragen. Bewusst ohne Anschrift und Telefonnummer. -->
+      <p>Am einfachsten per E-Mail: <a href="mailto:deine-adresse@example.de">deine-adresse@example.de</a></p>
+      <p style="margin:0">Auf Anfrage schicke ich gerne weitere Arbeiten oder eine vollständige Bewerbungsmappe.</p>
+    </div>
+
+    <div class="note">
+      <b>Noch zu tun:</b> E-Mail-Adresse eintragen und die beiden Texte auf deinen Werdegang zuschneiden. Anschrift und Telefonnummer gehören bewusst nicht auf die Seite, die stehen in deiner Bewerbung.
+    </div>
+  </main>
+
+  <footer class="site-ft">
+    <div class="ft-in">
+      <a href="index.html">Zurück zur Übersicht</a>
+    </div>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js').catch(() => {}));
+    }
+  </script>
+
+</body>
+</html>

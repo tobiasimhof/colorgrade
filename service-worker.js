@@ -1,11 +1,18 @@
-// Offline-Cache für ColorGrade.
-// Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Nutzer
-// automatisch die neue Version bekommen.
-const CACHE = 'colorgrade-v44';
+// Offline-Cache für ColorGrade (Portfolio + App).
+// Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
+// automatisch die neue Fassung bekommen.
+const CACHE = 'colorgrade-v45';
 const ASSETS = [
   './',
   './index.html',
+  './fotografie.html',
+  './video.html',
+  './apps.html',
+  './ueber.html',
+  './assets/style.css',
   './manifest.webmanifest',
+  './app/index.html',
+  './app/manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
@@ -13,7 +20,11 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+  // Einzeln legen statt addAll: eine fehlende Datei soll nicht die
+  // ganze Installation scheitern lassen.
+  event.waitUntil(caches.open(CACHE).then(c =>
+    Promise.all(ASSETS.map(u => c.add(u).catch(() => {})))
+  ));
   self.skipWaiting();
 });
 
@@ -26,14 +37,14 @@ self.addEventListener('activate', event => {
 });
 
 // Strategie:
-//  • Die App-Seite (HTML/Navigation) = NETWORK-FIRST: online immer die neueste
-//    Fassung holen und in den Cache legen, offline aus dem Cache fallen lassen.
-//    So schlägt ein neues Deployment sofort beim nächsten Öffnen durch, der
-//    alte Trick „Cache erst, nie aktualisieren" entfällt.
-//  • Alle anderen Dateien (Icons, Manifest) = CACHE-FIRST, mit Netz-Nachladen.
+//  • Seiten (HTML) = NETWORK-FIRST: online immer die neueste Fassung holen und
+//    unter ihrer eigenen Adresse ablegen, offline aus dem Cache fallen lassen.
+//    So schlägt ein neues Deployment sofort beim nächsten Öffnen durch.
+//  • Alle anderen Dateien (CSS, Bilder, Manifest) = CACHE-FIRST mit Netz-Nachladen.
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
+  if (new URL(req.url).origin !== self.location.origin) return;
 
   const isHTML = req.mode === 'navigate' ||
     (req.headers.get('accept') || '').includes('text/html');
@@ -42,10 +53,10 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(req).then(res => {
         const copy = res.clone();
-        caches.open(CACHE).then(c => c.put('./index.html', copy)).catch(() => {});
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
         return res;
       }).catch(() =>
-        caches.match(req).then(hit => hit || caches.match('./index.html')).then(hit => hit || caches.match('./'))
+        caches.match(req).then(hit => hit || caches.match('./index.html'))
       )
     );
     return;
