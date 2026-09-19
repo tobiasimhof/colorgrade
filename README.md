@@ -31,13 +31,19 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v50**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
-> allen Seiten, Videografie-Texte, App entschlackt. Offen sind die Bilder und die
-> zwei Video-Dateien (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22).
+> Stand nach **v51**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
+> allen Seiten, Videografie-Texte, App entschlackt, Texte auf Fakten gekürzt. Offen
+> sind die Bilder, die zwei Video-Dateien (in Canva geschnitten, beide unter 30
+> Sekunden, einer davon 22), die E-Mail und die Ausrüstung.
 
 **Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
 nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
 Zweifel weglassen statt ausformulieren.
+
+**Und keine Motivation auf der Seite.** Das Warum steht im Anschreiben, doppelt
+klingt es nach „ich will das unbedingt". Auf der Seite stehen Fakten: was gemacht
+wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass eine
+Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
@@ -57,8 +63,8 @@ Bereich gehört allein ColorGrade.
 
 **Schritt 5 · Feinschliff**
 Über-mich-Texte stehen auf der Startseite. Offen: E-Mail eintragen (Platzhalter
-`deine-adresse@example.de` in `index.html`), jetzigen Beruf ergänzen, Ausrüstung
-nachtragen, Vorschaubild für geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
+`deine-adresse@example.de` in `index.html`), Ausrüstung nachtragen, Vorschaubild für
+geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
@@ -235,6 +241,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v51** | Texte auf der Startseite gekürzt (Nutzer-Wunsch): Die Kopfzeile ist ein Satz aus Fakten statt einer Absichtserklärung („Sportfotografie für das Portal FuPa, erste eigene Videoarbeiten, eine selbst gebaute App"). Über mich von vier Karten auf drei, je höchstens zwei kurze Sätze; die Karte „Mein Ziel" ist aufgelöst, ihr Kern steht jetzt als **ein** Satz beim Kontakt. Hintergrund: Das Warum steht im Anschreiben, auf der Seite klang es doppelt und zu sehr nach Wollen. Das Quellenverzeichnis aus v43 bleibt entfernt, das ist entschieden. |
 | **v50** | App entschlackt (Nutzer-Wunsch): Der Block **„Über ColorGrade"** am Ende der Wissen-Startseite ist komplett raus, er war zu lang und klang zu sehr nach KI. **Achtung:** Das ausklappbare Quellen- und Literaturverzeichnis lag in diesem Block und ist damit ebenfalls weg (v43, sieben Publikationen). Wer es zurückholen will, findet es in der Historie. Dafür sagt die Kopfzeile jetzt sofort, worum es geht: „Mein Lerntagebuch zur Bildbearbeitung" steht in Akzentgelb und halbfett statt klein und grau. Das tote `.about`- und `.about-src`-CSS ist mit raus. |
 | **v49** | Navigation vereinheitlicht (Nutzer-Wunsch): **Jede** Seite hat jetzt denselben Kopf, die App eingeschlossen, mit Marke links (führt zur Startseite) und Fotografie · Videografie · Apps rechts. Die eigene Über-mich-Seite ist aufgelöst, ihr Inhalt und der Kontakt stehen auf der Startseite. Dabei zwei echte Fehler gefunden und behoben. **(1)** Die App stylte `nav` als Element, also erbte der neue Kopf-`nav` die feste Positionierung der unteren Leiste und lag auf dem Untertitel; Regeln auf `body > nav` eingegrenzt. **(2)** Der Selbstheiler im Service-Worker (offene Fenster nach einer neuen Fassung neu laden) verklemmte sich: `activate` wartete per `await` auf `client.navigate()`, und ein Service-Worker liefert keine `fetch`-Ereignisse aus, solange `activate` läuft. Jetzt wird nicht mehr abgewartet, und die Fenster werden **vor** `claim()` eingesammelt, damit ein erster Besuch nicht mitten im Laden neu geladen wird. Mit einem Testaufbau geprüft, der GitHub Pages samt `max-age=600` nachstellt. |
 | **v48** | Zwei Dinge. **(1)** Videografie-Seite mit den zwei echten Übungen gefüllt: „Atmosphäre auf den Beat" (Schnitt auf den Takt, leichte Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht), je mit „Worum es ging" und „Was ich geübt habe". Kein Showreel, zwei Clips sind dafür zu wenig. **(2)** Fehler behoben, den der Nutzer gemeldet hat: Nach dem Live-Gehen stand in der App weiter der alte Text mit Umfrage. Ursache war nicht der Service-Worker-Cache, sondern der **Browser-Cache**: Pages liefert mit `max-age=600`, also bediente der Browser das `fetch` des Service-Workers bis zu zehn Minuten lang selbst. Seiten werden jetzt mit `cache: 'reload'` geholt, im Betrieb und beim Vorladen. |
