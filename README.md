@@ -5,7 +5,12 @@ ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Medienges
 Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Man öffnet die Startseite,
 liest ein kurzes Über mich und wählt darunter eine der drei Kacheln: Fotografie,
 Videografie und Apps. Die Kachel **Apps** führt ohne Zwischenseite direkt in die
-ColorGrade App unter `app/`, oben rechts geht es von dort zurück ins Portfolio.
+ColorGrade App unter `app/`. Alles Weitere über den Nutzer und der Kontakt stehen
+ebenfalls auf der Startseite, eine eigene Über-mich-Seite gibt es nicht.
+
+**Jede Seite hat denselben Kopf**, die App eingeschlossen: links die Marke
+ColorGrade, die zur Startseite führt, rechts die Navigation Fotografie ·
+Videografie · Apps. Wer eine Seite ergänzt, baut diesen Kopf mit ein.
 
 **Was über den Nutzer bekannt ist** (für Texte auf der Seite): Schwerpunkt
 Sportfotografie, ehrenamtlich für das Sportportal **FuPa**, liefert dort an
@@ -26,8 +31,9 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v48**: Startseite, Über mich, der Apps-Weg in die App und die
-> Videografie-Texte stehen. Offen sind die Bilder und die zwei Video-Dateien.
+> Stand nach **v49**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
+> allen Seiten, Videografie-Texte. Offen sind die Bilder und die zwei Video-Dateien
+> (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22 Sekunden).
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
@@ -46,8 +52,8 @@ Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus,
 Bereich gehört allein ColorGrade.
 
 **Schritt 5 · Feinschliff**
-Über-mich-Texte stehen als Entwurf. Offen: E-Mail eintragen (Platzhalter
-`deine-adresse@example.de` in `ueber.html`), jetzigen Beruf ergänzen, Ausrüstung
+Über-mich-Texte stehen auf der Startseite. Offen: E-Mail eintragen (Platzhalter
+`deine-adresse@example.de` in `index.html`), jetzigen Beruf ergänzen, Ausrüstung
 nachtragen, Vorschaubild für geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
@@ -192,8 +198,11 @@ Konzept jederzeit zur Grundlage springen kann.
 - **Zwischenspeicher, zwei Ebenen:** GitHub Pages liefert mit `Cache-Control: max-age=600`
   aus. Der Browser darf eine Seite also zehn Minuten lang aus seinem eigenen Speicher
   bedienen, auch wenn der Service-Worker „erst das Netz fragen" sagt. Deshalb holt der
-  Service-Worker Seiten seit v48 ausdrücklich frisch (`cache: 'reload'`). Wer sofort
-  nach dem Push nachsieht, prüft am besten in einem privaten Fenster.
+  Service-Worker Seiten seit v48 ausdrücklich frisch (`cache: 'reload'`). Seit v49
+  lädt eine neue Fassung offene Fenster zusätzlich einmal selbst neu. Merke: Ein
+  manuelles Neuladen umgeht den Browser-Cache ohnehin, ein normaler Klick auf einen
+  Link nicht. Deshalb blieb die App hängen, während die Startseite frisch war.
+  Wer sofort nach dem Push nachsieht, prüft am besten in einem privaten Fenster.
 - **Cache-Version:** Nach **jeder** inhaltlichen Änderung die Konstante `CACHE` in
   `service-worker.js` um eins hochzählen (`colorgrade-vNN`), sonst laden installierte
   Geräte die alte Fassung. Neue Dateien zusätzlich in die `ASSETS`-Liste eintragen.
@@ -222,6 +231,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v49** | Navigation vereinheitlicht (Nutzer-Wunsch): **Jede** Seite hat jetzt denselben Kopf, die App eingeschlossen, mit Marke links (führt zur Startseite) und Fotografie · Videografie · Apps rechts. Die eigene Über-mich-Seite ist aufgelöst, ihr Inhalt und der Kontakt stehen auf der Startseite. Dabei zwei echte Fehler gefunden und behoben. **(1)** Die App stylte `nav` als Element, also erbte der neue Kopf-`nav` die feste Positionierung der unteren Leiste und lag auf dem Untertitel; Regeln auf `body > nav` eingegrenzt. **(2)** Der Selbstheiler im Service-Worker (offene Fenster nach einer neuen Fassung neu laden) verklemmte sich: `activate` wartete per `await` auf `client.navigate()`, und ein Service-Worker liefert keine `fetch`-Ereignisse aus, solange `activate` läuft. Jetzt wird nicht mehr abgewartet, und die Fenster werden **vor** `claim()` eingesammelt, damit ein erster Besuch nicht mitten im Laden neu geladen wird. Mit einem Testaufbau geprüft, der GitHub Pages samt `max-age=600` nachstellt. |
 | **v48** | Zwei Dinge. **(1)** Videografie-Seite mit den zwei echten Übungen gefüllt: „Atmosphäre auf den Beat" (Schnitt auf den Takt, leichte Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht), je mit „Worum es ging" und „Was ich geübt habe". Kein Showreel, zwei Clips sind dafür zu wenig. **(2)** Fehler behoben, den der Nutzer gemeldet hat: Nach dem Live-Gehen stand in der App weiter der alte Text mit Umfrage. Ursache war nicht der Service-Worker-Cache, sondern der **Browser-Cache**: Pages liefert mit `max-age=600`, also bediente der Browser das `fetch` des Service-Workers bis zu zehn Minuten lang selbst. Seiten werden jetzt mit `cache: 'reload'` geholt, im Betrieb und beim Vorladen. |
 | **v47** | Apps-Bereich auf ColorGrade zugespitzt (Nutzer-Wunsch): Die Kachel führt jetzt **direkt** in die App unter `app/`, die Zwischenseite `apps.html` ist gelöscht, das Winzer-Warenwirtschaftssystem wieder raus. In der App selbst alles entfernt, was für eine Bewerbung nichts beiträgt: Tally-Umfrage, Forschungsabsatz zur Bachelorarbeit und der Plattform-Text. Der Über-Text beschreibt die App jetzt als Lerntagebuch, die Untertitel im Kopf ebenso, und der frühere Feedback-Link oben rechts ist der Rückweg ins Portfolio. Quellenverzeichnis bleibt. Toter Code raus: `openAbout` und die `.about-fb`-Regeln. |
 | **v46** | Startseite nach Nutzer-Wunsch umgebaut: oben ein kurzes Über mich, darunter **drei** Kacheln (Fotografie, Videografie, PWA und Apps) statt vier. Die dritte Kachel nimmt am Handy die volle Breite und stellt Symbol und Text nebeneinander, damit keine Lücke entsteht. Die Über-mich-Seite ist mit echten Angaben gefüllt: Schwerpunkt Sportfotografie, ehrenamtlich für FuPa, Einstieg in die Videografie, Ziel Ausbildung Mediengestalter Bild und Ton. Offen bleiben E-Mail, jetziger Beruf und Ausrüstung, die sind bewusst als Platzhalter markiert. |
@@ -281,7 +291,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | Datei | Zweck |
 |-------|-------|
 | `index.html` | Portfolio-Startseite mit den vier Kacheln |
-| `fotografie.html` · `video.html` · `ueber.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
+| `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |

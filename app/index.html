@@ -41,11 +41,13 @@
       background: conic-gradient(red, orange, yellow, lime, cyan, blue, magenta, red);
       box-shadow: inset 0 0 0 4px var(--bg-elev); flex: none; }
     header p { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
-    .hdr-top { display: flex; align-items: center; gap: 10px; }
-    .hdr-link { margin-left: auto; flex: none; font-size: 12px; font-weight: 600; text-decoration: none;
-      color: var(--muted); background: none; border: none; cursor: pointer;
-      font-family: inherit; padding: 4px 2px; white-space: nowrap; }
-    .hdr-link:hover { color: var(--accent-2); }
+    .hdr-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .brandlink { display: flex; align-items: center; gap: 9px; color: inherit; text-decoration: none; }
+    .site-nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+    .site-nav a { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none;
+      padding: 6px 10px; border-radius: 9px; }
+    .site-nav a:hover { color: var(--accent-2); background: var(--bg-card); }
+    .site-nav a[aria-current="page"] { color: var(--text); background: var(--bg-card); }
     .about { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
     .about-h { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
     .about p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: #dcdce0; }
@@ -578,16 +580,18 @@
     .note .meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .note .when { font-size: 11.5px; color: var(--muted); }
 
-    nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    /* Nur die untere Leiste, nicht jedes nav: seit dem Portfolio steht auch im
+       Kopf eine Navigation, die sonst diese feste Positionierung erben wuerde. */
+    body > nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
       display: flex; background: rgba(24,24,26,.92);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-top: 1px solid var(--line); padding-bottom: var(--safe-b); }
-    nav button { flex: 1; background: none; border: none; color: var(--muted); cursor: pointer;
+    body > nav button { flex: 1; background: none; border: none; color: var(--muted); cursor: pointer;
       padding: 9px 2px 8px; font-size: 10px; display: flex; flex-direction: column;
       align-items: center; gap: 3px; font-weight: 600; }
-    nav button .ic { font-size: 21px; line-height: 1; }
-    nav button.active { color: var(--accent); }
-    nav button[hidden] { display: none; }
+    body > nav button .ic { font-size: 21px; line-height: 1; }
+    body > nav button.active { color: var(--accent); }
+    body > nav button[hidden] { display: none; }
 
     dialog { border: none; background: transparent; padding: 0; }
     dialog::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(2px); }
@@ -608,8 +612,12 @@
 <body>
   <header>
     <div class="hdr-top">
-      <h1><span class="dot"></span> ColorGrade</h1>
-      <a class="hdr-link" href="../index.html">Portfolio</a>
+      <h1><a class="brandlink" href="../index.html"><span class="dot"></span> ColorGrade</a></h1>
+      <nav class="site-nav" aria-label="Bereiche">
+        <a href="../fotografie.html">Fotografie</a>
+        <a href="../video.html">Videografie</a>
+        <a href="index.html" aria-current="page">Apps</a>
+      </nav>
     </div>
     <div class="modeswitch" id="modeSwitch" role="tablist" aria-label="Bereich wählen">
       <button class="modebtn active" data-mode="foto" role="tab">📷 Bildbearbeitung</button>

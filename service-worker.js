@@ -1,13 +1,12 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v48';
+const CACHE = 'colorgrade-v49';
 const ASSETS = [
   './',
   './index.html',
   './fotografie.html',
   './video.html',
-  './ueber.html',
   './assets/style.css',
   './manifest.webmanifest',
   './app/index.html',
@@ -45,11 +44,25 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
-  );
-  self.clients.claim();
+  event.waitUntil((async () => {
+    // Reihenfolge ist wichtig: erst die Fenster einsammeln, dann uebernehmen.
+    // VOR `claim()` liefert matchAll nur Fenster, die der ALTE Service-Worker
+    // bedient hat. Genau die zeigen moeglicherweise noch eine Fassung aus dem
+    // Browser-Cache und werden unten einmal neu geladen, diesmal ueber frisch()
+    // am Browser-Cache vorbei. Ein erster Besuch ist noch unkontrolliert, steht
+    // also nicht in der Liste und wird nicht mitten im Laden gestoert.
+    const alteFenster = await self.clients.matchAll({ type: 'window' });
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
+    await self.clients.claim();
+    // Bewusst NICHT abwarten: `navigate()` loest eine Navigation aus, und die
+    // kann dieser Service-Worker erst bedienen, wenn `activate` durch ist.
+    // Wer hier `await` schreibt, baut eine Verklemmung: activate wartet auf die
+    // Navigation, die Navigation wartet auf activate.
+    for (const f of alteFenster) {
+      f.navigate(f.url).catch(() => {});
+    }
+  })());
 });
 
 // Strategie:
