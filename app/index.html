@@ -42,7 +42,7 @@
       box-shadow: inset 0 0 0 4px var(--bg-elev); flex: none; }
     header p { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
     .hdr-top { display: flex; align-items: center; gap: 10px; }
-    .hdr-link { margin-left: auto; flex: none; font-size: 12px; font-weight: 600;
+    .hdr-link { margin-left: auto; flex: none; font-size: 12px; font-weight: 600; text-decoration: none;
       color: var(--muted); background: none; border: none; cursor: pointer;
       font-family: inherit; padding: 4px 2px; white-space: nowrap; }
     .hdr-link:hover { color: var(--accent-2); }
@@ -51,11 +51,6 @@
     .about p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: #dcdce0; }
     .about p b { color: var(--accent-2); }
     .about .about-priv { font-size: 12.5px; color: var(--muted); }
-    .about-fb { display: block; width: fit-content; margin: 4px 0 8px auto; text-decoration: none;
-      font-size: 15px; font-weight: 650; color: #201400; background: var(--accent);
-      padding: 11px 18px; border-radius: 12px; }
-    .about-fb:active { transform: scale(.98); }
-    .about .about-fb-sub { font-size: 12px; color: var(--muted); margin: 0; }
     .about-src { margin: 4px 0 14px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
     .about-src > summary { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer;
       padding: 11px 14px; font-size: 13px; font-weight: 650; color: var(--text); }
@@ -614,13 +609,13 @@
   <header>
     <div class="hdr-top">
       <h1><span class="dot"></span> ColorGrade</h1>
-      <button class="hdr-link" id="aboutLink" type="button">Feedback</button>
+      <a class="hdr-link" href="../index.html">Portfolio</a>
     </div>
     <div class="modeswitch" id="modeSwitch" role="tablist" aria-label="Bereich wählen">
       <button class="modebtn active" data-mode="foto" role="tab">📷 Bildbearbeitung</button>
       <button class="modebtn" data-mode="video" role="tab">🎬 Videobearbeitung</button>
     </div>
-    <p id="modeSub">Bildbearbeitung lernen &amp; verstehen, Schritt für Schritt</p>
+    <p id="modeSub">Mein Lerntagebuch zur Bildbearbeitung</p>
   </header>
 
   <div id="installBar" hidden>
@@ -996,10 +991,9 @@
           <div class="lk-list" id="lkList"></div>
           <section class="about" id="aboutBox" aria-label="Über ColorGrade">
             <div class="about-h">Über ColorGrade</div>
-            <p>Hi, ich bin Tobias und studiere Digital Marketing. ColorGrade ist ein Projekt von mir: eine <b>kostenlose Plattform</b>, mit der ich dir den Einstieg in die Bild- und Videobearbeitung leichter machen möchte.</p>
-            <p><b>Warum?</b> Bilder und Videos sind heute überall. Fast jeder nutzt Social Media, und oft entscheidet schon ein einzelnes Bild oder ein kurzer Clip, ob ein Beitrag ankommt oder untergeht. Mir ist wichtig, dass du verstehst, warum ein Beitrag (Bild oder Video) funktioniert und worauf man dabei achtet. Dieses Verständnis kannst du überall anwenden, egal mit welchem Programm du arbeitest.</p>
-            <p>Ich versuche mit dieser Plattform herauszufinden, wie Menschen an dieses Thema herangehen. Social Media wird immer wichtiger, und da ich Digital Marketing (Social Media Marketing und Marketing Intelligence) studiere, würde es mir enorm helfen, eine wissenschaftliche Entscheidungsgrundlage für meine spätere Forschung in Bezug auf meine Bachelorarbeit zu legen.</p>
-            <p>ColorGrade ist und bleibt für immer kostenlos und soll als Informationsplattform dienen. Du musst dich nirgends anmelden, dein Fortschritt bleibt auf deinem Gerät. Ich würde mich riesig freuen, wenn du an der kostenlosen, anonymen Umfrage teilnimmst. Schreib dort gerne alles rein, was dir einfällt: was dir fehlt, was besser werden soll, was dir gefällt.</p>
+            <p>ColorGrade ist mein <b>Lerntagebuch</b>. Beim Einarbeiten in Fotografie und Videografie habe ich festgehalten, was ich verstanden habe: Belichtung, Bildaufbau, Farblehre, Kurven und Color Grading.</p>
+            <p>Daraus ist diese App geworden. Sie hat drei Ebenen: Lektionen zum Durcharbeiten, ein Nachschlagewerk für den schnellen Blick am Rechner und Rezepte für einzelne Looks. Die rund 65 Grafiken habe ich selbst gezeichnet, direkt im Code als SVG.</p>
+            <p>Gebaut ist sie als Web-App ohne Baukasten und ohne Framework, sie läuft offline und speichert alles nur auf dem Gerät. Anmelden muss sich niemand, getrackt wird nichts.</p>
             <p class="about-priv">Alle Fakten in dieser App beruhen auf wissenschaftlichen Veröffentlichungen, zum Beispiel „Kunst verstehen“ von Maria Carla Prette, und auf weiteren in der Wissenschaft anerkannten Publikationen.</p>
             <details class="about-src">
               <summary>Quellen &amp; Literatur<span class="chev">▶</span></summary>
@@ -1022,8 +1016,6 @@
                 </ul>
               </div>
             </details>
-            <a class="about-fb" href="https://tally.so/r/81BOXA" target="_blank" rel="noopener">Feedback geben</a>
-            <p class="about-fb-sub">Zwei Minuten, anonym.</p>
           </section>
         </div>
 
@@ -4489,8 +4481,8 @@
   // Moduswechsel Bild / Video (Buttons im Header)
   const modeBtns = document.querySelectorAll('#modeSwitch .modebtn');
   const MODE_SUB = {
-    foto: 'Bildbearbeitung lernen & verstehen, Schritt für Schritt',
-    video: 'Videobearbeitung lernen & verstehen, Schritt für Schritt'
+    foto: 'Mein Lerntagebuch zur Bildbearbeitung',
+    video: 'Mein Lerntagebuch zur Videobearbeitung'
   };
   function setMode(mode, tab) {
     if (!MODE_TABS[mode]) mode = 'foto';
@@ -5773,24 +5765,6 @@
   updateVorlagenInfo();
   renderPalette();
   renderLookModel();
-  function openAbout() {
-    goTab('spick');
-    const seg = el('wisSeg');
-    if (seg) [].forEach.call(seg.querySelectorAll('.segbtn'), x => x.classList.toggle('active', x.dataset.wview === 'lernen'));
-    const wl = el('wview-lernen'), wn = el('wview-nach');
-    if (wl) wl.hidden = false;
-    if (wn) wn.hidden = true;
-    const ll = el('lernLesson'), lst = el('lernList');
-    if (ll) ll.hidden = true;
-    if (lst) lst.hidden = false;
-    requestAnimationFrame(() => {
-      const fb = document.querySelector('.about-fb'), a = el('aboutBox');
-      const target = fb || a;
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  }
-  const aboutLinkEl = el('aboutLink');
-  if (aboutLinkEl) aboutLinkEl.addEventListener('click', openAbout);
   // Zuletzt gewählten Modus (Bild/Video) und Tab wiederherstellen
   setMode(LS.get('fw_mode', 'foto'));
 

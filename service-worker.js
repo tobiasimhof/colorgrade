@@ -1,13 +1,12 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v46';
+const CACHE = 'colorgrade-v47';
 const ASSETS = [
   './',
   './index.html',
   './fotografie.html',
   './video.html',
-  './apps.html',
   './ueber.html',
   './assets/style.css',
   './manifest.webmanifest',

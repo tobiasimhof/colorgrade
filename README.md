@@ -3,7 +3,9 @@
 Portfolio von **Tobias**: Sportfotografie, Videografie und eigene Apps. Die Seite
 ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Mediengestalter
 Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Man öffnet die Startseite,
-liest ein kurzes Über mich und wählt darunter eine der drei Kacheln.
+liest ein kurzes Über mich und wählt darunter eine der drei Kacheln: Fotografie,
+Videografie und Apps. Die Kachel **Apps** führt ohne Zwischenseite direkt in die
+ColorGrade App unter `app/`, oben rechts geht es von dort zurück ins Portfolio.
 
 **Was über den Nutzer bekannt ist** (für Texte auf der Seite): Schwerpunkt
 Sportfotografie, ehrenamtlich für das Sportportal **FuPa**, liefert dort an
@@ -24,23 +26,23 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v46**: Struktur und Startseite stehen, die Über-mich-Seite ist mit
-> echten Angaben gefüllt. Fotografie, Videografie und Apps sind noch Platzhalter.
+> Stand nach **v47**: Startseite, Über mich und der Apps-Weg in die App stehen.
+> Offen sind nur noch Fotografie und Videografie, beide warten auf Material.
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
-bauen, je Serie einen Titel und je Bild eine kurze Unterschrift.
+bauen, je Serie einen Titel und je Bild eine kurze Unterschrift. Der Nutzer hat die
+Bilder noch nicht sortiert, die Aufteilung der Serien ist also noch offen.
 
 **Schritt 3 · Videografie**
-Showreel und zwei bis drei Clips einbinden. Kurze Dateien nach `assets/video/`,
+Es gibt bisher **zwei** eigene Clips, gedreht und geschnitten. Für ein Showreel ist
+das zu wenig, also die beiden einzeln zeigen. Kurze Dateien nach `assets/video/`,
 längere über einen Hoster. Grenze bei GitHub: 100 MB je Datei.
 
-**Schritt 4 · Apps**
-Warenwirtschaftssystem für den Winzer beschreiben, Screenshots ergänzen. Dazu die
-offene Entscheidung: Soll die ColorGrade App unter `app/` öffentlich verlinkt sein?
-Falls ja, vorher in der App den Plattform-Text und die Tally-Umfrage entfernen und
-auf Lerntagebuch umstellen. Falls sie gar nicht ausgeliefert werden soll: Ordner
-in `_app/` umbenennen, GitHub Pages lässt Ordner mit Unterstrich weg.
+**Schritt 4 · Apps** (erledigt in v47)
+Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Das
+Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus, der
+Bereich gehört allein ColorGrade.
 
 **Schritt 5 · Feinschliff**
 Über-mich-Texte stehen als Entwurf. Offen: E-Mail eintragen (Platzhalter
@@ -214,6 +216,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v47** | Apps-Bereich auf ColorGrade zugespitzt (Nutzer-Wunsch): Die Kachel führt jetzt **direkt** in die App unter `app/`, die Zwischenseite `apps.html` ist gelöscht, das Winzer-Warenwirtschaftssystem wieder raus. In der App selbst alles entfernt, was für eine Bewerbung nichts beiträgt: Tally-Umfrage, Forschungsabsatz zur Bachelorarbeit und der Plattform-Text. Der Über-Text beschreibt die App jetzt als Lerntagebuch, die Untertitel im Kopf ebenso, und der frühere Feedback-Link oben rechts ist der Rückweg ins Portfolio. Quellenverzeichnis bleibt. Toter Code raus: `openAbout` und die `.about-fb`-Regeln. |
 | **v46** | Startseite nach Nutzer-Wunsch umgebaut: oben ein kurzes Über mich, darunter **drei** Kacheln (Fotografie, Videografie, PWA und Apps) statt vier. Die dritte Kachel nimmt am Handy die volle Breite und stellt Symbol und Text nebeneinander, damit keine Lücke entsteht. Die Über-mich-Seite ist mit echten Angaben gefüllt: Schwerpunkt Sportfotografie, ehrenamtlich für FuPa, Einstieg in die Videografie, Ziel Ausbildung Mediengestalter Bild und Ton. Offen bleiben E-Mail, jetziger Beruf und Ausrüstung, die sind bewusst als Platzhalter markiert. |
 | **v45** | **Umbau zum Portfolio.** Die Startseite ist jetzt ein Portfolio mit vier Kacheln (Fotografie, Videografie, PWA und Apps, Über mich), dazu je eine Unterseite und ein gemeinsames `assets/style.css`. Die bisherige Lern-App ist unverändert nach `app/` gezogen und hat ein eigenes Manifest, die Pfade für Icon und Service-Worker sind nachgezogen. Der Service-Worker bleibt im Wurzelverzeichnis, cacht jetzt Portfolio und App und legt jede Seite unter ihrer eigenen Adresse ab statt alles unter `index.html`. Alle Seiten stehen auf `noindex`, Inhalte sind noch Platzhalter. Gefunden und behoben beim Testen: `aspect-ratio` in einem Grid ohne `align-items: start` streckte die Galerie-Kacheln und sprengte die Seitenbreite. |
 | **v44** | Den erklärenden Schlusssatz unter dem Quellen-Verzeichnis entfernt (Nutzer-Feedback); die Liste steht jetzt für sich. Ungenutzte `.src-note`-CSS-Regel mit raus. |
@@ -271,7 +274,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | Datei | Zweck |
 |-------|-------|
 | `index.html` | Portfolio-Startseite mit den vier Kacheln |
-| `fotografie.html` · `video.html` · `apps.html` · `ueber.html` | die vier Bereiche |
+| `fotografie.html` · `video.html` · `ueber.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
