@@ -40,7 +40,8 @@
     header .dot { width: 22px; height: 22px; border-radius: 50%;
       background: conic-gradient(red, orange, yellow, lime, cyan, blue, magenta, red);
       box-shadow: inset 0 0 0 4px var(--bg-elev); flex: none; }
-    header p { margin: 10px 0 0; color: var(--muted); font-size: 12.5px; }
+    header p { margin: 10px 0 0; color: var(--accent-2); font-size: 14px;
+      font-weight: 650; letter-spacing: -.005em; }
     .hdr-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .brandlink { display: flex; align-items: center; gap: 9px; color: inherit; text-decoration: none; }
     .site-nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
@@ -48,27 +49,6 @@
       padding: 6px 10px; border-radius: 9px; }
     .site-nav a:hover { color: var(--accent-2); background: var(--bg-card); }
     .site-nav a[aria-current="page"] { color: var(--text); background: var(--bg-card); }
-    .about { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
-    .about-h { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .about p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: #dcdce0; }
-    .about p b { color: var(--accent-2); }
-    .about .about-priv { font-size: 12.5px; color: var(--muted); }
-    .about-src { margin: 4px 0 14px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-    .about-src > summary { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer;
-      padding: 11px 14px; font-size: 13px; font-weight: 650; color: var(--text); }
-    .about-src > summary::-webkit-details-marker { display: none; }
-    .about-src > summary .chev { margin-left: auto; }
-    .about-src[open] > summary { border-bottom: 1px solid var(--line); color: var(--accent-2); }
-    .about-src[open] > summary .chev { transform: rotate(90deg); }
-    .about-src .src-body { padding: 12px 14px; }
-    .about-src .src-group { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
-      color: var(--muted); margin: 12px 0 6px; }
-    .about-src .src-group:first-child { margin-top: 0; }
-    .about-src ul { margin: 0; padding: 0; list-style: none; }
-    .about-src li { font-size: 12.5px; line-height: 1.5; color: #dcdce0; margin: 0 0 7px; padding-left: 13px; position: relative; }
-    .about-src li::before { content: "•"; position: absolute; left: 0; color: var(--accent-2); }
-    .about-src li i { color: var(--text); font-style: italic; }
-    .about-src li span { color: var(--muted); }
     /* Video-Grundlagen-Berater */
     .vbg { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
     .vbg > summary { list-style: none; cursor: pointer; padding: 13px 15px; font-size: 14px; font-weight: 650; color: var(--text); }
@@ -997,34 +977,6 @@
           <p class="lead">13 Lektionen zur Bildbearbeitung, in der Reihenfolge, in der du später auch arbeitest. Tippe eine Lektion an.</p>
           <p class="info" id="lkProg"></p>
           <div class="lk-list" id="lkList"></div>
-          <section class="about" id="aboutBox" aria-label="Über ColorGrade">
-            <div class="about-h">Über ColorGrade</div>
-            <p>ColorGrade ist mein <b>Lerntagebuch</b>. Beim Einarbeiten in Fotografie und Videografie habe ich festgehalten, was ich verstanden habe: Belichtung, Bildaufbau, Farblehre, Kurven und Color Grading.</p>
-            <p>Daraus ist diese App geworden. Sie hat drei Ebenen: Lektionen zum Durcharbeiten, ein Nachschlagewerk für den schnellen Blick am Rechner und Rezepte für einzelne Looks. Die rund 65 Grafiken habe ich selbst gezeichnet, direkt im Code als SVG.</p>
-            <p>Gebaut ist sie als Web-App ohne Baukasten und ohne Framework, sie läuft offline und speichert alles nur auf dem Gerät. Anmelden muss sich niemand, getrackt wird nichts.</p>
-            <p class="about-priv">Alle Fakten in dieser App beruhen auf wissenschaftlichen Veröffentlichungen, zum Beispiel „Kunst verstehen“ von Maria Carla Prette, und auf weiteren in der Wissenschaft anerkannten Publikationen.</p>
-            <details class="about-src">
-              <summary>Quellen &amp; Literatur<span class="chev">▶</span></summary>
-              <div class="src-body">
-                <div class="src-group">Kunst &amp; Wahrnehmung</div>
-                <ul>
-                  <li><i>Maria Carla Prette: Kunst verstehen.</i> <span>Naumann &amp; Göbel. Aufbau eines Werks, Form und Symbolik, die Funktion der Farbe.</span></li>
-                </ul>
-                <div class="src-group">Fotografie &amp; Bild</div>
-                <ul>
-                  <li><i>Johannes Itten: Kunst der Farbe.</i> <span>Ravensburg 1961. Farblehre, Farbkreis und Farbharmonien.</span></li>
-                  <li><i>Michael Freeman: The Photographer’s Eye.</i> <span>Ilex 2007. Bildaufbau und Komposition.</span></li>
-                  <li><i>Bryan Peterson: Understanding Exposure.</i> <span>Amphoto Books. Licht und das Zusammenspiel von Blende, Zeit und ISO.</span></li>
-                </ul>
-                <div class="src-group">Videografie &amp; Film</div>
-                <ul>
-                  <li><i>Blain Brown: Cinematography. Theory and Practice.</i> <span>Focal Press. Kameratechnik und Bildgestaltung im Video.</span></li>
-                  <li><i>Walter Murch: In the Blink of an Eye.</i> <span>Silman-James Press 1992. Schnitt und Montage.</span></li>
-                  <li><i>Alexis Van Hurkman: Color Correction Handbook.</i> <span>Peachpit Press. Farbkorrektur und Color Grading für Video und Film.</span></li>
-                </ul>
-              </div>
-            </details>
-          </section>
         </div>
 
         <div id="lernLesson" hidden>

@@ -31,9 +31,13 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v49**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
-> allen Seiten, Videografie-Texte. Offen sind die Bilder und die zwei Video-Dateien
-> (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22 Sekunden).
+> Stand nach **v50**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
+> allen Seiten, Videografie-Texte, App entschlackt. Offen sind die Bilder und die
+> zwei Video-Dateien (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22).
+
+**Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
+nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
+Zweifel weglassen statt ausformulieren.
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
@@ -61,7 +65,7 @@ nachtragen, Vorschaubild für geteilte Links (Open Graph), eigenes Favicon, 404-
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
-> Feedback & „Über", Video-Berater mit Grundlagen/Situationen …), steht vollständig im
+> Video-Berater mit Grundlagen/Situationen …), steht vollständig im
 > **Änderungsverlauf** ab v26.
 
 Ganz oben schaltet ein **Kopf-Umschalter** zwischen zwei Welten: **📷 Bildbearbeitung**
@@ -231,6 +235,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v50** | App entschlackt (Nutzer-Wunsch): Der Block **„Über ColorGrade"** am Ende der Wissen-Startseite ist komplett raus, er war zu lang und klang zu sehr nach KI. **Achtung:** Das ausklappbare Quellen- und Literaturverzeichnis lag in diesem Block und ist damit ebenfalls weg (v43, sieben Publikationen). Wer es zurückholen will, findet es in der Historie. Dafür sagt die Kopfzeile jetzt sofort, worum es geht: „Mein Lerntagebuch zur Bildbearbeitung" steht in Akzentgelb und halbfett statt klein und grau. Das tote `.about`- und `.about-src`-CSS ist mit raus. |
 | **v49** | Navigation vereinheitlicht (Nutzer-Wunsch): **Jede** Seite hat jetzt denselben Kopf, die App eingeschlossen, mit Marke links (führt zur Startseite) und Fotografie · Videografie · Apps rechts. Die eigene Über-mich-Seite ist aufgelöst, ihr Inhalt und der Kontakt stehen auf der Startseite. Dabei zwei echte Fehler gefunden und behoben. **(1)** Die App stylte `nav` als Element, also erbte der neue Kopf-`nav` die feste Positionierung der unteren Leiste und lag auf dem Untertitel; Regeln auf `body > nav` eingegrenzt. **(2)** Der Selbstheiler im Service-Worker (offene Fenster nach einer neuen Fassung neu laden) verklemmte sich: `activate` wartete per `await` auf `client.navigate()`, und ein Service-Worker liefert keine `fetch`-Ereignisse aus, solange `activate` läuft. Jetzt wird nicht mehr abgewartet, und die Fenster werden **vor** `claim()` eingesammelt, damit ein erster Besuch nicht mitten im Laden neu geladen wird. Mit einem Testaufbau geprüft, der GitHub Pages samt `max-age=600` nachstellt. |
 | **v48** | Zwei Dinge. **(1)** Videografie-Seite mit den zwei echten Übungen gefüllt: „Atmosphäre auf den Beat" (Schnitt auf den Takt, leichte Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht), je mit „Worum es ging" und „Was ich geübt habe". Kein Showreel, zwei Clips sind dafür zu wenig. **(2)** Fehler behoben, den der Nutzer gemeldet hat: Nach dem Live-Gehen stand in der App weiter der alte Text mit Umfrage. Ursache war nicht der Service-Worker-Cache, sondern der **Browser-Cache**: Pages liefert mit `max-age=600`, also bediente der Browser das `fetch` des Service-Workers bis zu zehn Minuten lang selbst. Seiten werden jetzt mit `cache: 'reload'` geholt, im Betrieb und beim Vorladen. |
 | **v47** | Apps-Bereich auf ColorGrade zugespitzt (Nutzer-Wunsch): Die Kachel führt jetzt **direkt** in die App unter `app/`, die Zwischenseite `apps.html` ist gelöscht, das Winzer-Warenwirtschaftssystem wieder raus. In der App selbst alles entfernt, was für eine Bewerbung nichts beiträgt: Tally-Umfrage, Forschungsabsatz zur Bachelorarbeit und der Plattform-Text. Der Über-Text beschreibt die App jetzt als Lerntagebuch, die Untertitel im Kopf ebenso, und der frühere Feedback-Link oben rechts ist der Rückweg ins Portfolio. Quellenverzeichnis bleibt. Toter Code raus: `openAbout` und die `.about-fb`-Regeln. |
