@@ -26,18 +26,19 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v47**: Startseite, Über mich und der Apps-Weg in die App stehen.
-> Offen sind nur noch Fotografie und Videografie, beide warten auf Material.
+> Stand nach **v48**: Startseite, Über mich, der Apps-Weg in die App und die
+> Videografie-Texte stehen. Offen sind die Bilder und die zwei Video-Dateien.
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
 bauen, je Serie einen Titel und je Bild eine kurze Unterschrift. Der Nutzer hat die
 Bilder noch nicht sortiert, die Aufteilung der Serien ist also noch offen.
 
-**Schritt 3 · Videografie**
-Es gibt bisher **zwei** eigene Clips, gedreht und geschnitten. Für ein Showreel ist
-das zu wenig, also die beiden einzeln zeigen. Kurze Dateien nach `assets/video/`,
-längere über einen Hoster. Grenze bei GitHub: 100 MB je Datei.
+**Schritt 3 · Videografie** (Texte stehen seit v48)
+Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
+Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). Offen sind nur
+noch die Dateien: nach `assets/video/`, längere über einen Hoster. Grenze bei
+GitHub: 100 MB je Datei. Länge und Dateigröße sind beim Nutzer erfragt.
 
 **Schritt 4 · Apps** (erledigt in v47)
 Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Das
@@ -188,6 +189,11 @@ Konzept jederzeit zur Grundlage springen kann.
 - **Privatsphäre:** Keine Anschrift, keine Telefonnummer, keine Tracker, keine externen
   Schriften. Alle Seiten tragen `<meta name="robots" content="noindex" />`. Das ist eine
   bewusste Entscheidung, damit die Seite nur über den Link im Lebenslauf erreicht wird.
+- **Zwischenspeicher, zwei Ebenen:** GitHub Pages liefert mit `Cache-Control: max-age=600`
+  aus. Der Browser darf eine Seite also zehn Minuten lang aus seinem eigenen Speicher
+  bedienen, auch wenn der Service-Worker „erst das Netz fragen" sagt. Deshalb holt der
+  Service-Worker Seiten seit v48 ausdrücklich frisch (`cache: 'reload'`). Wer sofort
+  nach dem Push nachsieht, prüft am besten in einem privaten Fenster.
 - **Cache-Version:** Nach **jeder** inhaltlichen Änderung die Konstante `CACHE` in
   `service-worker.js` um eins hochzählen (`colorgrade-vNN`), sonst laden installierte
   Geräte die alte Fassung. Neue Dateien zusätzlich in die `ASSETS`-Liste eintragen.
@@ -216,6 +222,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v48** | Zwei Dinge. **(1)** Videografie-Seite mit den zwei echten Übungen gefüllt: „Atmosphäre auf den Beat" (Schnitt auf den Takt, leichte Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht), je mit „Worum es ging" und „Was ich geübt habe". Kein Showreel, zwei Clips sind dafür zu wenig. **(2)** Fehler behoben, den der Nutzer gemeldet hat: Nach dem Live-Gehen stand in der App weiter der alte Text mit Umfrage. Ursache war nicht der Service-Worker-Cache, sondern der **Browser-Cache**: Pages liefert mit `max-age=600`, also bediente der Browser das `fetch` des Service-Workers bis zu zehn Minuten lang selbst. Seiten werden jetzt mit `cache: 'reload'` geholt, im Betrieb und beim Vorladen. |
 | **v47** | Apps-Bereich auf ColorGrade zugespitzt (Nutzer-Wunsch): Die Kachel führt jetzt **direkt** in die App unter `app/`, die Zwischenseite `apps.html` ist gelöscht, das Winzer-Warenwirtschaftssystem wieder raus. In der App selbst alles entfernt, was für eine Bewerbung nichts beiträgt: Tally-Umfrage, Forschungsabsatz zur Bachelorarbeit und der Plattform-Text. Der Über-Text beschreibt die App jetzt als Lerntagebuch, die Untertitel im Kopf ebenso, und der frühere Feedback-Link oben rechts ist der Rückweg ins Portfolio. Quellenverzeichnis bleibt. Toter Code raus: `openAbout` und die `.about-fb`-Regeln. |
 | **v46** | Startseite nach Nutzer-Wunsch umgebaut: oben ein kurzes Über mich, darunter **drei** Kacheln (Fotografie, Videografie, PWA und Apps) statt vier. Die dritte Kachel nimmt am Handy die volle Breite und stellt Symbol und Text nebeneinander, damit keine Lücke entsteht. Die Über-mich-Seite ist mit echten Angaben gefüllt: Schwerpunkt Sportfotografie, ehrenamtlich für FuPa, Einstieg in die Videografie, Ziel Ausbildung Mediengestalter Bild und Ton. Offen bleiben E-Mail, jetziger Beruf und Ausrüstung, die sind bewusst als Platzhalter markiert. |
 | **v45** | **Umbau zum Portfolio.** Die Startseite ist jetzt ein Portfolio mit vier Kacheln (Fotografie, Videografie, PWA und Apps, Über mich), dazu je eine Unterseite und ein gemeinsames `assets/style.css`. Die bisherige Lern-App ist unverändert nach `app/` gezogen und hat ein eigenes Manifest, die Pfade für Icon und Service-Worker sind nachgezogen. Der Service-Worker bleibt im Wurzelverzeichnis, cacht jetzt Portfolio und App und legt jede Seite unter ihrer eigenen Adresse ab statt alles unter `index.html`. Alle Seiten stehen auf `noindex`, Inhalte sind noch Platzhalter. Gefunden und behoben beim Testen: `aspect-ratio` in einem Grid ohne `align-items: start` streckte die Galerie-Kacheln und sprengte die Seitenbreite. |

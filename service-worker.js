@@ -1,7 +1,7 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v47';
+const CACHE = 'colorgrade-v48';
 const ASSETS = [
   './',
   './index.html',
@@ -18,11 +18,28 @@ const ASSETS = [
   './icons/apple-touch-icon.png'
 ];
 
+// GitHub Pages liefert mit `Cache-Control: max-age=600` aus. Der Browser darf
+// eine Seite also zehn Minuten lang aus seinem eigenen Zwischenspeicher bedienen,
+// auch wenn wir hier „erst das Netz fragen" sagen: Wir fragen das Netz, und das
+// Netz antwortet aus dem Browser-Cache. Deshalb holen wir Seiten ausdruecklich
+// frisch (`cache: 'reload'`), sonst haengt eine neue Fassung bis zu zehn Minuten.
+function frisch(req) {
+  try {
+    return fetch(new Request(req.url, { cache: 'reload', credentials: 'same-origin' }));
+  } catch (e) {
+    return fetch(req);
+  }
+}
+
 self.addEventListener('install', event => {
   // Einzeln legen statt addAll: eine fehlende Datei soll nicht die
   // ganze Installation scheitern lassen.
   event.waitUntil(caches.open(CACHE).then(c =>
-    Promise.all(ASSETS.map(u => c.add(u).catch(() => {})))
+    Promise.all(ASSETS.map(u =>
+      fetch(new Request(u, { cache: 'reload' }))
+        .then(res => res.ok ? c.put(u, res) : null)
+        .catch(() => {})
+    ))
   ));
   self.skipWaiting();
 });
@@ -50,7 +67,7 @@ self.addEventListener('fetch', event => {
 
   if (isHTML) {
     event.respondWith(
-      fetch(req).then(res => {
+      frisch(req).then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
         return res;
