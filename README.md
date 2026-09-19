@@ -1,9 +1,14 @@
 # ColorGrade
 
-Portfolio von **Tobias**: Fotografie, Videografie und eigene Apps. Die Seite ist
-der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Mediengestalter
-Bild und Ton**. Man öffnet die Startseite, wählt eine Kachel und landet im
-passenden Bereich.
+Portfolio von **Tobias**: Sportfotografie, Videografie und eigene Apps. Die Seite
+ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Mediengestalter
+Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Man öffnet die Startseite,
+liest ein kurzes Über mich und wählt darunter eine der drei Kacheln.
+
+**Was über den Nutzer bekannt ist** (für Texte auf der Seite): Schwerpunkt
+Sportfotografie, ehrenamtlich für das Sportportal **FuPa**, liefert dort an
+Spieltagen Bilder. Videografie ist neu und wird gerade erarbeitet. Noch offen und
+nicht erfinden: jetziger Beruf, Ausrüstung, E-Mail-Adresse.
 
 Unter `app/` liegt zusätzlich **ColorGrade**, das Lerntagebuch zu Bild, Video und
 Farbe als installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät).
@@ -19,8 +24,8 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v45**: Schritt 1 ist fertig, die Struktur steht und die Startseite
-> mit den vier Kacheln läuft. Alle Inhalte sind noch Platzhalter.
+> Stand nach **v46**: Struktur und Startseite stehen, die Über-mich-Seite ist mit
+> echten Angaben gefüllt. Fotografie, Videografie und Apps sind noch Platzhalter.
 
 **Schritt 2 · Fotografie**
 Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
@@ -38,8 +43,9 @@ auf Lerntagebuch umstellen. Falls sie gar nicht ausgeliefert werden soll: Ordner
 in `_app/` umbenennen, GitHub Pages lässt Ordner mit Unterstrich weg.
 
 **Schritt 5 · Feinschliff**
-Über-mich-Texte zuschneiden, E-Mail eintragen, Vorschaubild für geteilte Links
-(Open Graph), eigenes Favicon, 404-Seite.
+Über-mich-Texte stehen als Entwurf. Offen: E-Mail eintragen (Platzhalter
+`deine-adresse@example.de` in `ueber.html`), jetzigen Beruf ergänzen, Ausrüstung
+nachtragen, Vorschaubild für geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
@@ -208,6 +214,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v46** | Startseite nach Nutzer-Wunsch umgebaut: oben ein kurzes Über mich, darunter **drei** Kacheln (Fotografie, Videografie, PWA und Apps) statt vier. Die dritte Kachel nimmt am Handy die volle Breite und stellt Symbol und Text nebeneinander, damit keine Lücke entsteht. Die Über-mich-Seite ist mit echten Angaben gefüllt: Schwerpunkt Sportfotografie, ehrenamtlich für FuPa, Einstieg in die Videografie, Ziel Ausbildung Mediengestalter Bild und Ton. Offen bleiben E-Mail, jetziger Beruf und Ausrüstung, die sind bewusst als Platzhalter markiert. |
 | **v45** | **Umbau zum Portfolio.** Die Startseite ist jetzt ein Portfolio mit vier Kacheln (Fotografie, Videografie, PWA und Apps, Über mich), dazu je eine Unterseite und ein gemeinsames `assets/style.css`. Die bisherige Lern-App ist unverändert nach `app/` gezogen und hat ein eigenes Manifest, die Pfade für Icon und Service-Worker sind nachgezogen. Der Service-Worker bleibt im Wurzelverzeichnis, cacht jetzt Portfolio und App und legt jede Seite unter ihrer eigenen Adresse ab statt alles unter `index.html`. Alle Seiten stehen auf `noindex`, Inhalte sind noch Platzhalter. Gefunden und behoben beim Testen: `aspect-ratio` in einem Grid ohne `align-items: start` streckte die Galerie-Kacheln und sprengte die Seitenbreite. |
 | **v44** | Den erklärenden Schlusssatz unter dem Quellen-Verzeichnis entfernt (Nutzer-Feedback); die Liste steht jetzt für sich. Ungenutzte `.src-note`-CSS-Regel mit raus. |
 | **v43** | Ausklappbares **„Quellen & Literatur“** im Über-Bereich (`.about-src`, `<details>` unter dem „Alle Fakten…“-Satz). Sieben echte, verifizierte Publikationen in drei Gruppen: Kunst & Wahrnehmung (Prette, *Kunst verstehen*), Fotografie & Bild (Itten *Kunst der Farbe*, Freeman *The Photographer’s Eye*, Peterson *Understanding Exposure*), Videografie & Film (Brown *Cinematography*, Murch *In the Blink of an Eye*, Van Hurkman *Color Correction Handbook*). Alle Angaben per Websuche geprüft, keine erfundenen Quellen. |
