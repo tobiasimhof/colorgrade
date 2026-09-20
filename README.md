@@ -47,14 +47,18 @@ wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass 
 Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 
 **Schritt 2 · Fotografie** (Galerie steht seit v52)
-Fünf Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
-Aufmacher** ohne Überschrift, darunter **Der Moment** (Schuss, Zweikampf) und
-**Die Menschen** (Torwart, Trainer). Lightbox mit Pfeiltasten und Escape ist gebaut. Offen: das **Spielerporträt** als drittes
-Bild bei den Menschen und ein **Mannschaftsfoto**.
+Sechs Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
+Aufmacher** ohne Überschrift, darunter drei Abschnitte: **Der Moment** (Schuss,
+Zweikampf), **Die Menschen** (Torwart, Trainer) und **Das Porträt** (Spielerporträt
+allein, `.shots.solo`). Lightbox mit Pfeiltasten und Escape ist gebaut. Offen ist nur
+noch das **Mannschaftsfoto**, es gehört in den Abschnitt „Das Porträt" und macht
+daraus eine saubere Zweierreihe.
 
 Regeln, die der Nutzer selbst erarbeitet hat und die für Nachschub gelten:
 Hochformate **durchgehend 4:5**, Querformate **16:9**, Schwarzpunkt unter 12,
-Weißpunkt über 245. Bearbeitet wird in Snapseed, ein Look wird über
+Weißpunkt über 245, **kein Farbkanal über 2 Prozent am Anschlag** (das sieht man im
+Helligkeits-Histogramm nicht, kostet aber unwiederbringlich Zeichnung) und bei
+Menschen im Bild **Hautton R minus G zwischen 35 und 40**. Bearbeitet wird in Snapseed, ein Look wird über
 Kopieren/Einfügen auf alle Bilder übertragen, damit die Galerie eine Handschrift
 hat. Der Firmenlauf ist nach Absprache raus.
 
@@ -255,6 +259,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v55** | **Spielerporträt eingebunden**, die Galerie hat damit sechs Bilder. Es bekommt einen **eigenen Abschnitt „Das Porträt"** statt als drittes Bild zu den Menschen zu wandern: Ein Porträt ist geplante Arbeit und keine Reportage, und drei Bilder hätten in der zweispaltigen Reihe eine Lücke gelassen. `.shots.solo` deckelt die Breite auf 420 px, damit es so groß wirkt wie eine Kachel der anderen Reihen. **Lehrstück aus der Bearbeitung:** Der globale Sättigungsregler trifft Motiv und Hintergrund gleich stark. Ein Minus von 25, das dem lauten Grün galt, nahm der Haut ihre Farbe (R minus G fiel von 39 auf 31, die Haut wirkte milchig). Die Lösung war ein milderes globales Minus plus ein **Kontrollpunkt auf dem Gesicht** in „Selektiv". Ergebnis: Haut wieder bei R minus G = 38, dazu Schwarzpunkt 7, Weißpunkt 251, Kontrast 59,9 und kein Kanal über 1,6 Prozent. Die Gesamtsättigung liegt bei 129 statt der Zielspanne 85 bis 95, das ist hier bewusst: Der Wert kommt fast nur vom großen grünen Hintergrund, und weiter zu senken hätte erneut die Haut gekostet. **Merke: Bei Porträts schlägt ein gesunder Hautton jede Zielzahl für die Gesamtsättigung.** |
 | **v54** | **Trainerbild getauscht** gegen die vom Nutzer neu bearbeitete Fassung. Entscheidend war ein Kanal-Clipping, das man im Histogramm der Helligkeit nicht sieht: Der Blaukanal stand in bis zu 5,32 Prozent der Pixel auf 255, dadurch hatte die Regenjacke in den hellen Partien keine Stoffzeichnung mehr, und der Rotkanal lag in 5,28 Prozent auf null, wodurch die Schatten ins Blaue kippten. Beide Werte liegen jetzt bei 0,01 und 0,07 Prozent. Dazu Weißpunkt von 222 auf 242 und Schwarzpunkt von 16 auf 13. **Merke für künftige Bilder:** Ein kräftig blaues Trikot oder sattes Grün ist oft schon ab Werk nah am Anschlag (hier 2,46 Prozent direkt aus der Kamera). Bei solchen Motiven gehört der Sättigungsregler nach unten, nicht nach oben, sonst ist die Zeichnung unwiederbringlich weg. |
 | **v53** | Das Querformat („Lauf in den freien Raum") steht jetzt als **Aufmacher ganz oben**, direkt unter dem Einleitungssatz und bewusst ohne Überschrift (Nutzer-Wunsch: es zieht den Blick am besten). Darunter folgen zwei ruhige Zweierreihen im Hochformat. Das Aufmacherbild lädt nicht mehr verzögert, sondern mit `fetchpriority="high"`, weil es über der Falz liegt. Die Reihenfolge in der Lightbox folgt der neuen Anordnung. |
 | **v52** | **Fotografie-Galerie gebaut**, der Bereich ist damit inhaltlich gefüllt. Fünf Bilder in zwei Abschnitten: „Der Moment" (Schuss, Zweikampf, Konter) und „Die Menschen" (Torwart, Trainer). Je Bild eine kurze Unterschrift mit Brennweite und Belichtungszeit aus den EXIF-Daten. Neue **Lightbox** (`.lb`) mit Blättern per Pfeiltasten, Schließen per Escape oder Klick auf den Hintergrund, Fokus bleibt im Overlay und kehrt beim Schließen auf die angeklickte Kachel zurück. Bilder als WebP in zwei Größen, 1600 px für die Lightbox und 800 px für die Kachel, erzeugt von `scripts/make_photos.py`; das Raster lädt so nur 280 KB. Zwei Dinge beim Testen gefunden und behoben: **(1)** Die Kachel des Querformats wurde von 800 auf 860 px hochskaliert, breite Bilder nehmen jetzt die 1600er Fassung. **(2)** Der Lightbox-Hintergrund war mit 94 Prozent halbtransparent, dadurch schienen Kopfzeile und Bildunterschriften durch und hellten die Tiefen des Fotos auf; jetzt deckend. Dazu sitzt die Unterschrift nicht mehr am unteren Bildschirmrand, sondern direkt unter dem Foto (`max-height` statt `flex: 1`). |
