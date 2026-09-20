@@ -1,7 +1,7 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v54';
+const CACHE = 'colorgrade-v55';
 const ASSETS = [
   './',
   './index.html',
@@ -19,11 +19,13 @@ const ASSETS = [
   './assets/img/spieltag-zweikampf-t.webp',
   './assets/img/torwart-jubel-t.webp',
   './assets/img/trainer-t.webp',
+  './assets/img/spielerportraet-t.webp',
   './assets/img/spieltag-schuss.webp',
   './assets/img/spieltag-zweikampf.webp',
   './assets/img/spieltag-konter.webp',
   './assets/img/torwart-jubel.webp',
-  './assets/img/trainer.webp'
+  './assets/img/trainer.webp',
+  './assets/img/spielerportraet.webp'
 ];
 
 // GitHub Pages liefert mit `Cache-Control: max-age=600` aus. Der Browser darf

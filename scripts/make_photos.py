@@ -18,6 +18,7 @@ from PIL import Image, ImageOps
 BILDER = {
     '29314e94-image.jpg': ('torwart-jubel', False),
     '13079f7a-image.jpg': ('trainer', False),
+    'f43e3bc3-image.jpg': ('spielerportraet', False),
     'b4b04be7-image.jpg': ('spieltag-schuss', False),
     'f168ccee-image.jpg': ('spieltag-zweikampf', False),
     '912d98e8-image.jpg': ('spieltag-konter', True),
