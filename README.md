@@ -31,11 +31,15 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v52**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
+> Stand nach **v55**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
 > allen Seiten, Videografie-Texte, App entschlackt, **Fotografie-Galerie steht mit
-> fünf Bildern**. Offen sind das Spielerporträt und das Mannschaftsfoto, die zwei
+> sechs Bildern und Lightbox**. Offen sind das Mannschaftsfoto, die zwei
 > Video-Dateien (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22),
 > die E-Mail und die Ausrüstung.
+>
+> **Reihenfolge ist entschieden: Inhalt vor Optik.** Der Nutzer hat den
+> Erscheinungsbild-Umbau bewusst vertagt, siehe „Erscheinungsbild" weiter unten.
+> Erst kommen die fehlenden Inhalte rein.
 
 **Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
 nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
@@ -46,7 +50,7 @@ klingt es nach „ich will das unbedingt". Auf der Seite stehen Fakten: was gema
 wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass eine
 Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 
-**Schritt 2 · Fotografie** (Galerie steht seit v52)
+**Schritt 2 · Fotografie** (Galerie steht seit v52, sechs Bilder seit v55)
 Sechs Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
 Aufmacher** ohne Überschrift, darunter drei Abschnitte: **Der Moment** (Schuss,
 Zweikampf), **Die Menschen** (Torwart, Trainer) und **Das Porträt** (Spielerporträt
@@ -68,6 +72,28 @@ Bild eine 1600er Fassung für die Lightbox und eine 800er Kachel an. Breite Bild
 (`breit = True`) bekommen nur die 1600er, weil sie die volle Satzbreite von 860 px
 füllen und eine 800er Kachel dort hochskaliert würde.
 
+**Das Mannschaftsfoto** entsteht bei **Flutlicht**, weil der Verein keinen anderen
+Termin gefunden hat. Das ist die schwierigste Aufnahmesituation des Projekts, deshalb
+steht der Brief hier fest:
+
+- **RAW aufnehmen.** Alle bisherigen Dateien sind Kamera-JPEGs. Unter Flutlicht ist
+  der Weißabgleich nicht vorhersagbar (Halogenmetalldampf zieht grün, LED je nach
+  Hersteller anders). Aus RAW ist der Farbstich verlustfrei zu korrigieren, aus JPEG
+  nicht. Snapseed kann RAW entwickeln.
+- **Zeit 1/100 oder 1/50 Sekunde.** Netzfrequenz 50 Hertz, Flutlicht pulsiert also
+  mit 100 Hertz. Bei 1/125, 1/160 oder 1/200 schwankt die Helligkeit von Bild zu Bild
+  und es entstehen Farbstreifen. Eine stehende Mannschaft braucht keine kurze Zeit.
+- **Stativ**, **Blende f/5,6** (Schärfentiefe für zwei Reihen), **ISO so niedrig wie
+  möglich** (D3400 gut bis 1600, brauchbar bis 3200; sonst lieber auf 1/50 runter).
+- **Lichtrichtung beachten:** Flutlicht steht hoch und wirft harte Schatten in die
+  Augenhöhlen. Nicht direkt unter den hellsten Mast stellen. Masten und Lampen aus
+  dem Bild halten, die brennen aus.
+- **15 bis 20 Auslösungen**, einer blinzelt immer.
+
+Danach wie alle anderen: Beschnitt **4:5**, Schwarzpunkt unter 12, Weißpunkt über 245,
+kein Kanal über 2 Prozent am Anschlag, Hautton R minus G zwischen 35 und 40. Es gehört
+in den Abschnitt „Das Porträt" und macht daraus eine Zweierreihe.
+
 **Schritt 3 · Videografie** (Texte stehen seit v48)
 Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
 Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). Offen sind nur
@@ -83,6 +109,40 @@ Bereich gehört allein ColorGrade.
 Über-mich-Texte stehen auf der Startseite. Offen: E-Mail eintragen (Platzhalter
 `deine-adresse@example.de` in `index.html`), Ausrüstung nachtragen, Vorschaubild für
 geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
+
+**Erscheinungsbild** (analysiert in v55, Umbau bewusst vertagt)
+Der Nutzer findet, dass Schrift, Aufmachung und Bedienelemente „nach KI" aussehen. Die
+Analyse hat sechs konkrete Ursachen ergeben, damit der nächste Chat sie nicht neu
+herleiten muss:
+
+1. **Der System-Font-Stack** (`-apple-system, Segoe UI, Roboto`). Der größte Verräter,
+   weil jede generierte Seite genau den benutzt.
+2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient). Generisch und für
+   Sportfotografie ohne Bedeutung.
+3. **16 px runde Ecken an allem**, auch an den Fotos. Runde Bildecken lesen sich als
+   App-Oberfläche, nicht als Fotografie.
+4. **Jeder Block ist eine umrandete Karte** (1 px Rahmen, runde Ecken, hellerer
+   Hintergrund). Standard-Optik von Dashboard-Templates.
+5. **Graue Versalien-Überschriften** (`.sec-h`). Gleiche Herkunft.
+6. **Strich-Icons** auf den Startseiten-Kacheln (Lucide-Look).
+
+**Gemeinsamer Nenner:** Die Oberfläche macht zu viel Lärm um die Fotos herum. Ein
+Fotoportfolio wird professionell, wenn die Bedienelemente fast verschwinden und die
+Bilder die einzige Farbe im Layout sind.
+
+**Messung:** Die kräftigen Farben in den sechs Bildern sind Blau (220 Grad, 26 %,
+das Vereinstrikot), Grün (80 Grad, 7 %, der Rasen) und Rot (10 Grad, 4 %). Der
+Akzent der Seite ist Orange `#ff9f45` und kommt in keinem Bild vor. **Trotzdem nicht
+gegen Blau tauschen**, sondern den Akzent überhaupt zurücknehmen.
+
+**Entschieden ist die Richtung der Schrift:** sachlich und technisch, eine klare
+Groteske ohne Verzierungen, wie bei Sportredaktionen. Als Datei ins Repo, nicht über
+Google Fonts. Die Regel „keine externen Schriften" zielt auf den Datenschutz, eine
+Schriftdatei unter `assets/` liegt auf derselben Domain und verletzt sie nicht.
+
+**Material, das der Nutzer beisteuern könnte**, nach Wirkung sortiert: ein Foto von
+ihm an der Seitenlinie mit der Kamera (für Über mich), seine Unterschrift auf weißem
+Papier abfotografiert (für den Fuß), eine Schrift seiner Wahl.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
