@@ -138,6 +138,63 @@ a { color: var(--accent-2); }
 .ph.r34 { aspect-ratio: 3 / 4; }
 .ph.r916 { aspect-ratio: 9 / 16; }
 
+/* ---------- Foto-Galerie ---------- */
+/* Eine Spalte am Handy: Fotos sollen gross sein, dafuer scrollt man laenger.
+   Ab 560 px zwei Spalten. Drei waeren bei 900 px Satzbreite zu klein. */
+.shots { display: grid; gap: 14px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 560px) { .shots { grid-template-columns: 1fr 1fr; } }
+.shots figure { margin: 0; min-width: 0; }
+/* Das Querformat nimmt immer die volle Breite und trennt so die Hochformate. */
+.shots figure.wide { grid-column: 1 / -1; }
+/* Ein einzelnes Bild mittig, damit die Zeile nicht halb leer wirkt. */
+.shots.solo { grid-template-columns: 1fr; max-width: 420px; }
+
+.shot {
+  display: block; width: 100%; padding: 0; border: 0; background: none;
+  border-radius: 12px; overflow: hidden; cursor: zoom-in; line-height: 0;
+}
+.shot img {
+  width: 100%; height: auto; border-radius: 12px;
+  background: var(--bg-card);
+  transition: transform .25s ease, filter .25s ease;
+}
+.shot:hover img, .shot:focus-visible img { transform: scale(1.025); filter: brightness(1.06); }
+.shot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.shots figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* ---------- Lightbox ---------- */
+.lb {
+  position: fixed; inset: 0; z-index: 60;
+  /* Deckend, nicht halbtransparent: Durchscheinende Seiteninhalte wuerden die
+     Tiefen des Fotos aufhellen, das man hier gerade beurteilen will. */
+  background: #0a0a0c;
+  display: flex; flex-direction: column;
+  padding: calc(8px + var(--safe-t)) 8px calc(8px + var(--safe-b));
+}
+.lb[hidden] { display: none; }
+.lb-fig {
+  margin: 0; flex: 1; display: flex; flex-direction: column;
+  justify-content: center; min-height: 0; gap: 12px;
+}
+/* max-height statt flex:1: Sonst waechst der Bildkasten auf die volle Resthoehe,
+   das Foto schwebt darin mittig und die Unterschrift klebt am unteren Rand.
+   So bleibt der Kasten so hoch wie das Foto und die Unterschrift sitzt darunter. */
+.lb-fig img {
+  min-height: 0; max-height: 100%; width: 100%;
+  object-fit: contain; border-radius: 10px;
+}
+.lb-cap { text-align: center; font-size: 13px; color: var(--muted); padding: 0 8px; }
+.lb-cap b { display: block; color: var(--text); font-weight: 650; margin-bottom: 2px; }
+.lb-bar { display: flex; align-items: center; gap: 8px; padding: 2px 4px 6px; }
+.lb-count { font-size: 12.5px; color: var(--muted); margin-right: auto; }
+.lb-btn {
+  border: 1px solid var(--line); background: var(--bg-card); color: var(--text);
+  width: 42px; height: 42px; border-radius: 11px; font-size: 17px; line-height: 1;
+  cursor: pointer; flex: none;
+}
+.lb-btn:hover { border-color: var(--accent); color: var(--accent-2); }
+.lb-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 /* ---------- Hinweiskasten ---------- */
 .note {
   border: 1px solid var(--line); border-left: 3px solid var(--accent);

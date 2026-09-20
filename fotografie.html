@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Fotografie · ColorGrade</title>
-  <meta name="description" content="Fotografie: Serien, Licht und Bildaufbau." />
+  <meta name="description" content="Sportfotografie: Amateurfußball für das Portal FuPa." />
   <meta name="theme-color" content="#1c1c1e" />
   <meta name="robots" content="noindex" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
@@ -25,32 +25,93 @@
 
   <main class="wrap">
     <h1 class="page-h">Fotografie</h1>
-    <p class="lead">Hier kommen deine Bildserien hin. Wenige, dafür starke Arbeiten wirken besser als eine große Menge.</p>
+    <p class="lead">Amateurfußball an Spieltagen, aufgenommen für das Sportportal FuPa. Nikon D3400, Telezoom.</p>
 
-    <!-- Platzhalter. Ersetzen durch:
-         <figure><img src="assets/img/DATEINAME.webp" alt="Beschreibung" loading="lazy" /></figure>
-         Bilder vorher auf 1600 px lange Kante bringen und als WebP speichern. -->
-    <h2 class="sec-h">Serie 1 · Titel folgt</h2>
-    <div class="gal">
-      <div class="ph r43">Bild folgt</div>
-      <div class="ph r43">Bild folgt</div>
-      <div class="ph r34">Bild folgt</div>
-      <div class="ph r34">Bild folgt</div>
-      <div class="ph r43">Bild folgt</div>
-      <div class="ph r43">Bild folgt</div>
+    <!-- Bilder liegen als WebP in assets/img/, erzeugt von scripts/make_photos.py:
+         NAME.webp = 1600 px fuer die Lightbox, NAME-t.webp = 800 px fuer die Kachel.
+         Das breite Bild (figure.wide) fuellt die Satzbreite und hat deshalb keine
+         eigene Kachel, es nimmt die 1600er Fassung. Jedes img traegt width/height,
+         damit die Seite beim Nachladen nicht springt. -->
+
+    <h2 class="sec-h">Der Moment</h2>
+    <div class="shots" id="galA">
+      <figure>
+        <button class="shot" type="button"
+                data-full="assets/img/spieltag-schuss.webp"
+                data-title="Ausholen zum Schuss"
+                data-sub="135 mm, 1/1000 s, f/5,6">
+          <img src="assets/img/spieltag-schuss-t.webp" width="640" height="800" loading="lazy" decoding="async"
+               alt="Fußballspieler in blauem Trikot holt zum Schuss aus, zwei Gegenspieler laufen heran." />
+        </button>
+        <figcaption>Ausholen zum Schuss · 135 mm, 1/1000 s</figcaption>
+      </figure>
+
+      <figure>
+        <button class="shot" type="button"
+                data-full="assets/img/spieltag-zweikampf.webp"
+                data-title="Zweikampf um den Ball"
+                data-sub="102 mm, 1/3200 s, f/5,6">
+          <img src="assets/img/spieltag-zweikampf-t.webp" width="640" height="800" loading="lazy" decoding="async"
+               alt="Zwei Spieler kämpfen Schulter an Schulter um den Ball, im Hintergrund der Torwart." />
+        </button>
+        <figcaption>Zweikampf um den Ball · 102 mm, 1/3200 s</figcaption>
+      </figure>
+
+      <figure class="wide">
+        <button class="shot" type="button"
+                data-full="assets/img/spieltag-konter.webp"
+                data-title="Lauf in den freien Raum"
+                data-sub="160 mm, 1/1000 s, f/5,3">
+          <img src="assets/img/spieltag-konter.webp" width="1600" height="899" loading="lazy" decoding="async"
+               alt="Weite Einstellung: ein Spieler führt den Ball, ein Gegenspieler verfolgt ihn." />
+        </button>
+        <figcaption>Lauf in den freien Raum · 160 mm, weite Einstellung</figcaption>
+      </figure>
     </div>
 
-    <h2 class="sec-h">Serie 2 · Titel folgt</h2>
-    <div class="gal">
-      <div class="ph r43">Bild folgt</div>
-      <div class="ph r43">Bild folgt</div>
-      <div class="ph r43">Bild folgt</div>
+    <h2 class="sec-h">Die Menschen</h2>
+    <div class="shots" id="galB">
+      <figure>
+        <button class="shot" type="button"
+                data-full="assets/img/torwart-jubel.webp"
+                data-title="Faustgruß am Spielfeld"
+                data-sub="200 mm, 1/1000 s, f/6,3">
+          <img src="assets/img/torwart-jubel-t.webp" width="639" height="800" loading="lazy" decoding="async"
+               alt="Lachender Torwart im orangefarbenen Trikot beim Faustgruß." />
+        </button>
+        <figcaption>Faustgruß am Spielfeld · 200 mm, offene Blende</figcaption>
+      </figure>
+
+      <figure>
+        <button class="shot" type="button"
+                data-full="assets/img/trainer.webp"
+                data-title="Coaching von der Seitenlinie"
+                data-sub="180 mm, 1/2000 s, f/5,6">
+          <img src="assets/img/trainer-t.webp" width="640" height="800" loading="lazy" decoding="async"
+               alt="Trainer in blauer Regenjacke ruft Anweisungen aufs Feld." />
+        </button>
+        <figcaption>Coaching von der Seitenlinie · 180 mm</figcaption>
+      </figure>
     </div>
 
     <div class="note">
-      <b>Noch zu tun:</b> Bilder auswählen und in <code>assets/img/</code> ablegen. Danach baue ich die Galerie mit Lightbox und je Serie eine kurze Bildunterschrift dazu: was zu sehen ist, mit welcher Technik und worauf es dir ankam.
+      <b>Noch offen:</b> Das Spielerporträt kommt als drittes Bild in diesen Bereich, dazu ein Mannschaftsfoto.
     </div>
   </main>
+
+  <!-- Lightbox: ein einziges Overlay fuer alle Galerien der Seite. -->
+  <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Bildansicht">
+    <div class="lb-bar">
+      <span class="lb-count" id="lbCount"></span>
+      <button class="lb-btn" type="button" id="lbPrev" aria-label="Vorheriges Bild">&#8249;</button>
+      <button class="lb-btn" type="button" id="lbNext" aria-label="Nächstes Bild">&#8250;</button>
+      <button class="lb-btn" type="button" id="lbClose" aria-label="Schließen">&#10005;</button>
+    </div>
+    <figure class="lb-fig">
+      <img id="lbImg" src="" alt="" />
+      <figcaption class="lb-cap" id="lbCap"></figcaption>
+    </figure>
+  </div>
 
   <footer class="site-ft">
     <div class="ft-in">
@@ -60,6 +121,76 @@
   </footer>
 
   <script>
+    (function () {
+      var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+      if (!shots.length) return;
+
+      var lb = document.getElementById('lb');
+      var img = document.getElementById('lbImg');
+      var cap = document.getElementById('lbCap');
+      var count = document.getElementById('lbCount');
+      var btnPrev = document.getElementById('lbPrev');
+      var btnNext = document.getElementById('lbNext');
+      var btnClose = document.getElementById('lbClose');
+      var i = 0;
+      var zurueck = null; // Element, das den Fokus vor dem Oeffnen hatte
+
+      function zeige(n) {
+        i = (n + shots.length) % shots.length;
+        var b = shots[i];
+        var klein = b.querySelector('img');
+        img.src = b.getAttribute('data-full');
+        img.alt = klein ? klein.alt : '';
+        cap.innerHTML = '<b></b>';
+        cap.firstChild.textContent = b.getAttribute('data-title') || '';
+        cap.appendChild(document.createTextNode(b.getAttribute('data-sub') || ''));
+        count.textContent = (i + 1) + ' von ' + shots.length;
+      }
+
+      function oeffne(n) {
+        zurueck = document.activeElement;
+        zeige(n);
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+        btnClose.focus();
+      }
+
+      function schliesse() {
+        lb.hidden = true;
+        document.body.style.overflow = '';
+        img.src = '';
+        if (zurueck && zurueck.focus) zurueck.focus();
+      }
+
+      shots.forEach(function (b, n) {
+        b.addEventListener('click', function () { oeffne(n); });
+      });
+      btnPrev.addEventListener('click', function () { zeige(i - 1); });
+      btnNext.addEventListener('click', function () { zeige(i + 1); });
+      btnClose.addEventListener('click', schliesse);
+
+      // Klick auf den Hintergrund schliesst, Klick auf Bild oder Leiste nicht.
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target.classList.contains('lb-fig')) schliesse();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hidden) return;
+        if (e.key === 'Escape') schliesse();
+        else if (e.key === 'ArrowLeft') zeige(i - 1);
+        else if (e.key === 'ArrowRight') zeige(i + 1);
+        else if (e.key === 'Tab') {
+          // Fokus im Overlay halten: nur die drei Schaltflaechen sind erreichbar.
+          var f = [btnPrev, btnNext, btnClose];
+          var pos = f.indexOf(document.activeElement);
+          if (pos === -1) pos = 0;
+          else pos = e.shiftKey ? pos - 1 : pos + 1;
+          f[(pos + f.length) % f.length].focus();
+          e.preventDefault();
+        }
+      });
+    })();
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js').catch(() => {}));
     }

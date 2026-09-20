@@ -31,10 +31,11 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v51**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
-> allen Seiten, Videografie-Texte, App entschlackt, Texte auf Fakten gekürzt. Offen
-> sind die Bilder, die zwei Video-Dateien (in Canva geschnitten, beide unter 30
-> Sekunden, einer davon 22), die E-Mail und die Ausrüstung.
+> Stand nach **v52**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
+> allen Seiten, Videografie-Texte, App entschlackt, **Fotografie-Galerie steht mit
+> fünf Bildern**. Offen sind das Spielerporträt und das Mannschaftsfoto, die zwei
+> Video-Dateien (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22),
+> die E-Mail und die Ausrüstung.
 
 **Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
 nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
@@ -45,10 +46,23 @@ klingt es nach „ich will das unbedingt". Auf der Seite stehen Fakten: was gema
 wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass eine
 Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 
-**Schritt 2 · Fotografie**
-Bilder in `assets/img/` ablegen (1600 px lange Kante, WebP), Galerie mit Lightbox
-bauen, je Serie einen Titel und je Bild eine kurze Unterschrift. Der Nutzer hat die
-Bilder noch nicht sortiert, die Aufteilung der Serien ist also noch offen.
+**Schritt 2 · Fotografie** (Galerie steht seit v52)
+Fünf Bilder liegen in `assets/img/`, in zwei Abschnitten: **Der Moment** (Schuss,
+Zweikampf, Konter im Querformat) und **Die Menschen** (Torwart, Trainer). Lightbox
+mit Pfeiltasten und Escape ist gebaut. Offen: das **Spielerporträt** als drittes
+Bild bei den Menschen und ein **Mannschaftsfoto**.
+
+Regeln, die der Nutzer selbst erarbeitet hat und die für Nachschub gelten:
+Hochformate **durchgehend 4:5**, Querformate **16:9**, Schwarzpunkt unter 12,
+Weißpunkt über 245. Bearbeitet wird in Snapseed, ein Look wird über
+Kopieren/Einfügen auf alle Bilder übertragen, damit die Galerie eine Handschrift
+hat. Der Firmenlauf ist nach Absprache raus.
+
+Neue Bilder kommen über `scripts/make_photos.py` herein: Quelldatei in die
+`BILDER`-Tabelle eintragen, Skript mit dem Quellordner aufrufen, fertig. Es legt je
+Bild eine 1600er Fassung für die Lightbox und eine 800er Kachel an. Breite Bilder
+(`breit = True`) bekommen nur die 1600er, weil sie die volle Satzbreite von 860 px
+füllen und eine 800er Kachel dort hochskaliert würde.
 
 **Schritt 3 · Videografie** (Texte stehen seit v48)
 Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
@@ -241,6 +255,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v52** | **Fotografie-Galerie gebaut**, der Bereich ist damit inhaltlich gefüllt. Fünf Bilder in zwei Abschnitten: „Der Moment" (Schuss, Zweikampf, Konter) und „Die Menschen" (Torwart, Trainer). Je Bild eine kurze Unterschrift mit Brennweite und Belichtungszeit aus den EXIF-Daten. Neue **Lightbox** (`.lb`) mit Blättern per Pfeiltasten, Schließen per Escape oder Klick auf den Hintergrund, Fokus bleibt im Overlay und kehrt beim Schließen auf die angeklickte Kachel zurück. Bilder als WebP in zwei Größen, 1600 px für die Lightbox und 800 px für die Kachel, erzeugt von `scripts/make_photos.py`; das Raster lädt so nur 280 KB. Zwei Dinge beim Testen gefunden und behoben: **(1)** Die Kachel des Querformats wurde von 800 auf 860 px hochskaliert, breite Bilder nehmen jetzt die 1600er Fassung. **(2)** Der Lightbox-Hintergrund war mit 94 Prozent halbtransparent, dadurch schienen Kopfzeile und Bildunterschriften durch und hellten die Tiefen des Fotos auf; jetzt deckend. Dazu sitzt die Unterschrift nicht mehr am unteren Bildschirmrand, sondern direkt unter dem Foto (`max-height` statt `flex: 1`). |
 | **v51** | Texte auf der Startseite gekürzt (Nutzer-Wunsch): Die Kopfzeile ist ein Satz aus Fakten statt einer Absichtserklärung („Sportfotografie für das Portal FuPa, erste eigene Videoarbeiten, eine selbst gebaute App"). Über mich von vier Karten auf drei, je höchstens zwei kurze Sätze; die Karte „Mein Ziel" ist aufgelöst, ihr Kern steht jetzt als **ein** Satz beim Kontakt. Hintergrund: Das Warum steht im Anschreiben, auf der Seite klang es doppelt und zu sehr nach Wollen. Das Quellenverzeichnis aus v43 bleibt entfernt, das ist entschieden. |
 | **v50** | App entschlackt (Nutzer-Wunsch): Der Block **„Über ColorGrade"** am Ende der Wissen-Startseite ist komplett raus, er war zu lang und klang zu sehr nach KI. **Achtung:** Das ausklappbare Quellen- und Literaturverzeichnis lag in diesem Block und ist damit ebenfalls weg (v43, sieben Publikationen). Wer es zurückholen will, findet es in der Historie. Dafür sagt die Kopfzeile jetzt sofort, worum es geht: „Mein Lerntagebuch zur Bildbearbeitung" steht in Akzentgelb und halbfett statt klein und grau. Das tote `.about`- und `.about-src`-CSS ist mit raus. |
 | **v49** | Navigation vereinheitlicht (Nutzer-Wunsch): **Jede** Seite hat jetzt denselben Kopf, die App eingeschlossen, mit Marke links (führt zur Startseite) und Fotografie · Videografie · Apps rechts. Die eigene Über-mich-Seite ist aufgelöst, ihr Inhalt und der Kontakt stehen auf der Startseite. Dabei zwei echte Fehler gefunden und behoben. **(1)** Die App stylte `nav` als Element, also erbte der neue Kopf-`nav` die feste Positionierung der unteren Leiste und lag auf dem Untertitel; Regeln auf `body > nav` eingegrenzt. **(2)** Der Selbstheiler im Service-Worker (offene Fenster nach einer neuen Fassung neu laden) verklemmte sich: `activate` wartete per `await` auf `client.navigate()`, und ein Service-Worker liefert keine `fetch`-Ereignisse aus, solange `activate` läuft. Jetzt wird nicht mehr abgewartet, und die Fenster werden **vor** `claim()` eingesammelt, damit ein erster Besuch nicht mitten im Laden neu geladen wird. Mit einem Testaufbau geprüft, der GitHub Pages samt `max-age=600` nachstellt. |
@@ -312,6 +327,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | `service-worker.js` | Offline-Cache für Portfolio **und** App (Version hier hochzählen) |
 | `icons/` | Icons (aus `scripts/make_icons.py` erzeugt) |
 | `scripts/make_icons.py` | erzeugt die Icons neu (reines Python) |
+| `scripts/make_photos.py` | macht aus den Originalfotos die WebP-Dateien der Galerie |
 ## Technische Notizen (Orientierung im Code)
 
 - **Lektionen (Wissen):** `<article class="lk-lesson" data-lek="N">` in `#lernLesson`;
