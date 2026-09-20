@@ -47,9 +47,9 @@ wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass 
 Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 
 **Schritt 2 · Fotografie** (Galerie steht seit v52)
-Fünf Bilder liegen in `assets/img/`, in zwei Abschnitten: **Der Moment** (Schuss,
-Zweikampf, Konter im Querformat) und **Die Menschen** (Torwart, Trainer). Lightbox
-mit Pfeiltasten und Escape ist gebaut. Offen: das **Spielerporträt** als drittes
+Fünf Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
+Aufmacher** ohne Überschrift, darunter **Der Moment** (Schuss, Zweikampf) und
+**Die Menschen** (Torwart, Trainer). Lightbox mit Pfeiltasten und Escape ist gebaut. Offen: das **Spielerporträt** als drittes
 Bild bei den Menschen und ein **Mannschaftsfoto**.
 
 Regeln, die der Nutzer selbst erarbeitet hat und die für Nachschub gelten:
@@ -255,6 +255,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v53** | Das Querformat („Lauf in den freien Raum") steht jetzt als **Aufmacher ganz oben**, direkt unter dem Einleitungssatz und bewusst ohne Überschrift (Nutzer-Wunsch: es zieht den Blick am besten). Darunter folgen zwei ruhige Zweierreihen im Hochformat. Das Aufmacherbild lädt nicht mehr verzögert, sondern mit `fetchpriority="high"`, weil es über der Falz liegt. Die Reihenfolge in der Lightbox folgt der neuen Anordnung. |
 | **v52** | **Fotografie-Galerie gebaut**, der Bereich ist damit inhaltlich gefüllt. Fünf Bilder in zwei Abschnitten: „Der Moment" (Schuss, Zweikampf, Konter) und „Die Menschen" (Torwart, Trainer). Je Bild eine kurze Unterschrift mit Brennweite und Belichtungszeit aus den EXIF-Daten. Neue **Lightbox** (`.lb`) mit Blättern per Pfeiltasten, Schließen per Escape oder Klick auf den Hintergrund, Fokus bleibt im Overlay und kehrt beim Schließen auf die angeklickte Kachel zurück. Bilder als WebP in zwei Größen, 1600 px für die Lightbox und 800 px für die Kachel, erzeugt von `scripts/make_photos.py`; das Raster lädt so nur 280 KB. Zwei Dinge beim Testen gefunden und behoben: **(1)** Die Kachel des Querformats wurde von 800 auf 860 px hochskaliert, breite Bilder nehmen jetzt die 1600er Fassung. **(2)** Der Lightbox-Hintergrund war mit 94 Prozent halbtransparent, dadurch schienen Kopfzeile und Bildunterschriften durch und hellten die Tiefen des Fotos auf; jetzt deckend. Dazu sitzt die Unterschrift nicht mehr am unteren Bildschirmrand, sondern direkt unter dem Foto (`max-height` statt `flex: 1`). |
 | **v51** | Texte auf der Startseite gekürzt (Nutzer-Wunsch): Die Kopfzeile ist ein Satz aus Fakten statt einer Absichtserklärung („Sportfotografie für das Portal FuPa, erste eigene Videoarbeiten, eine selbst gebaute App"). Über mich von vier Karten auf drei, je höchstens zwei kurze Sätze; die Karte „Mein Ziel" ist aufgelöst, ihr Kern steht jetzt als **ein** Satz beim Kontakt. Hintergrund: Das Warum steht im Anschreiben, auf der Seite klang es doppelt und zu sehr nach Wollen. Das Quellenverzeichnis aus v43 bleibt entfernt, das ist entschieden. |
 | **v50** | App entschlackt (Nutzer-Wunsch): Der Block **„Über ColorGrade"** am Ende der Wissen-Startseite ist komplett raus, er war zu lang und klang zu sehr nach KI. **Achtung:** Das ausklappbare Quellen- und Literaturverzeichnis lag in diesem Block und ist damit ebenfalls weg (v43, sieben Publikationen). Wer es zurückholen will, findet es in der Historie. Dafür sagt die Kopfzeile jetzt sofort, worum es geht: „Mein Lerntagebuch zur Bildbearbeitung" steht in Akzentgelb und halbfett statt klein und grau. Das tote `.about`- und `.about-src`-CSS ist mit raus. |
