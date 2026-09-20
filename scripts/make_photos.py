@@ -17,7 +17,7 @@ from PIL import Image, ImageOps
 # nur die grosse Fassung und benutzen sie auch als Kachel.
 BILDER = {
     '29314e94-image.jpg': ('torwart-jubel', False),
-    '388a9cf6-image.jpg': ('trainer', False),
+    '13079f7a-image.jpg': ('trainer', False),
     'b4b04be7-image.jpg': ('spieltag-schuss', False),
     'f168ccee-image.jpg': ('spieltag-zweikampf', False),
     '912d98e8-image.jpg': ('spieltag-konter', True),
