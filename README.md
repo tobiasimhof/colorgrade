@@ -4,8 +4,14 @@ Portfolio von **Tobias Imhof**: Sportfotografie, Videografie und eigene Apps. Di
 Seite ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum
 Mediengestalter Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Die
 Startseite zeigt den Namen, einen Satz aus Fakten, **ein Foto** und die drei Kacheln
-Fotografie, Videografie und Apps. Das Foto ist seit v58 der Farbträger der Seite: Die
-Oberfläche bleibt schwarz und weiß, die Farbe kommt aus der Arbeit. Die Kachel **Apps** führt ohne
+Fotografie, Videografie und Apps. Das Foto ist der Farbträger der Seite: Die Oberfläche
+bleibt schwarz und weiß, die Farbe kommt aus der Arbeit.
+
+**Regel für das Bild auf der Startseite (v59, aus Nutzer-Feedback):** Es zeigt einen
+**Zweikampf**, also zwei Spieler in Aktion. Ein einzelner Mensch im Bild wird für den
+Bewerber selbst gehalten, das hat der Nutzer beim Torwartbild aus v58 sofort so gelesen.
+Und es bleibt **klein** (280 px), sonst wirkt die Seite wie ein reines Fotoportfolio,
+während die Bewerbung auf Mediengestalter Bild **und Ton** läuft. Die Kachel **Apps** führt ohne
 Zwischenseite direkt in die ColorGrade App unter `app/`.
 
 **Über mich und Kontakt stehen bewusst nicht mehr auf der Seite.** Wer den Link
@@ -38,9 +44,9 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v58**: Die Startseite zeigt Name, einen Satz, ein Foto und die drei
-> Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
-> (Archivo, als Datei im Repo). Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
+> Stand nach **v59**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
+> (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
 > **Offen ist ein einziges Paket, und es kommt am Stück:** das Mannschaftsfoto
@@ -133,10 +139,12 @@ herleiten muss:
    **Achtung, die App unter `app/` hat ihn noch:** Dort hängen 165 SVG-Texte an den
    Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
    rutscht Text aus den handgezeichneten Kästen.
-2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient). Generisch und für
-   Sportfotografie ohne Bedeutung. **Seit v58 der lauteste Rest:** Er ist das einzige
-   bunte Element der Oberfläche und steht oben links neben dem Foto, das die Farbe
-   eigentlich tragen soll. Nächster Kandidat, aber eine Markenentscheidung des Nutzers.
+2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient), **erledigt in v59.**
+   Die Marke ist jetzt nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in
+   der App. **Offen ist der gleiche Punkt an einer zweiten Stelle:** Die App-Icons unter
+   `icons/` sind ein HSV-Farbrad (`scripts/make_icons.py`). Wer die App installiert hat,
+   sieht es weiter auf dem Startbildschirm. Neues Zeichen erfordert eine Entscheidung
+   des Nutzers, das Skript erzeugt die Icons dann in einem Lauf neu.
 3. **16 px runde Ecken an allem**, auch an den Fotos. Runde Bildecken lesen sich als
    App-Oberfläche, nicht als Fotografie.
 4. **Jeder Block ist eine umrandete Karte** (1 px Rahmen, runde Ecken, hellerer
@@ -172,6 +180,11 @@ an den Elementen nicht.
 **Material, das der Nutzer beisteuern könnte:** seine Unterschrift auf weißem Papier
 abfotografiert. Im Fuß der Seite wäre sie der stärkste Beleg dafür, dass hier ein
 Mensch gebaut hat.
+
+**Sobald die zwei Clips liegen:** Das Bild auf der Startseite gegen ein **Standbild aus
+einem Clip** tauschen. Damit sagt der erste Eindruck „Bild und Ton" statt nur „Bild".
+Das ist die sauberste Antwort auf die offene Frage des Nutzers, ob Sportfotografie
+als Aufmacher den richtigen Eindruck macht.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
@@ -348,6 +361,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v59** | **Drei Punkte aus dem Nutzer-Feedback zur Startseite.** **(1)** Das Torwartbild ist raus, es steht jetzt ein **Zweikampf** dort. Begründung des Nutzers, und sie stimmt: Bei einem einzelnen Menschen im Bild liest der Betrachter, das sei der Bewerber. Bei zwei Spielern im Duell ist klar, dass es die Arbeit ist und nicht das Motiv. **(2)** Das Bild ist deutlich kleiner (280 px statt 360 px Spaltenbreite, feste Deckelung per `max-width`). Grund war ein echter Fehler: Auf dem **Tablet im Querformat** waren die Kacheln unten abgeschnitten, und die Kacheln sind die Navigation der Seite. Der Kopfbereich hat jetzt auch weniger Polsterung. Nachgemessen mit Playwright bei 1024, 1112, 1180 und 1366 px Breite: Die Kacheln enden bei 591 px und damit über 100 px vor der Kante. Am Handy liegt die dritte Kachel weiter unter der Falz, das ist dort in Ordnung und ein Hinweis zum Weiterscrollen. **(3)** Der Regenbogen-Punkt ist weg, die Marke ist nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in der App. **Achtung:** Die App-Icons unter `icons/` sind weiter ein Farbrad, siehe „Erscheinungsbild". Nebenbei: Die zweite Sorge des Nutzers, die Startseite könne nach reinem Fotoportfolio aussehen, löst nicht das Layout, sondern das Material. Sobald die zwei Clips liegen, gehört dort ein Standbild aus einem Clip hin. |
 | **v58** | **Erster Eindruck, Nutzer-Wunsch:** Die orangen Strich-Icons raus, die Begriffe groß, und mehr Leben in das schwarz-weiße Bild. **(1)** Die Kacheln tragen nur noch den Begriff (`clamp(21px, 5.6vw, 27px)` statt 15 px) und darunter die Erklärung. Eine Mindesthöhe hatten sie zwischendurch auch, die ist wieder raus: Ohne Symbol reißt sie Begriff und Erklärung nur auseinander. **(2)** Das Leben kommt nicht aus Farbe in der Oberfläche, sondern aus einem Foto. Im Kopfbereich steht ab 900 px links der Name und rechts der **Torwart-Faustgruß**, am Handy untereinander. Bewusst der Faustgruß und nicht das Aufmacherbild der Galerie: ein Gesicht, ein Lächeln, und es wiederholt nicht das erste Bild der Fotografie-Seite. Das Foto behält sein 4:5 und wird **nicht** beschnitten, der Beschnitt ist Sache der Bildbearbeitung und nicht des Layouts. Es lädt mit `fetchpriority="high"`, hat feste Maße gegen das Springen beim Laden und nimmt über `srcset` am Handy die 639er und am Rechner die 1278er Fassung. **Damit ist die Oberfläche der Startseite komplett schwarz und weiß**, der einzige Rest Farbe ist der Regenbogen-Punkt der Marke, siehe „Erscheinungsbild". Die toten Regeln `.tile .ti` und `.tt` sind mit raus. |
 | **v57** | **Die Schrift läuft schmaler**, auf Wunsch des Nutzers: schmal wirkt ruhiger und teurer. Dafür liegt jetzt die Archivo-Fassung mit **zwei Achsen** im Repo (Gewicht 400 bis 700 **und** Breite 62 bis 125 Prozent, 90 KB statt 35 KB). Gesteuert wird es über zwei neue Variablen, `--w-head` für Überschriften und Bedienelemente (86 Prozent) und `--w-text` für den Fließtext (96 Prozent). Der Name rendert damit 12 Prozent schmaler. **Zwei Fallstricke, beide geprüft:** **(1)** `font-stretch` an den Elementen bleibt wirkungslos, wenn im `@font-face`-Block die Spanne `font-stretch: 62% 125%` fehlt, der Browser weiß sonst nichts von der Achse. **(2)** Die Datei heißt bewusst neu (`archivo-wdth-latin.woff2` statt `archivo-var-latin.woff2`). Unter dem alten Namen hätte der Browser-Cache bis zu zehn Minuten die alte Datei ohne Breiten-Achse geliefert, und die Seite hätte unverändert ausgesehen, ohne dass ein Fehler sichtbar wird. **Abwägung:** Unter etwa 80 Prozent kippt das Schriftbild vom Edlen ins Plakathafte, deshalb 86. |
 | **v56** | **Eigene Schrift und eine leere Startseite.** Zwei Dinge, die zusammen gehören, weil beide dasselbe Ziel haben: Die Seite soll nicht nach Vorlage aussehen. **(1)** Der System-Font-Stack ist raus, das Portfolio läuft auf **Archivo** (Groteske aus der Zeitungsecke, SIL Open Font License). Eine variable Datei für alle Gewichte von 400 bis 700, 35 KB, als Latin-Subset unter `assets/fonts/`, kein Google Fonts. Jede Seite lädt sie per `rel="preload"` vor, sonst findet der Browser sie erst nach dem CSS und der erste Eindruck steht kurz in der Ersatzschrift. Überschriften stehen enger (`-.03em` beim Namen, `-.025em` bei den Seitentiteln), weil Archivo mehr Zug verträgt als der System-Stack. **Merke:** Das Gewicht 650, das an mehreren Stellen steht, gibt es jetzt wirklich; vorher hat der Browser es auf 700 gerundet oder künstlich fett gerechnet. **(2)** Die Startseite zeigt nur noch **Tobias Imhof**, einen Satz aus Fakten und die drei Kacheln. Über mich, Kontakt und der Notizkasten sind raus: Wer den Link anklickt, kommt aus dem Lebenslauf und hat Werdegang und E-Mail schon gelesen. Der Name ist entsprechend größer (38 px, ab 720 px 54 px), der Inhalt sitzt mittig. Die toten Regeln `.hero .kicker`, `.hero-more` und `.ft-in .sp` sind mit raus, ebenso die Kontakt-Links im Fuß der Unterseiten, die ins Leere gezeigt hätten. **Die App unter `app/` behält vorerst den alten Stack**, dort hängen 165 SVG-Texte an den Schriftmaßen. |

@@ -70,11 +70,6 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
   font-size: 18px; font-weight: 700; letter-spacing: -.02em;
   color: var(--text); text-decoration: none; flex: none;
 }
-.dot {
-  width: 20px; height: 20px; border-radius: 50%; flex: none;
-  background: conic-gradient(red, orange, yellow, lime, cyan, blue, magenta, red);
-  box-shadow: inset 0 0 0 4px var(--bg-elev);
-}
 .site-nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
 .site-nav a {
   font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none;
@@ -90,18 +85,21 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 
 /* Kopfbereich: am Handy untereinander, ab 900 px Name links und Foto rechts.
    Das Foto behaelt sein 4:5 und wird nicht beschnitten, der Beschnitt ist
-   Teil der Bildbearbeitung und nicht Sache des Layouts. */
-.hero { padding: 22px 0 30px; display: grid; gap: 24px; }
+   Teil der Bildbearbeitung und nicht Sache des Layouts.
+   Die Hoehe ist gedeckelt (300 px Breite = 375 px Hoehe): Auf einem Tablet im
+   Querformat bleiben rund 700 px Inhalt, und die drei Kacheln muessen ohne
+   Scrollen sichtbar sein. Sie sind die Navigation der Seite. */
+.hero { padding: 20px 0 26px; display: grid; gap: 20px; }
 @media (min-width: 900px) {
   .hero {
-    grid-template-columns: 1fr minmax(280px, 360px);
-    gap: 48px; align-items: center; padding: 34px 0 42px;
+    grid-template-columns: 1fr minmax(220px, 280px);
+    gap: 48px; align-items: center; padding: 28px 0 34px;
   }
 }
 .hero h1 { margin: 0 0 14px; font-size: 38px; line-height: 1.1; letter-spacing: -.03em; font-weight: 700; }
 .hero p { margin: 0; font-size: 16px; color: #dcdce0; max-width: 30em; }
 .hero-img { margin: 0; }
-.hero-img img { width: 100%; height: auto; border-radius: 12px; background: var(--bg-card); }
+.hero-img img { width: 100%; max-width: 280px; height: auto; border-radius: 12px; background: var(--bg-card); }
 
 .page-h { margin: 0 0 10px; font-size: 27px; letter-spacing: -.025em; font-weight: 700; }
 .lead { margin: 0 0 26px; font-size: 15px; color: var(--muted); max-width: 40em; }
