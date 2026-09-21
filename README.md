@@ -3,8 +3,9 @@
 Portfolio von **Tobias Imhof**: Sportfotografie, Videografie und eigene Apps. Die
 Seite ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum
 Mediengestalter Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Die
-Startseite zeigt seit v56 nur noch den Namen, einen Satz aus Fakten und die drei
-Kacheln: Fotografie, Videografie und Apps. Die Kachel **Apps** führt ohne
+Startseite zeigt den Namen, einen Satz aus Fakten, **ein Foto** und die drei Kacheln
+Fotografie, Videografie und Apps. Das Foto ist seit v58 der Farbträger der Seite: Die
+Oberfläche bleibt schwarz und weiß, die Farbe kommt aus der Arbeit. Die Kachel **Apps** führt ohne
 Zwischenseite direkt in die ColorGrade App unter `app/`.
 
 **Über mich und Kontakt stehen bewusst nicht mehr auf der Seite.** Wer den Link
@@ -37,8 +38,8 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v57**: Die Startseite ist auf Name, einen Satz und die drei Kacheln
-> eingedampft, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
+> Stand nach **v58**: Die Startseite zeigt Name, einen Satz, ein Foto und die drei
+> Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo). Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
@@ -133,13 +134,16 @@ herleiten muss:
    Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
    rutscht Text aus den handgezeichneten Kästen.
 2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient). Generisch und für
-   Sportfotografie ohne Bedeutung.
+   Sportfotografie ohne Bedeutung. **Seit v58 der lauteste Rest:** Er ist das einzige
+   bunte Element der Oberfläche und steht oben links neben dem Foto, das die Farbe
+   eigentlich tragen soll. Nächster Kandidat, aber eine Markenentscheidung des Nutzers.
 3. **16 px runde Ecken an allem**, auch an den Fotos. Runde Bildecken lesen sich als
    App-Oberfläche, nicht als Fotografie.
 4. **Jeder Block ist eine umrandete Karte** (1 px Rahmen, runde Ecken, hellerer
    Hintergrund). Standard-Optik von Dashboard-Templates.
 5. **Graue Versalien-Überschriften** (`.sec-h`). Gleiche Herkunft.
-6. **Strich-Icons** auf den Startseiten-Kacheln (Lucide-Look).
+6. **Strich-Icons** auf den Startseiten-Kacheln (Lucide-Look), **erledigt in v58.**
+   Die Kacheln tragen jetzt nur noch den Begriff, dafür groß.
 
 **Gemeinsamer Nenner:** Die Oberfläche macht zu viel Lärm um die Fotos herum. Ein
 Fotoportfolio wird professionell, wenn die Bedienelemente fast verschwinden und die
@@ -344,6 +348,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v58** | **Erster Eindruck, Nutzer-Wunsch:** Die orangen Strich-Icons raus, die Begriffe groß, und mehr Leben in das schwarz-weiße Bild. **(1)** Die Kacheln tragen nur noch den Begriff (`clamp(21px, 5.6vw, 27px)` statt 15 px) und darunter die Erklärung. Eine Mindesthöhe hatten sie zwischendurch auch, die ist wieder raus: Ohne Symbol reißt sie Begriff und Erklärung nur auseinander. **(2)** Das Leben kommt nicht aus Farbe in der Oberfläche, sondern aus einem Foto. Im Kopfbereich steht ab 900 px links der Name und rechts der **Torwart-Faustgruß**, am Handy untereinander. Bewusst der Faustgruß und nicht das Aufmacherbild der Galerie: ein Gesicht, ein Lächeln, und es wiederholt nicht das erste Bild der Fotografie-Seite. Das Foto behält sein 4:5 und wird **nicht** beschnitten, der Beschnitt ist Sache der Bildbearbeitung und nicht des Layouts. Es lädt mit `fetchpriority="high"`, hat feste Maße gegen das Springen beim Laden und nimmt über `srcset` am Handy die 639er und am Rechner die 1278er Fassung. **Damit ist die Oberfläche der Startseite komplett schwarz und weiß**, der einzige Rest Farbe ist der Regenbogen-Punkt der Marke, siehe „Erscheinungsbild". Die toten Regeln `.tile .ti` und `.tt` sind mit raus. |
 | **v57** | **Die Schrift läuft schmaler**, auf Wunsch des Nutzers: schmal wirkt ruhiger und teurer. Dafür liegt jetzt die Archivo-Fassung mit **zwei Achsen** im Repo (Gewicht 400 bis 700 **und** Breite 62 bis 125 Prozent, 90 KB statt 35 KB). Gesteuert wird es über zwei neue Variablen, `--w-head` für Überschriften und Bedienelemente (86 Prozent) und `--w-text` für den Fließtext (96 Prozent). Der Name rendert damit 12 Prozent schmaler. **Zwei Fallstricke, beide geprüft:** **(1)** `font-stretch` an den Elementen bleibt wirkungslos, wenn im `@font-face`-Block die Spanne `font-stretch: 62% 125%` fehlt, der Browser weiß sonst nichts von der Achse. **(2)** Die Datei heißt bewusst neu (`archivo-wdth-latin.woff2` statt `archivo-var-latin.woff2`). Unter dem alten Namen hätte der Browser-Cache bis zu zehn Minuten die alte Datei ohne Breiten-Achse geliefert, und die Seite hätte unverändert ausgesehen, ohne dass ein Fehler sichtbar wird. **Abwägung:** Unter etwa 80 Prozent kippt das Schriftbild vom Edlen ins Plakathafte, deshalb 86. |
 | **v56** | **Eigene Schrift und eine leere Startseite.** Zwei Dinge, die zusammen gehören, weil beide dasselbe Ziel haben: Die Seite soll nicht nach Vorlage aussehen. **(1)** Der System-Font-Stack ist raus, das Portfolio läuft auf **Archivo** (Groteske aus der Zeitungsecke, SIL Open Font License). Eine variable Datei für alle Gewichte von 400 bis 700, 35 KB, als Latin-Subset unter `assets/fonts/`, kein Google Fonts. Jede Seite lädt sie per `rel="preload"` vor, sonst findet der Browser sie erst nach dem CSS und der erste Eindruck steht kurz in der Ersatzschrift. Überschriften stehen enger (`-.03em` beim Namen, `-.025em` bei den Seitentiteln), weil Archivo mehr Zug verträgt als der System-Stack. **Merke:** Das Gewicht 650, das an mehreren Stellen steht, gibt es jetzt wirklich; vorher hat der Browser es auf 700 gerundet oder künstlich fett gerechnet. **(2)** Die Startseite zeigt nur noch **Tobias Imhof**, einen Satz aus Fakten und die drei Kacheln. Über mich, Kontakt und der Notizkasten sind raus: Wer den Link anklickt, kommt aus dem Lebenslauf und hat Werdegang und E-Mail schon gelesen. Der Name ist entsprechend größer (38 px, ab 720 px 54 px), der Inhalt sitzt mittig. Die toten Regeln `.hero .kicker`, `.hero-more` und `.ft-in .sp` sind mit raus, ebenso die Kontakt-Links im Fuß der Unterseiten, die ins Leere gezeigt hätten. **Die App unter `app/` behält vorerst den alten Stack**, dort hängen 165 SVG-Texte an den Schriftmaßen. |
 | **v55** | **Spielerporträt eingebunden**, die Galerie hat damit sechs Bilder. Es bekommt einen **eigenen Abschnitt „Das Porträt"** statt als drittes Bild zu den Menschen zu wandern: Ein Porträt ist geplante Arbeit und keine Reportage, und drei Bilder hätten in der zweispaltigen Reihe eine Lücke gelassen. `.shots.solo` deckelt die Breite auf 420 px, damit es so groß wirkt wie eine Kachel der anderen Reihen. **Lehrstück aus der Bearbeitung:** Der globale Sättigungsregler trifft Motiv und Hintergrund gleich stark. Ein Minus von 25, das dem lauten Grün galt, nahm der Haut ihre Farbe (R minus G fiel von 39 auf 31, die Haut wirkte milchig). Die Lösung war ein milderes globales Minus plus ein **Kontrollpunkt auf dem Gesicht** in „Selektiv". Ergebnis: Haut wieder bei R minus G = 38, dazu Schwarzpunkt 7, Weißpunkt 251, Kontrast 59,9 und kein Kanal über 1,6 Prozent. Die Gesamtsättigung liegt bei 129 statt der Zielspanne 85 bis 95, das ist hier bewusst: Der Wert kommt fast nur vom großen grünen Hintergrund, und weiter zu senken hätte erneut die Haut gekostet. **Merke: Bei Porträts schlägt ein gesunder Hautton jede Zielzahl für die Gesamtsättigung.** |

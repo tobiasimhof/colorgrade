@@ -88,9 +88,20 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 /* Startseite: Inhalt mittig setzen, damit auf grossen Schirmen kein leeres Feld bleibt. */
 .wrap.center { display: flex; flex-direction: column; justify-content: center; }
 
-.hero { padding: 26px 0 34px; }
+/* Kopfbereich: am Handy untereinander, ab 900 px Name links und Foto rechts.
+   Das Foto behaelt sein 4:5 und wird nicht beschnitten, der Beschnitt ist
+   Teil der Bildbearbeitung und nicht Sache des Layouts. */
+.hero { padding: 22px 0 30px; display: grid; gap: 24px; }
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr minmax(280px, 360px);
+    gap: 48px; align-items: center; padding: 34px 0 42px;
+  }
+}
 .hero h1 { margin: 0 0 14px; font-size: 38px; line-height: 1.1; letter-spacing: -.03em; font-weight: 700; }
-.hero p { margin: 0; font-size: 16px; color: #dcdce0; max-width: 34em; }
+.hero p { margin: 0; font-size: 16px; color: #dcdce0; max-width: 30em; }
+.hero-img { margin: 0; }
+.hero-img img { width: 100%; height: auto; border-radius: 12px; background: var(--bg-card); }
 
 .page-h { margin: 0 0 10px; font-size: 27px; letter-spacing: -.025em; font-weight: 700; }
 .lead { margin: 0 0 26px; font-size: 15px; color: var(--muted); max-width: 40em; }
@@ -102,27 +113,27 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 /* ---------- Kachel-Gitter der Startseite ---------- */
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .tile {
-  display: flex; flex-direction: column; gap: 10px;
+  display: flex; flex-direction: column; gap: 6px;
   background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 18px 16px 16px; text-decoration: none; color: var(--text);
+  padding: 16px 16px 15px; text-decoration: none; color: var(--text);
   transition: border-color .15s, background .15s, transform .15s;
 }
-.tt { display: flex; flex-direction: column; gap: 3px; }
-/* Die dritte Kachel liegt am Handy allein in der zweiten Zeile. Statt einer
-   Luecke nimmt sie die ganze Breite und legt Symbol und Text nebeneinander. */
-.tile.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 14px; }
+/* Die dritte Kachel liegt am Handy allein in der zweiten Zeile und nimmt
+   deshalb die ganze Breite. */
+.tile.wide { grid-column: 1 / -1; }
 @media (min-width: 720px) {
   .tiles { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .tile { min-height: 162px; padding: 22px 18px 18px; }
-  .tile.wide { grid-column: auto; flex-direction: column; align-items: stretch; gap: 10px; }
+  /* Keine Mindesthoehe mehr: Ohne Symbol ist die Kachel nur noch Begriff plus
+     Erklaerung, eine erzwungene Hoehe reisst die beiden auseinander. */
+  .tile { padding: 20px 18px 18px; }
+  .tile.wide { grid-column: auto; }
   .hero h1 { font-size: 54px; }
 }
 .tile:hover, .tile:focus-visible { border-color: var(--accent); background: var(--bg-card-2); }
 .tile:active { transform: scale(.985); }
-.tile .ti { color: var(--accent); }
-.tile .tn { font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
-.tile .td { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
-.tile .ti { flex: none; }
+/* Der Begriff ist jetzt das Auffaellige an der Kachel, nicht mehr ein Symbol. */
+.tile .tn { font-size: clamp(21px, 5.6vw, 27px); font-weight: 700; letter-spacing: -.025em; line-height: 1.08; }
+.tile .td { font-size: 13px; color: var(--muted); line-height: 1.45; }
 
 /* ---------- Karten ---------- */
 .cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
