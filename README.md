@@ -37,9 +37,9 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v56**: Die Startseite ist auf Name, einen Satz und die drei Kacheln
-> eingedampft, das Portfolio läuft in einer eigenen Schrift (Archivo, als Datei im
-> Repo). Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
+> Stand nach **v57**: Die Startseite ist auf Name, einen Satz und die drei Kacheln
+> eingedampft, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
+> (Archivo, als Datei im Repo). Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
 > **Offen ist ein einziges Paket, und es kommt am Stück:** das Mannschaftsfoto
@@ -127,7 +127,8 @@ Analyse hat sechs konkrete Ursachen ergeben, damit der nächste Chat sie nicht n
 herleiten muss:
 
 1. **Der System-Font-Stack**, **erledigt in v56.** Er war der größte Verräter, weil
-   jede generierte Seite genau den benutzt. Das Portfolio läuft jetzt auf **Archivo**.
+   jede generierte Seite genau den benutzt. Das Portfolio läuft jetzt auf **Archivo**,
+   seit v57 in schmaler Breite.
    **Achtung, die App unter `app/` hat ihn noch:** Dort hängen 165 SVG-Texte an den
    Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
    rutscht Text aus den handgezeichneten Kästen.
@@ -151,11 +152,18 @@ gegen Blau tauschen**, sondern den Akzent überhaupt zurücknehmen.
 
 **Die Schrift ist seit v56 gesetzt: Archivo** (Omnibus-Type, SIL Open Font License),
 eine Groteske aus der Zeitungsecke, hohe x-Höhe, schmale Formen, keine Verzierungen.
-Eine variable Datei deckt die Gewichte 400 bis 700 ab und wiegt 35 KB, sie liegt unter
-`assets/fonts/` und wird in jeder Seite vorgeladen. Kein Google Fonts: Die Regel
-„keine externen Schriften" zielt auf den Datenschutz, eine Datei auf derselben Domain
-verletzt sie nicht. Ein Tausch der Schrift sind zwei Griffe, Datei austauschen und den
-`@font-face`-Block oben in `assets/style.css` anpassen.
+Seit v57 liegt die Fassung mit **zwei Achsen** im Repo, Gewicht 400 bis 700 und Breite
+62 bis 125 Prozent, zusammen 90 KB unter `assets/fonts/`, vorgeladen in jeder Seite.
+Kein Google Fonts: Die Regel „keine externen Schriften" zielt auf den Datenschutz, eine
+Datei auf derselben Domain verletzt sie nicht.
+
+**Die Breite ist die Stellschraube für „edel":** Sie hängt an zwei Variablen oben in
+`assets/style.css`, `--w-head` (Überschriften und Bedienelemente, steht auf 86 %) und
+`--w-text` (Fließtext, 96 %). Eine Zahl ändern und die ganze Seite wird schmaler oder
+breiter, ohne dass ein Layout nachgezogen werden muss. Unter etwa 80 % kippt es vom
+Edlen ins Plakathafte, das war die Abwägung. **Pflicht:** Die Spanne
+`font-stretch: 62% 125%` muss im `@font-face`-Block stehen, sonst greift `font-stretch`
+an den Elementen nicht.
 
 **Material, das der Nutzer beisteuern könnte:** seine Unterschrift auf weißem Papier
 abfotografiert. Im Fuß der Seite wäre sie der stärkste Beleg dafür, dass hier ein
@@ -336,6 +344,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v57** | **Die Schrift läuft schmaler**, auf Wunsch des Nutzers: schmal wirkt ruhiger und teurer. Dafür liegt jetzt die Archivo-Fassung mit **zwei Achsen** im Repo (Gewicht 400 bis 700 **und** Breite 62 bis 125 Prozent, 90 KB statt 35 KB). Gesteuert wird es über zwei neue Variablen, `--w-head` für Überschriften und Bedienelemente (86 Prozent) und `--w-text` für den Fließtext (96 Prozent). Der Name rendert damit 12 Prozent schmaler. **Zwei Fallstricke, beide geprüft:** **(1)** `font-stretch` an den Elementen bleibt wirkungslos, wenn im `@font-face`-Block die Spanne `font-stretch: 62% 125%` fehlt, der Browser weiß sonst nichts von der Achse. **(2)** Die Datei heißt bewusst neu (`archivo-wdth-latin.woff2` statt `archivo-var-latin.woff2`). Unter dem alten Namen hätte der Browser-Cache bis zu zehn Minuten die alte Datei ohne Breiten-Achse geliefert, und die Seite hätte unverändert ausgesehen, ohne dass ein Fehler sichtbar wird. **Abwägung:** Unter etwa 80 Prozent kippt das Schriftbild vom Edlen ins Plakathafte, deshalb 86. |
 | **v56** | **Eigene Schrift und eine leere Startseite.** Zwei Dinge, die zusammen gehören, weil beide dasselbe Ziel haben: Die Seite soll nicht nach Vorlage aussehen. **(1)** Der System-Font-Stack ist raus, das Portfolio läuft auf **Archivo** (Groteske aus der Zeitungsecke, SIL Open Font License). Eine variable Datei für alle Gewichte von 400 bis 700, 35 KB, als Latin-Subset unter `assets/fonts/`, kein Google Fonts. Jede Seite lädt sie per `rel="preload"` vor, sonst findet der Browser sie erst nach dem CSS und der erste Eindruck steht kurz in der Ersatzschrift. Überschriften stehen enger (`-.03em` beim Namen, `-.025em` bei den Seitentiteln), weil Archivo mehr Zug verträgt als der System-Stack. **Merke:** Das Gewicht 650, das an mehreren Stellen steht, gibt es jetzt wirklich; vorher hat der Browser es auf 700 gerundet oder künstlich fett gerechnet. **(2)** Die Startseite zeigt nur noch **Tobias Imhof**, einen Satz aus Fakten und die drei Kacheln. Über mich, Kontakt und der Notizkasten sind raus: Wer den Link anklickt, kommt aus dem Lebenslauf und hat Werdegang und E-Mail schon gelesen. Der Name ist entsprechend größer (38 px, ab 720 px 54 px), der Inhalt sitzt mittig. Die toten Regeln `.hero .kicker`, `.hero-more` und `.ft-in .sp` sind mit raus, ebenso die Kontakt-Links im Fuß der Unterseiten, die ins Leere gezeigt hätten. **Die App unter `app/` behält vorerst den alten Stack**, dort hängen 165 SVG-Texte an den Schriftmaßen. |
 | **v55** | **Spielerporträt eingebunden**, die Galerie hat damit sechs Bilder. Es bekommt einen **eigenen Abschnitt „Das Porträt"** statt als drittes Bild zu den Menschen zu wandern: Ein Porträt ist geplante Arbeit und keine Reportage, und drei Bilder hätten in der zweispaltigen Reihe eine Lücke gelassen. `.shots.solo` deckelt die Breite auf 420 px, damit es so groß wirkt wie eine Kachel der anderen Reihen. **Lehrstück aus der Bearbeitung:** Der globale Sättigungsregler trifft Motiv und Hintergrund gleich stark. Ein Minus von 25, das dem lauten Grün galt, nahm der Haut ihre Farbe (R minus G fiel von 39 auf 31, die Haut wirkte milchig). Die Lösung war ein milderes globales Minus plus ein **Kontrollpunkt auf dem Gesicht** in „Selektiv". Ergebnis: Haut wieder bei R minus G = 38, dazu Schwarzpunkt 7, Weißpunkt 251, Kontrast 59,9 und kein Kanal über 1,6 Prozent. Die Gesamtsättigung liegt bei 129 statt der Zielspanne 85 bis 95, das ist hier bewusst: Der Wert kommt fast nur vom großen grünen Hintergrund, und weiter zu senken hätte erneut die Haut gekostet. **Merke: Bei Porträts schlägt ein gesunder Hautton jede Zielzahl für die Gesamtsättigung.** |
 | **v54** | **Trainerbild getauscht** gegen die vom Nutzer neu bearbeitete Fassung. Entscheidend war ein Kanal-Clipping, das man im Histogramm der Helligkeit nicht sieht: Der Blaukanal stand in bis zu 5,32 Prozent der Pixel auf 255, dadurch hatte die Regenjacke in den hellen Partien keine Stoffzeichnung mehr, und der Rotkanal lag in 5,28 Prozent auf null, wodurch die Schatten ins Blaue kippten. Beide Werte liegen jetzt bei 0,01 und 0,07 Prozent. Dazu Weißpunkt von 222 auf 242 und Schwarzpunkt von 16 auf 13. **Merke für künftige Bilder:** Ein kräftig blaues Trikot oder sattes Grün ist oft schon ab Werk nah am Anschlag (hier 2,46 Prozent direkt aus der Kamera). Bei solchen Motiven gehört der Sättigungsregler nach unten, nicht nach oben, sonst ist die Zeichnung unwiederbringlich weg. |
@@ -406,7 +415,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
-| `assets/fonts/` | Archivo als variable WebFont-Datei plus OFL-Lizenz |
+| `assets/fonts/` | Archivo als variable WebFont-Datei (Gewicht und Breite) plus OFL-Lizenz |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
 | `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |
 | `manifest.webmanifest` | Manifest des Portfolios |

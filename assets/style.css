@@ -8,13 +8,18 @@
    keine Verzierungen. Sie ersetzt den System-Font-Stack, der auf jedem Rechner
    anders und ueberall gleich generisch aussieht.
    Die Datei liegt im Repo, nicht bei Google: kein fremder Server erfaehrt,
-   wer die Seite aufruft. Eine variable Datei deckt 400 bis 700 ab, 35 KB.
+   wer die Seite aufruft. Eine variable Datei deckt zwei Achsen ab, Gewicht
+   400 bis 700 und Breite 62 bis 125 Prozent, zusammen 90 KB.
+   Die Breite steuern wir ueber --w-head und --w-text weiter unten: eine Zahl
+   aendern und die ganze Seite wird schmaler oder breiter.
    Lizenz: SIL Open Font License 1.1, siehe assets/fonts/OFL.txt
    ============================================================ */
 @font-face {
   font-family: 'Archivo';
-  src: url('fonts/archivo-var-latin.woff2') format('woff2');
+  src: url('fonts/archivo-wdth-latin.woff2') format('woff2');
   font-weight: 400 700;
+  /* Pflicht: Ohne die Spanne hier greift font-stretch unten nicht. */
+  font-stretch: 62% 125%;
   font-style: normal;
   font-display: swap;
 }
@@ -24,6 +29,10 @@
   --line: #35353a; --text: #f2f2f4; --muted: #a0a0a8;
   --accent: #ff9f45; --accent-2: #ffd18a;
   --radius: 16px;
+  /* Schriftbreite. Ueberschriften laufen schmal, das wirkt ruhiger und
+     teurer; der Fliesstext nur eine Spur, sonst leidet die Lesbarkeit. */
+  --w-head: 86%;
+  --w-text: 96%;
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-t: env(safe-area-inset-top, 0px);
   --wrap: 900px;
@@ -33,6 +42,7 @@
 html, body { margin: 0; padding: 0; }
 body {
   font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  font-stretch: var(--w-text);
   background: var(--bg); color: var(--text); line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -40,6 +50,10 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: var(--accent-2); }
+
+/* Ueberschriften und Bedienelemente in der schmalen Breite. */
+h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
+.card .what, .lb-cap b, .btn { font-stretch: var(--w-head); }
 
 /* ---------- Kopf ---------- */
 .site-hd {
