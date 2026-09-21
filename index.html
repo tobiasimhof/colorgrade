@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ColorGrade · Portfolio von Tobias</title>
-  <meta name="description" content="Portfolio: Sportfotografie, Videografie und eigene Apps." />
+  <title>Tobias Imhof · Portfolio</title>
+  <meta name="description" content="Portfolio von Tobias Imhof: Sportfotografie, Videografie und eigene Apps." />
   <meta name="theme-color" content="#1c1c1e" />
   <!-- Suchmaschinen aussen vor. Zum Auffindbarmachen diese Zeile loeschen. -->
   <meta name="robots" content="noindex" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <!-- Schrift vorladen: sonst findet der Browser sie erst, wenn das CSS geparst ist. -->
+  <link rel="preload" href="assets/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -25,12 +27,10 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap center">
 
     <section class="hero">
-      <p class="kicker">Portfolio</p>
-      <!-- Nachname ergaenzen, falls du ihn auf der Seite haben moechtest. -->
-      <h1>Tobias</h1>
+      <h1>Tobias Imhof</h1>
       <p>Sportfotografie für das Portal FuPa, erste eigene Videoarbeiten, eine selbst gebaute App.</p>
     </section>
 
@@ -80,48 +80,11 @@
 
     </nav>
 
-    <h2 class="sec-h">Über mich</h2>
-    <div class="cards">
-
-      <article class="card">
-        <h3>Sportfotografie</h3>
-        <p>Mein Schwerpunkt. Spieltag, wechselndes Licht, ein Moment, der sich nicht wiederholt.</p>
-        <p>Für das Sportportal <b>FuPa</b> bin ich ehrenamtlich unterwegs und liefere an Spieltagen die Bilder.</p>
-        <!-- Falls du ein oeffentliches FuPa-Profil hast, verlinken wir es hier. -->
-      </article>
-
-      <article class="card">
-        <h3>Videografie</h3>
-        <p>Kamera, Schnitt und Color Grading arbeite ich mir gerade an. Licht, Bildaufbau und Farbe kenne ich aus der Fotografie, neu sind Bewegung, Ton und Rhythmus.</p>
-      </article>
-
-      <article class="card">
-        <h3>Womit ich arbeite</h3>
-        <p>Kamera, Objektive und die Programme für Schnitt und Bearbeitung trage ich hier noch nach.</p>
-        <div class="tags">
-          <span>Ausrüstung folgt</span>
-        </div>
-      </article>
-
-    </div>
-
-    <h2 class="sec-h" id="kontakt">Kontakt</h2>
-    <div class="card">
-      <!-- Hier deine E-Mail eintragen, an beiden Stellen der Zeile. -->
-      <p>Ich bewerbe mich um eine <b>Ausbildung zum Mediengestalter Bild und Ton</b>.</p>
-      <p style="margin:0">Am einfachsten per E-Mail: <a href="mailto:deine-adresse@example.de">deine-adresse@example.de</a></p>
-    </div>
-
-    <div class="note">
-      <b>Noch zu tun:</b> E-Mail-Adresse eintragen und die Ausrüstung nachtragen. Anschrift und Telefonnummer gehören bewusst nicht auf die Seite, die stehen in deiner Bewerbung.
-    </div>
-
   </main>
 
   <footer class="site-ft">
     <div class="ft-in">
-      <span>ColorGrade · Portfolio</span>
-      <a class="sp" href="#kontakt">Kontakt</a>
+      <span>Tobias Imhof · Portfolio</span>
     </div>
   </footer>
 

@@ -1,12 +1,16 @@
 # ColorGrade
 
-Portfolio von **Tobias**: Sportfotografie, Videografie und eigene Apps. Die Seite
-ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum Mediengestalter
-Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Man öffnet die Startseite,
-liest ein kurzes Über mich und wählt darunter eine der drei Kacheln: Fotografie,
-Videografie und Apps. Die Kachel **Apps** führt ohne Zwischenseite direkt in die
-ColorGrade App unter `app/`. Alles Weitere über den Nutzer und der Kontakt stehen
-ebenfalls auf der Startseite, eine eigene Über-mich-Seite gibt es nicht.
+Portfolio von **Tobias Imhof**: Sportfotografie, Videografie und eigene Apps. Die
+Seite ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum
+Mediengestalter Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Die
+Startseite zeigt seit v56 nur noch den Namen, einen Satz aus Fakten und die drei
+Kacheln: Fotografie, Videografie und Apps. Die Kachel **Apps** führt ohne
+Zwischenseite direkt in die ColorGrade App unter `app/`.
+
+**Über mich und Kontakt stehen bewusst nicht mehr auf der Seite.** Wer den Link
+anklickt, hat den Lebenslauf offen, dort stehen Werdegang und E-Mail bereits. Ein
+zweites Mal wirkt es wie Füllmaterial, und die Startseite soll in zwei Sekunden
+sagen, was es zu sehen gibt.
 
 **Jede Seite hat denselben Kopf**, die App eingeschlossen: links die Marke
 ColorGrade, die zur Startseite führt, rechts die Navigation Fotografie ·
@@ -14,8 +18,10 @@ Videografie · Apps. Wer eine Seite ergänzt, baut diesen Kopf mit ein.
 
 **Was über den Nutzer bekannt ist** (für Texte auf der Seite): Schwerpunkt
 Sportfotografie, ehrenamtlich für das Sportportal **FuPa**, liefert dort an
-Spieltagen Bilder. Videografie ist neu und wird gerade erarbeitet. Noch offen und
-nicht erfinden: jetziger Beruf, Ausrüstung, E-Mail-Adresse.
+Spieltagen Bilder. Videografie ist neu und wird gerade erarbeitet. Nachname
+**Imhof**, seit v56 steht er auf der Startseite. Noch offen und nicht erfinden:
+jetziger Beruf und die Ausrüstung über „Nikon D3400, Telezoom" hinaus. Eine
+E-Mail-Adresse braucht die Seite nicht mehr.
 
 Unter `app/` liegt zusätzlich **ColorGrade**, das Lerntagebuch zu Bild, Video und
 Farbe als installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät).
@@ -26,20 +32,25 @@ in Fotografie und Videografie entstanden ist.
 > die Arbeitsanleitung. Lies sie zuerst. Vier Regeln sind Pflicht:
 > **(1)** `service-worker.js` die Cache-Version um eins hochzählen, **(2)** unten im
 > **Änderungsverlauf** eine Zeile ergänzen, **(3)** keine Gedankenstriche im Text,
-> **(4)** **keine privaten Daten auf die Seite**: Vorname und E-Mail genügen, keine
-> Anschrift, keine Telefonnummer. Das Repo ist öffentlich, alles darin ist lesbar.
+> **(4)** **keine privaten Daten auf die Seite**: Vor- und Nachname genügen, keine
+> Anschrift, keine Telefonnummer, keine E-Mail. Das Repo ist öffentlich, alles darin ist lesbar.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v55**: Startseite samt Über mich und Kontakt, gemeinsamer Kopf auf
-> allen Seiten, Videografie-Texte, App entschlackt, **Fotografie-Galerie steht mit
-> sechs Bildern und Lightbox**. Offen sind das Mannschaftsfoto, die zwei
-> Video-Dateien (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22),
-> die E-Mail und die Ausrüstung.
+> Stand nach **v56**: Die Startseite ist auf Name, einen Satz und die drei Kacheln
+> eingedampft, das Portfolio läuft in einer eigenen Schrift (Archivo, als Datei im
+> Repo). Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
+> Videografie-Texte stehen, die App ist entschlackt.
 >
-> **Reihenfolge ist entschieden: Inhalt vor Optik.** Der Nutzer hat den
-> Erscheinungsbild-Umbau bewusst vertagt, siehe „Erscheinungsbild" weiter unten.
-> Erst kommen die fehlenden Inhalte rein.
+> **Offen ist ein einziges Paket, und es kommt am Stück:** das Mannschaftsfoto
+> (entsteht unter Flutlicht) und die zwei Video-Dateien (in Canva geschnitten, beide
+> unter 30 Sekunden, einer davon 22). Der Nutzer lädt beides zusammen hoch, weil er
+> die Videos bis dahin noch feinschleift. Nicht einzeln nachfragen, das ist so
+> verabredet.
+>
+> **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
+> hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
+> ist, steht unter „Erscheinungsbild".
 
 **Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
 nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
@@ -106,17 +117,20 @@ Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus,
 Bereich gehört allein ColorGrade.
 
 **Schritt 5 · Feinschliff**
-Über-mich-Texte stehen auf der Startseite. Offen: E-Mail eintragen (Platzhalter
-`deine-adresse@example.de` in `index.html`), Ausrüstung nachtragen, Vorschaubild für
-geteilte Links (Open Graph), eigenes Favicon, 404-Seite.
+Über mich und Kontakt sind seit v56 von der Startseite verschwunden, E-Mail und
+Werdegang stehen im Lebenslauf. Offen: Vorschaubild für geteilte Links (Open Graph),
+eigenes Favicon, 404-Seite.
 
-**Erscheinungsbild** (analysiert in v55, Umbau bewusst vertagt)
+**Erscheinungsbild** (analysiert in v55, Punkt 1 erledigt in v56)
 Der Nutzer findet, dass Schrift, Aufmachung und Bedienelemente „nach KI" aussehen. Die
 Analyse hat sechs konkrete Ursachen ergeben, damit der nächste Chat sie nicht neu
 herleiten muss:
 
-1. **Der System-Font-Stack** (`-apple-system, Segoe UI, Roboto`). Der größte Verräter,
-   weil jede generierte Seite genau den benutzt.
+1. **Der System-Font-Stack**, **erledigt in v56.** Er war der größte Verräter, weil
+   jede generierte Seite genau den benutzt. Das Portfolio läuft jetzt auf **Archivo**.
+   **Achtung, die App unter `app/` hat ihn noch:** Dort hängen 165 SVG-Texte an den
+   Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
+   rutscht Text aus den handgezeichneten Kästen.
 2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient). Generisch und für
    Sportfotografie ohne Bedeutung.
 3. **16 px runde Ecken an allem**, auch an den Fotos. Runde Bildecken lesen sich als
@@ -135,14 +149,17 @@ das Vereinstrikot), Grün (80 Grad, 7 %, der Rasen) und Rot (10 Grad, 4 %). Der
 Akzent der Seite ist Orange `#ff9f45` und kommt in keinem Bild vor. **Trotzdem nicht
 gegen Blau tauschen**, sondern den Akzent überhaupt zurücknehmen.
 
-**Entschieden ist die Richtung der Schrift:** sachlich und technisch, eine klare
-Groteske ohne Verzierungen, wie bei Sportredaktionen. Als Datei ins Repo, nicht über
-Google Fonts. Die Regel „keine externen Schriften" zielt auf den Datenschutz, eine
-Schriftdatei unter `assets/` liegt auf derselben Domain und verletzt sie nicht.
+**Die Schrift ist seit v56 gesetzt: Archivo** (Omnibus-Type, SIL Open Font License),
+eine Groteske aus der Zeitungsecke, hohe x-Höhe, schmale Formen, keine Verzierungen.
+Eine variable Datei deckt die Gewichte 400 bis 700 ab und wiegt 35 KB, sie liegt unter
+`assets/fonts/` und wird in jeder Seite vorgeladen. Kein Google Fonts: Die Regel
+„keine externen Schriften" zielt auf den Datenschutz, eine Datei auf derselben Domain
+verletzt sie nicht. Ein Tausch der Schrift sind zwei Griffe, Datei austauschen und den
+`@font-face`-Block oben in `assets/style.css` anpassen.
 
-**Material, das der Nutzer beisteuern könnte**, nach Wirkung sortiert: ein Foto von
-ihm an der Seitenlinie mit der Kamera (für Über mich), seine Unterschrift auf weißem
-Papier abfotografiert (für den Fuß), eine Schrift seiner Wahl.
+**Material, das der Nutzer beisteuern könnte:** seine Unterschrift auf weißem Papier
+abfotografiert. Im Fuß der Seite wäre sie der stärkste Beleg dafür, dass hier ein
+Mensch gebaut hat.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
@@ -319,6 +336,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v56** | **Eigene Schrift und eine leere Startseite.** Zwei Dinge, die zusammen gehören, weil beide dasselbe Ziel haben: Die Seite soll nicht nach Vorlage aussehen. **(1)** Der System-Font-Stack ist raus, das Portfolio läuft auf **Archivo** (Groteske aus der Zeitungsecke, SIL Open Font License). Eine variable Datei für alle Gewichte von 400 bis 700, 35 KB, als Latin-Subset unter `assets/fonts/`, kein Google Fonts. Jede Seite lädt sie per `rel="preload"` vor, sonst findet der Browser sie erst nach dem CSS und der erste Eindruck steht kurz in der Ersatzschrift. Überschriften stehen enger (`-.03em` beim Namen, `-.025em` bei den Seitentiteln), weil Archivo mehr Zug verträgt als der System-Stack. **Merke:** Das Gewicht 650, das an mehreren Stellen steht, gibt es jetzt wirklich; vorher hat der Browser es auf 700 gerundet oder künstlich fett gerechnet. **(2)** Die Startseite zeigt nur noch **Tobias Imhof**, einen Satz aus Fakten und die drei Kacheln. Über mich, Kontakt und der Notizkasten sind raus: Wer den Link anklickt, kommt aus dem Lebenslauf und hat Werdegang und E-Mail schon gelesen. Der Name ist entsprechend größer (38 px, ab 720 px 54 px), der Inhalt sitzt mittig. Die toten Regeln `.hero .kicker`, `.hero-more` und `.ft-in .sp` sind mit raus, ebenso die Kontakt-Links im Fuß der Unterseiten, die ins Leere gezeigt hätten. **Die App unter `app/` behält vorerst den alten Stack**, dort hängen 165 SVG-Texte an den Schriftmaßen. |
 | **v55** | **Spielerporträt eingebunden**, die Galerie hat damit sechs Bilder. Es bekommt einen **eigenen Abschnitt „Das Porträt"** statt als drittes Bild zu den Menschen zu wandern: Ein Porträt ist geplante Arbeit und keine Reportage, und drei Bilder hätten in der zweispaltigen Reihe eine Lücke gelassen. `.shots.solo` deckelt die Breite auf 420 px, damit es so groß wirkt wie eine Kachel der anderen Reihen. **Lehrstück aus der Bearbeitung:** Der globale Sättigungsregler trifft Motiv und Hintergrund gleich stark. Ein Minus von 25, das dem lauten Grün galt, nahm der Haut ihre Farbe (R minus G fiel von 39 auf 31, die Haut wirkte milchig). Die Lösung war ein milderes globales Minus plus ein **Kontrollpunkt auf dem Gesicht** in „Selektiv". Ergebnis: Haut wieder bei R minus G = 38, dazu Schwarzpunkt 7, Weißpunkt 251, Kontrast 59,9 und kein Kanal über 1,6 Prozent. Die Gesamtsättigung liegt bei 129 statt der Zielspanne 85 bis 95, das ist hier bewusst: Der Wert kommt fast nur vom großen grünen Hintergrund, und weiter zu senken hätte erneut die Haut gekostet. **Merke: Bei Porträts schlägt ein gesunder Hautton jede Zielzahl für die Gesamtsättigung.** |
 | **v54** | **Trainerbild getauscht** gegen die vom Nutzer neu bearbeitete Fassung. Entscheidend war ein Kanal-Clipping, das man im Histogramm der Helligkeit nicht sieht: Der Blaukanal stand in bis zu 5,32 Prozent der Pixel auf 255, dadurch hatte die Regenjacke in den hellen Partien keine Stoffzeichnung mehr, und der Rotkanal lag in 5,28 Prozent auf null, wodurch die Schatten ins Blaue kippten. Beide Werte liegen jetzt bei 0,01 und 0,07 Prozent. Dazu Weißpunkt von 222 auf 242 und Schwarzpunkt von 16 auf 13. **Merke für künftige Bilder:** Ein kräftig blaues Trikot oder sattes Grün ist oft schon ab Werk nah am Anschlag (hier 2,46 Prozent direkt aus der Kamera). Bei solchen Motiven gehört der Sättigungsregler nach unten, nicht nach oben, sonst ist die Zeichnung unwiederbringlich weg. |
 | **v53** | Das Querformat („Lauf in den freien Raum") steht jetzt als **Aufmacher ganz oben**, direkt unter dem Einleitungssatz und bewusst ohne Überschrift (Nutzer-Wunsch: es zieht den Blick am besten). Darunter folgen zwei ruhige Zweierreihen im Hochformat. Das Aufmacherbild lädt nicht mehr verzögert, sondern mit `fetchpriority="high"`, weil es über der Falz liegt. Die Reihenfolge in der Lightbox folgt der neuen Anordnung. |
@@ -384,10 +402,11 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 
 | Datei | Zweck |
 |-------|-------|
-| `index.html` | Portfolio-Startseite mit den vier Kacheln |
+| `index.html` | Portfolio-Startseite: Name, ein Satz, drei Kacheln |
 | `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
+| `assets/fonts/` | Archivo als variable WebFont-Datei plus OFL-Lizenz |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
 | `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |
 | `manifest.webmanifest` | Manifest des Portfolios |
