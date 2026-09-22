@@ -49,11 +49,8 @@ in Fotografie und Videografie entstanden ist.
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
-> **Offen ist ein einziges Paket, und es kommt am Stück:** das Mannschaftsfoto
-> (entsteht unter Flutlicht) und die zwei Video-Dateien (in Canva geschnitten, beide
-> unter 30 Sekunden, einer davon 22). Der Nutzer lädt beides zusammen hoch, weil er
-> die Videos bis dahin noch feinschleift. Nicht einzeln nachfragen, das ist so
-> verabredet.
+> **Das Mannschaftsfoto ist seit v60 drin.** Offen sind nur noch die **zwei
+> Video-Dateien** (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22).
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -72,9 +69,16 @@ Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
 Sechs Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
 Aufmacher** ohne Überschrift, darunter drei Abschnitte: **Der Moment** (Schuss,
 Zweikampf), **Die Menschen** (Torwart, Trainer) und **Das Porträt** (Spielerporträt
-allein, `.shots.solo`). Lightbox mit Pfeiltasten und Escape ist gebaut. Offen ist nur
-noch das **Mannschaftsfoto**, es gehört in den Abschnitt „Das Porträt" und macht
-daraus eine saubere Zweierreihe.
+allein, `.shots.solo`). Seit v60 folgt darunter **Die Mannschaft** als breites Schlussbild. Lightbox mit
+Pfeiltasten und Escape ist gebaut. Die Fotografie-Seite ist damit **fertig**, sieben
+Bilder.
+
+**Korrektur am alten Plan:** In der README stand, das Mannschaftsfoto solle als 4:5 in
+den Abschnitt „Das Porträt" und dort eine Zweierreihe bilden. Der Nutzer hat es im
+**Querformat** aufgenommen und 16:9 geschnitten, und das ist richtig so, eine
+Mannschaft in drei Reihen gehört ins Querformat. Ein breites Bild nimmt in der Galerie
+die volle Satzbreite, also bekam es einen eigenen Abschnitt am Ende. Das Spielerporträt
+bleibt allein stehen.
 
 Regeln, die der Nutzer selbst erarbeitet hat und die für Nachschub gelten:
 Hochformate **durchgehend 4:5**, Querformate **16:9**, Schwarzpunkt unter 12,
@@ -90,9 +94,12 @@ Bild eine 1600er Fassung für die Lightbox und eine 800er Kachel an. Breite Bild
 (`breit = True`) bekommen nur die 1600er, weil sie die volle Satzbreite von 860 px
 füllen und eine 800er Kachel dort hochskaliert würde.
 
-**Das Mannschaftsfoto** entsteht bei **Flutlicht**, weil der Verein keinen anderen
-Termin gefunden hat. Das ist die schwierigste Aufnahmesituation des Projekts, deshalb
-steht der Brief hier fest:
+**Das Mannschaftsfoto ist am 22.09.2026 bei Flutlicht entstanden** (Nikon D3400,
+25 mm, 1/50 s, f/6,3, ISO 6400). Der Aufnahme-Brief unten hat sich bewährt und bleibt
+als Anleitung für den nächsten Flutlicht-Termin stehen. Besonders die Zeit: 1/50 s hat
+die 100-Hertz-Pulsation sauber ausgemittelt, kein Streifen im Bild. Auch die
+Lichtrichtung stimmte, die Hauthelligkeit lag über alle drei Reihen bei 134, 126 und
+134, also praktisch gleich. Genau daran scheitern die meisten Flutlichtbilder:
 
 - **RAW aufnehmen.** Alle bisherigen Dateien sind Kamera-JPEGs. Unter Flutlicht ist
   der Weißabgleich nicht vorhersagbar (Halogenmetalldampf zieht grün, LED je nach
@@ -180,6 +187,23 @@ an den Elementen nicht.
 **Material, das der Nutzer beisteuern könnte:** seine Unterschrift auf weißem Papier
 abfotografiert. Im Fuß der Seite wäre sie der stärkste Beleg dafür, dass hier ein
 Mensch gebaut hat.
+
+**Lehrstück aus der Bearbeitung des Mannschaftsfotos (v60):** Das Bild kam mit einem
+**Weißpunkt von 232** aus der Kamera, es gab also kein echtes Weiß, und der **Rotkanal
+lag in 4,16 Prozent der Pixel auf null** (in der Spielerzone sogar 4,72), wodurch die
+tiefen Schatten ins Kühle kippten. Beides sieht man im Helligkeits-Histogramm nicht.
+Behoben über zwei Griffe in den Kurven: rechter Endpunkt der RGB-Kurve nach links
+(Weißpunkt jetzt **254**) und linker Endpunkt der **Rotkurve** leicht angehoben (Rot
+auf null jetzt **0,15 Prozent**). Die Haut wurde dabei um 13 Stufen wärmer, R minus G
+von 30 auf 43 gemessen an denselben Pixeln. **Zwei Merksätze:**
+**(1)** Bei hohem ISO steigt mit jeder Aufhellung das Korn mit, hier von 5,8 auf 7,1
+Standardabweichung in den flachen Flächen. Beim Verkleinern auf die 1600er Fassung
+verschwindet es wieder, man darf es also **nicht bei 100 Prozent beurteilen**, sonst
+überkorrigiert man.
+**(2)** **Korn kostet Dateigröße.** Mit der Normalqualität 82 wog die WebP-Datei
+448 KB, mit 74 sind es 325 KB, und der Unterschied liegt im Gesichtsband bei im Mittel
+3,9 Helligkeitsstufen, fällt also aufs Rauschen und nicht auf die Gesichter. Dafür hat
+`scripts/make_photos.py` seit v60 eine **Qualitätsangabe je Bild**.
 
 **Sobald die zwei Clips liegen:** Das Bild auf der Startseite gegen ein **Standbild aus
 einem Clip** tauschen. Damit sagt der erste Eindruck „Bild und Ton" statt nur „Bild".
@@ -361,6 +385,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v60** | **Das Mannschaftsfoto ist drin, die Fotografie-Seite ist fertig** (sieben Bilder). Es steht als **breites Schlussbild** in einem eigenen Abschnitt „Die Mannschaft" am Ende der Strecke. Der alte Plan (4:5 neben dem Spielerporträt) ist damit hinfällig, der Nutzer hat im Querformat aufgenommen, und das ist für drei Reihen Spieler richtig. **Messung der Bearbeitung, vorher gegen nachher:** Weißpunkt 232 → **254**, Rotkanal auf null 4,16 % → **0,15 %**, Schwarzpunkt 3 → 5, Haut R minus G +13 Stufen an denselben Pixeln gemessen, kein Kanal über 0,74 % am oberen Anschlag. Alle Projektgrenzen eingehalten. **Neu im Skript:** `scripts/make_photos.py` nimmt jetzt je Bild eine eigene WebP-Qualität. Nötig geworden, weil das Korn von ISO 6400 sich schlecht komprimieren lässt: Mit der Normalqualität 82 wog die Datei 448 KB, mit 74 sind es 325 KB bei im Mittel 3,9 Helligkeitsstufen Unterschied im Gesichtsband. Der Hinweiskasten „Noch offen: Ein Mannschaftsfoto" ist von der Seite verschwunden. |
 | **v59** | **Drei Punkte aus dem Nutzer-Feedback zur Startseite.** **(1)** Das Torwartbild ist raus, es steht jetzt ein **Zweikampf** dort. Begründung des Nutzers, und sie stimmt: Bei einem einzelnen Menschen im Bild liest der Betrachter, das sei der Bewerber. Bei zwei Spielern im Duell ist klar, dass es die Arbeit ist und nicht das Motiv. **(2)** Das Bild ist deutlich kleiner (280 px statt 360 px Spaltenbreite, feste Deckelung per `max-width`). Grund war ein echter Fehler: Auf dem **Tablet im Querformat** waren die Kacheln unten abgeschnitten, und die Kacheln sind die Navigation der Seite. Der Kopfbereich hat jetzt auch weniger Polsterung. Nachgemessen mit Playwright bei 1024, 1112, 1180 und 1366 px Breite: Die Kacheln enden bei 591 px und damit über 100 px vor der Kante. Am Handy liegt die dritte Kachel weiter unter der Falz, das ist dort in Ordnung und ein Hinweis zum Weiterscrollen. **(3)** Der Regenbogen-Punkt ist weg, die Marke ist nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in der App. **Achtung:** Die App-Icons unter `icons/` sind weiter ein Farbrad, siehe „Erscheinungsbild". Nebenbei: Die zweite Sorge des Nutzers, die Startseite könne nach reinem Fotoportfolio aussehen, löst nicht das Layout, sondern das Material. Sobald die zwei Clips liegen, gehört dort ein Standbild aus einem Clip hin. |
 | **v58** | **Erster Eindruck, Nutzer-Wunsch:** Die orangen Strich-Icons raus, die Begriffe groß, und mehr Leben in das schwarz-weiße Bild. **(1)** Die Kacheln tragen nur noch den Begriff (`clamp(21px, 5.6vw, 27px)` statt 15 px) und darunter die Erklärung. Eine Mindesthöhe hatten sie zwischendurch auch, die ist wieder raus: Ohne Symbol reißt sie Begriff und Erklärung nur auseinander. **(2)** Das Leben kommt nicht aus Farbe in der Oberfläche, sondern aus einem Foto. Im Kopfbereich steht ab 900 px links der Name und rechts der **Torwart-Faustgruß**, am Handy untereinander. Bewusst der Faustgruß und nicht das Aufmacherbild der Galerie: ein Gesicht, ein Lächeln, und es wiederholt nicht das erste Bild der Fotografie-Seite. Das Foto behält sein 4:5 und wird **nicht** beschnitten, der Beschnitt ist Sache der Bildbearbeitung und nicht des Layouts. Es lädt mit `fetchpriority="high"`, hat feste Maße gegen das Springen beim Laden und nimmt über `srcset` am Handy die 639er und am Rechner die 1278er Fassung. **Damit ist die Oberfläche der Startseite komplett schwarz und weiß**, der einzige Rest Farbe ist der Regenbogen-Punkt der Marke, siehe „Erscheinungsbild". Die toten Regeln `.tile .ti` und `.tt` sind mit raus. |
 | **v57** | **Die Schrift läuft schmaler**, auf Wunsch des Nutzers: schmal wirkt ruhiger und teurer. Dafür liegt jetzt die Archivo-Fassung mit **zwei Achsen** im Repo (Gewicht 400 bis 700 **und** Breite 62 bis 125 Prozent, 90 KB statt 35 KB). Gesteuert wird es über zwei neue Variablen, `--w-head` für Überschriften und Bedienelemente (86 Prozent) und `--w-text` für den Fließtext (96 Prozent). Der Name rendert damit 12 Prozent schmaler. **Zwei Fallstricke, beide geprüft:** **(1)** `font-stretch` an den Elementen bleibt wirkungslos, wenn im `@font-face`-Block die Spanne `font-stretch: 62% 125%` fehlt, der Browser weiß sonst nichts von der Achse. **(2)** Die Datei heißt bewusst neu (`archivo-wdth-latin.woff2` statt `archivo-var-latin.woff2`). Unter dem alten Namen hätte der Browser-Cache bis zu zehn Minuten die alte Datei ohne Breiten-Achse geliefert, und die Seite hätte unverändert ausgesehen, ohne dass ein Fehler sichtbar wird. **Abwägung:** Unter etwa 80 Prozent kippt das Schriftbild vom Edlen ins Plakathafte, deshalb 86. |
@@ -441,7 +466,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | `service-worker.js` | Offline-Cache für Portfolio **und** App (Version hier hochzählen) |
 | `icons/` | Icons (aus `scripts/make_icons.py` erzeugt) |
 | `scripts/make_icons.py` | erzeugt die Icons neu (reines Python) |
-| `scripts/make_photos.py` | macht aus den Originalfotos die WebP-Dateien der Galerie |
+| `scripts/make_photos.py` | macht aus den Originalfotos die WebP-Dateien der Galerie, mit Qualitätsangabe je Bild |
 ## Technische Notizen (Orientierung im Code)
 
 - **Lektionen (Wissen):** `<article class="lk-lesson" data-lek="N">` in `#lernLesson`;
