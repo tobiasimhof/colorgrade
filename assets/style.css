@@ -100,6 +100,7 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 .hero p { margin: 0; font-size: 16px; color: #dcdce0; max-width: 30em; }
 .hero-img { margin: 0; }
 .hero-img img { width: 100%; max-width: 280px; height: auto; border-radius: 12px; background: var(--bg-card); }
+.hero-img figcaption { margin-top: 8px; font-size: 11.5px; color: var(--muted); }
 
 .page-h { margin: 0 0 10px; font-size: 27px; letter-spacing: -.025em; font-weight: 700; }
 .lead { margin: 0 0 26px; font-size: 15px; color: var(--muted); max-width: 40em; }
