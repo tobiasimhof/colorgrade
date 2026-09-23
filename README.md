@@ -3,13 +3,16 @@
 Portfolio von **Tobias Imhof**: Sportfotografie, Videografie und eigene Apps. Die
 Seite ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum
 Mediengestalter Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Die
-Startseite zeigt den Namen, einen Satz aus Fakten, **ein Foto** und die drei Kacheln
-Fotografie, Videografie und Apps. Das Foto ist der Farbträger der Seite: Die Oberfläche
-bleibt schwarz und weiß, die Farbe kommt aus der Arbeit.
+Startseite zeigt den Namen, einen Satz aus Fakten, **ein Standbild** und die drei Kacheln
+Fotografie, Videografie und Apps. Seit v64 ist es ein **Standbild aus dem Rheinhessen-Clip**
+(Weintrauben im Gegenlicht, schwarzweiß), damit der erste Eindruck „Bild und Ton“ sagt.
+Die Startseite ist damit ganz schwarz und weiß, die Farbe kommt erst auf der
+Fotografie-Seite. Weil die Aufnahmen von Pixabay sind, steht darunter die Quelle.
 
-**Regel für das Bild auf der Startseite (v59, aus Nutzer-Feedback):** Es zeigt einen
-**Zweikampf**, also zwei Spieler in Aktion. Ein einzelner Mensch im Bild wird für den
-Bewerber selbst gehalten, das hat der Nutzer beim Torwartbild aus v58 sofort so gelesen.
+**Regel für das Bild auf der Startseite (v59, aus Nutzer-Feedback):** **Kein einzelner
+Mensch im Bild.** Er wird für den Bewerber selbst gehalten, das hat der Nutzer beim
+Torwartbild aus v58 sofort so gelesen. Von v59 bis v63 stand deshalb ein Zweikampf dort,
+seit v64 die Trauben ohne Menschen.
 Und es bleibt **klein** (280 px), sonst wirkt die Seite wie ein reines Fotoportfolio,
 während die Bewerbung auf Mediengestalter Bild **und Ton** läuft. Die Kachel **Apps** führt ohne
 Zwischenseite direkt in die ColorGrade App unter `app/`.
@@ -34,8 +37,8 @@ E-Mail-Adresse braucht die Seite nicht mehr.
 Aufnahmen im **Rheinhessen-Clip** („Atmosphäre auf den Beat“) sind **von Pixabay**,
 bewusst gutes Material, um Schnitt und Rhythmus zu üben. Auswahl, Schnitt und
 Schwarzweiß sind seine Arbeit. Das steht seit v63 offen auf der Karte, und so bleibt es:
-Fremdes Material wird auf der Seite immer benannt. **Daraus folgt auch:** Kein Standbild
-aus dem Rheinhessen-Clip als Aufmacher der Startseite, dort steht nur eigene Arbeit.
+**Fremdes Material wird auf der Seite immer benannt.** Deshalb trägt auch das Standbild
+auf der Startseite (v64, Wunsch des Nutzers) eine Zeile „Aufnahmen: Pixabay“.
 
 Unter `app/` liegt zusätzlich **ColorGrade**, das Lerntagebuch zu Bild, Video und
 Farbe als installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät).
@@ -51,15 +54,16 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v63**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v64**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
 > **Fotografie ist seit v60 fertig, Videografie seit v62:** Beide Clips laufen, „Match
 > Cut im Wohnzimmer“ (v61) und „Atmosphäre auf den Beat“ (v62, ein Rheinhessen-Film in
-> Schwarzweiß). **Offen:** Das Bild auf der Startseite gegen ein Standbild aus einem Clip
-> tauschen, siehe unten „Sobald die zwei Clips liegen“.
+> Schwarzweiß). Seit v64 steht ein Standbild daraus auf der Startseite, und die App hat
+> oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
+> Feinschliff** (Open-Graph-Vorschaubild, Favicon, 404-Seite) und das Erscheinungsbild.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -159,8 +163,13 @@ So kommt ein Clip herein, damit der nächste gleich aussieht:
 - Der Ton des Match Cuts ist leise (Mittel −37 dB, Spitze −26 dB), das ist Raumton
   aus dem Wohnzimmer und so gelassen.
 
-**Schritt 4 · Apps** (erledigt in v47)
-Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Das
+**Schritt 4 · Apps** (erledigt in v47, Einleitungssatz seit v64)
+Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Oben in
+der App steht seit v64 ein Satz in derselben Form wie auf Fotografie und Videografie
+(`.app-intro`, erstes Element in `main`, scrollt mit weg und kostet im festen Kopf
+keinen Platz): „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen
+Alltag. ColorGrade ist eins davon: mein Nachschlagewerk zu Bild, Video und Farbe,
+gebaut in HTML, CSS und JavaScript.“ Das
 Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus, der
 Bereich gehört allein ColorGrade.
 
@@ -239,10 +248,8 @@ verschwindet es wieder, man darf es also **nicht bei 100 Prozent beurteilen**, s
 3,9 Helligkeitsstufen, fällt also aufs Rauschen und nicht auf die Gesichter. Dafür hat
 `scripts/make_photos.py` seit v60 eine **Qualitätsangabe je Bild**.
 
-**Sobald die zwei Clips liegen:** Das Bild auf der Startseite gegen ein **Standbild aus
-einem Clip** tauschen. Damit sagt der erste Eindruck „Bild und Ton" statt nur „Bild".
-Das ist die sauberste Antwort auf die offene Frage des Nutzers, ob Sportfotografie
-als Aufmacher den richtigen Eindruck macht.
+**Standbild aus einem Clip auf der Startseite:** erledigt in v64. Der erste Eindruck
+sagt damit „Bild und Ton“ statt nur „Bild“.
 
 **Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
 ## Die App unter `app/` (ColorGrade Lerntagebuch)
@@ -419,6 +426,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v64** | **Zwei Wünsche des Nutzers.** **(1)** Auf der Startseite steht statt des Zweikampfs ein **Standbild aus dem Rheinhessen-Clip**: Weintrauben im Gegenlicht, schwarzweiß, bei 5,4 s aus dem Canva-Export genommen und auf **4:5** geschnitten (576 × 720, mehr gibt ein 720p-Clip nicht her, reicht aber für 280 px auch bei doppelter Pixeldichte), 19 KB. Darunter die Zeile „Standbild aus ‚Rheinhessen‘ · Aufnahmen: Pixabay“, weil fremdes Material auf der Seite immer benannt wird. Die Kacheln enden bei 1024 × 768 bei 617 px, liegen also weiter über der Falz. **(2)** Die App hat oben ihren **einen Satz** wie Fotografie und Videografie: „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen Alltag. ColorGrade ist eins davon …“ Er steht bewusst nicht im festen Kopf, sondern als erstes Element in `main`, sonst würde er auf jedem Bereich Platz kosten. Der alte Kommentar im HTML zum Zweikampf ist mit ersetzt. |
 | **v63** | Auf der Karte „Atmosphäre auf den Beat“ steht jetzt, woher die Bilder kommen: „Die Aufnahmen sind von Pixabay, ausgesucht, geschnitten und in Schwarzweiß gesetzt habe ich sie selbst.“ Begründung: Wer aus der Medienbranche kommt, erkennt Stock-Material. Offen benannt wirkt es ehrlich, selbst entdeckt fällt es auf die Arbeit zurück. |
 | **v62** | **Der zweite Clip läuft, die Videografie-Seite ist fertig.** „Atmosphäre auf den Beat“ ist ein Film über Rheinhessen in Schwarzweiß: Weinberg aus der Luft, Trauben im Gegenlicht, Lese, Fass, Keller, Abfüllung, Glas, Titel am Anfang und am Ende. Der Nutzer hat ihn in Canva auf 28 MB gebracht (dafür 1 bis 2 Sekunden gekürzt, jetzt 23,7 s), hier ist er auf **9,3 MB** gerechnet, CRF 26 statt 23, weil das Korn im Schwarzweiß sich schlechter packen lässt (CRF 23 hätte 14,8 MB ergeben). Ton vom Nutzer geprüft. Vorschaubild ist die Titeltafel „Rheinhessen“ (7 KB). Der Hinweiskasten „Noch offen“ ist weg und mit ihm die Regel `.note`, die nirgends mehr benutzt wird. |
 | **v61** | **Der erste Clip läuft: „Match Cut im Wohnzimmer“.** Der Canva-Export (23 MB, 1280 × 720, 30 fps, 22,9 s) ist auf **5,4 MB** gebracht, H.264 mit CRF 23 und `+faststart`, bei SSIM 0,987 gegen das Original. Vorschaubild `match-cut-poster.webp` (27 KB) zeigt die hingestellten Schuhe, bewusst ohne die nackten Füße. Die kommen im Clip nur kurz und als Teil der Übung vor (vorher barfuß, nachher in Schuhen), das ist für die Bewerbung in Ordnung. Das Wohnzimmer ist durchgesehen, nichts Privates im Bild. **Service-Worker:** Videos laufen jetzt an ihm vorbei. Der Browser holt ein Video in Stücken (Range-Anfrage, Antwort 206), und die alte Regel „erst aus dem Cache“ hätte die ganze Datei geliefert, woran Safari scheitert. Vorgeladen werden Clips auch nicht, 5 MB gehören nicht in den Offline-Speicher; das Vorschaubild schon. Der Hinweiskasten sagt nur noch, dass der Beat-Clip folgt. In der README drei veraltete Stellen nachgezogen (Stand v59, Flutlicht-Brief mit 4:5 für das Mannschaftsfoto, „Länge erfragt“). |
@@ -492,7 +500,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 
 | Datei | Zweck |
 |-------|-------|
-| `index.html` | Portfolio-Startseite: Name, ein Satz, drei Kacheln |
+| `index.html` | Portfolio-Startseite: Name, ein Satz, ein Standbild, drei Kacheln |
 | `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio (Clips als H.264-MP4, etwa 5 MB) |
