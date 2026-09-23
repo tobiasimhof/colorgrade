@@ -626,6 +626,27 @@
     .lk-item.current .lk-num { background: var(--text); color: #131315; }
     .lk-item.current .lk-tag { color: var(--text); }
     body > nav button.active { color: var(--text); }
+
+    /* Etiketten ohne Versalien (v71), wie im Portfolio seit v68: Graue
+       Grossbuchstaben mit Sperrung sind Dashboard-Optik. Normal gesetzt, dafuer
+       eine Spur groesser, damit sie als Ueberschrift lesbar bleiben. Farben
+       bleiben, wie sie sind. Zwischenueberschriften: */
+    .lk-lesson h4.lk-sub, h5.sec, .vg-phase, .lk-eyebrow {
+      text-transform: none; letter-spacing: normal; font-size: 15px; font-weight: 650; }
+    /* Kleine Etiketten in Kaesten ("Merke", "Probier's", "Empfehlung ..."): */
+    .vbg-h, .vb-shoot .h, .gradebox .lbl, .colcard .role, .lookh,
+    .lk-merke .h, .lk-probier .h, .bv-idee .h, .bv-fazit .h, .zv-kern .eyebrow,
+    .zv-trenn-h, .la-h, .li-h {
+      text-transform: none; letter-spacing: normal; font-size: 13px; font-weight: 650; }
+    .vb-facts .k { text-transform: none; letter-spacing: normal; font-size: 12px; }
+    .bv-ph { text-transform: none; letter-spacing: normal; font-size: 11.5px; }
+    /* Zwei Reste Orange an Bedienelementen, beim Durchsehen gefunden: der
+       Weiter-Knopf und die Phasen-Ueberschriften. Weiss wie der Modus-Umschalter. */
+    .btn:not(.ghost) { background: var(--text); color: #131315; }
+    .lk-next { background: var(--text); color: #131315; }
+    .lk-next:focus-visible { outline-color: var(--text); }
+    .vg-phase { color: var(--text); }
+    .lk-eyebrow { color: var(--muted); }
   </style>
 </head>
 <body>

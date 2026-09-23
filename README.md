@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v70**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v71**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -66,8 +66,8 @@ in Fotografie und Videografie entstanden ist.
 > Feinschliff**, als nummerierter Fahrplan in sieben Punkten. Punkt 1 (404-Seite, v65) und
 > Punkt 2 (Link-Vorschau, v66) sind erledigt, 3 und 5 in v67, 4 und 6 in v68.
 > Punkt 7 (Archivo und weniger Orange in der App) in v69. **Der Fahrplan ist damit
-> durch.** Mögliche Kleinigkeit danach: die grauen Versalien-Etiketten in der App
-> („LEKTION 1 · …“, „EMPFEHLUNG FÜR DIESES MOTIV“) wie im Portfolio normal setzen.
+> durch**, seit v71 sind auch die Versalien-Etiketten der App normal gesetzt. Offen ist
+> nichts mehr, neue Punkte kommen nur noch aus dem Feedback des Nutzers.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -472,6 +472,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v71** | **App-Etiketten ohne Versalien**, wie im Portfolio seit v68. Alle 17 Regeln mit `text-transform: uppercase` in einem Block am Ende des App-CSS überschrieben, Originale unangetastet: Zwischenüberschriften („Das bewegte Bild · die Technik“, „Motiv abheben · 3 Trennungs-Achsen“) 15 px halbfett, Etiketten in Kästen („Merke“, „Probier's aus“, „Empfehlung für dieses Motiv“) 13 px halbfett, Farben wie gehabt. Beim Durchsehen zwei Reste Orange an Bedienelementen gefunden und weiß gestellt: der Knopf „Weiter: …“ am Ende jeder Lektion (`.lk-next`) und alle vollen Knöpfe (`.btn` ohne `ghost`, etwa „+ Eigenes Rezept“). Die Phasen-Überschriften der Video-Lektionen sind weiß statt orange, das Etikett „Lektion 1 · …“ grau. |
 | **v70** | **Stichworte unter den Clips entfernt** (Nutzer-Wunsch): Die drei Schlagwörter je Karte („Match Cut · Anschlüsse · allein gedreht“) lasen sich wie Hashtags. Was sie sagten, steht ohnehin in Rollen-Zeile und Text. Die Regeln `.tags` sind aus `assets/style.css` raus, die gleichnamige Klasse in der App ist davon unberührt (eigenes CSS). |
 | **v69** | **Die App läuft auf Archivo** (Fahrplan Punkt 7), gleiche Datei wie das Portfolio, vorgeladen, Fließtext bei 96 %, Marke und Kopf-Navigation bei 86 % Breite. Alle 52 Grafiken mit Text vorher einzeln geprüft, siehe Fahrplan. **Bedienelemente ohne Orange:** Der aktive Modus-Knopf ist weiß mit dunkler Schrift, Untertitel „Mein Lerntagebuch …“ grau, die aktuelle Lektion hat einen grauen Rahmen und eine weiße Nummer, die untere Leiste markiert weiß. Farbe in Grafiken, Empfehlungskästen und Rezepten bleibt, dort ist sie Inhalt. „hoch · Reel“ im Seitenverhältnis-Bild zweizeilig, es ragte schon immer aus dem schmalen Kasten. Geprüft in fünf Ansichten (Lektion, Berater, Farben, Rezepte, Video-Berater) bei 390 px, dazu Startseite bei 1280 px: kein Überlauf, keine Fehler. |
 | **v68** | **Ruhigere Oberfläche und eigenes Icon** (Fahrplan Punkt 4 und 6). **(1)** Die Kacheln der Startseite sind keine Karten mehr, sondern ein Begriff unter einer feinen Linie mit Pfeil, wie ein Register. Beim Darüberfahren wird die Linie weiß und der Pfeil rückt nach rechts. Die Karten der Videoseite haben keinen Rahmen und keinen hellen Grund mehr, der Clip ist der Kasten. Zwischenüberschriften („Der Moment“, „Worum es ging“) stehen normal gesetzt statt in grauen Versalien, die Stichworte als Zeile mit Mittelpunkt statt als Pillen. **(2)** Favicon und App-Icons zeigen **„TI“** weiß auf Schwarz statt des Farbrads, dazu erstmals ein echtes Favicon (`favicon.svg` plus 32er PNG). Vorher hatte der Browser-Tab gar keins. **(3)** Die Tab-Titel der Unterseiten tragen jetzt den Namen („Fotografie · Tobias Imhof“), passend zur Link-Vorschau. |
