@@ -194,12 +194,12 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
    Adressen absolut auf `https://tobiasimhof.github.io/colorgrade/`, **bei einem neuen
    GitHub-Namen oder einer eigenen Domain müssen alle `og:`-Zeilen mit.** WhatsApp
    merkt sich eine Vorschau lange, wer sie neu sehen will, hängt `?1` an den Link.
-3. **Eckige Fotos** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
+3. **Eckige Fotos**, **gebaut in v67** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
    raus oder auf 2 px. Eine CSS-Zeile, Nutzer sieht vorher und nachher.
 4. **Ruhigere Oberfläche** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
    Zwischenüberschriften normal statt grauer Versalien. Betrifft alle Seiten, mit
    Screenshots abstimmen.
-5. **Akzent zurücknehmen:** Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
+5. **Akzent zurücknehmen**, **im Portfolio gebaut in v67**, die App folgt mit Punkt 7: Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
    aktiven Knöpfen. Auf Weiß oder Grau stellen, dann tragen allein die Bilder Farbe.
 6. **Favicon und App-Icons neu** (Punkt 2, Rest). **Braucht eine Entscheidung:**
    Vorschlag „TI“ oder „CG“ in Archivo, weiß auf Schwarz. Dann `scripts/make_icons.py`
@@ -459,6 +459,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v67** | **Eckige Fotos und kein Orange im Portfolio** (Fahrplan Punkt 3 und 5). Fotos, Clips, Startbild und Lightbox runden nur noch mit `--r-img: 2px` statt 10 bis 12 px. `--accent` ist hellgrau (`#c8c8ce`, Hover-Rahmen und Fokusring), `--accent-2` weiß (Rollen-Zeilen, Links). Tote Regeln raus: `.ph` samt Seitenverhältnis-Klassen, `.gal` und `.btn`. **Die App behält ihr Orange vorerst**, dort zeigt es an, wo man ist, und wird erst mit dem Schrift-Umbau (Punkt 7) angefasst. |
 | **v66** | **Link-Vorschau (Open Graph)** auf Startseite, Fotografie, Videografie und App, je mit eigenem Bild, Titel und Satz. Die Titel in der Vorschau tragen den Namen („Fotografie · Tobias Imhof“), nicht die Marke, weil der Empfänger einen Menschen erwartet und keine App. Die Beschreibung der App ist dabei neu: „Mein Lerntagebuch zu Bild, Video und Farbe, selbst gebaut als Web-App.“ statt des alten Produktsatzes. Punkt 8 (Unterschrift) ist vom Fahrplan gestrichen, Nutzer-Entscheidung. **Nicht geprüft:** die echte Vorschau bei WhatsApp oder Teams, die Umgebung erreicht `github.io` nicht. Lokal geprüft: alle Tags lesbar, alle vier Bilder werden als JPEG ausgeliefert. |
 | **v65** | **404-Seite** und der **Fahrplan für den Feinschliff** (Schritt 5, acht Punkte, geordnet von „ohne Entscheidung“ bis „aufwendig“). Die Fehlerseite hat den gleichen Kopf wie alle Seiten, den Satz „Diese Seite gibt es nicht“ und die drei Kacheln. Geprüft mit einer nachgestellten falschen Adresse `/colorgrade/a/b/c`: Schrift, CSS und alle acht Links lösen richtig auf, das geht nur über `<base href>`. Nicht im `ASSETS`-Cache, offline hilft sie niemandem. |
 | **v64** | **Zwei Wünsche des Nutzers.** **(1)** Auf der Startseite steht statt des Zweikampfs ein **Standbild aus dem Rheinhessen-Clip**: Weintrauben im Gegenlicht, schwarzweiß, bei 5,4 s aus dem Canva-Export genommen und auf **4:5** geschnitten (576 × 720, mehr gibt ein 720p-Clip nicht her, reicht aber für 280 px auch bei doppelter Pixeldichte), 19 KB. Darunter die Zeile „Standbild aus ‚Rheinhessen‘ · Aufnahmen: Pixabay“, weil fremdes Material auf der Seite immer benannt wird. Die Kacheln enden bei 1024 × 768 bei 617 px, liegen also weiter über der Falz. **(2)** Die App hat oben ihren **einen Satz** wie Fotografie und Videografie: „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen Alltag. ColorGrade ist eins davon …“ Er steht bewusst nicht im festen Kopf, sondern als erstes Element in `main`, sonst würde er auf jedem Bereich Platz kosten. Der alte Kommentar im HTML zum Zweikampf ist mit ersetzt. |
