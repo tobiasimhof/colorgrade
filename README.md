@@ -44,15 +44,15 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v61**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v62**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
-> **Das Mannschaftsfoto ist seit v60 drin, die Fotografie-Seite ist fertig.** Seit v61
-> läuft der Clip **„Match Cut im Wohnzimmer“**. Offen ist nur noch der Clip **„Atmosphäre
-> auf den Beat“**: Die Canva-Datei wiegt 32 MB, der Upload im Chat schafft 30 MB, der
-> Nutzer exportiert ihn kleiner. Er wird dann wie der erste auf etwa 5 MB gebracht.
+> **Fotografie ist seit v60 fertig, Videografie seit v62:** Beide Clips laufen, „Match
+> Cut im Wohnzimmer“ (v61) und „Atmosphäre auf den Beat“ (v62, ein Rheinhessen-Film in
+> Schwarzweiß). **Offen:** Das Bild auf der Startseite gegen ein Standbild aus einem Clip
+> tauschen, siehe unten „Sobald die zwei Clips liegen“.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -121,18 +121,21 @@ Danach wie alle anderen: Schwarzpunkt unter 12, Weißpunkt über 245, kein Kanal
 2 Prozent am Anschlag, Hautton R minus G zwischen 35 und 40. Beschnitt 16:9 bei einer
 Gruppe, 4:5 bei einem Einzelnen.
 
-**Schritt 3 · Videografie** (Texte seit v48, erster Clip seit v61)
+**Schritt 3 · Videografie** (Texte seit v48, beide Clips seit v62, **fertig**)
 Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
-Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). **Der Match Cut
-läuft**, `assets/video/match-cut.mp4` mit Vorschaubild `assets/img/match-cut-poster.webp`.
-**Offen ist der Beat-Clip**, er ersetzt in der ersten Karte den Platzhalter „Clip folgt“,
-danach fliegt der Hinweiskasten unten auf der Seite raus.
+Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). Beide laufen:
+`assets/video/beat.mp4` (9,3 MB) und `assets/video/match-cut.mp4` (5,4 MB), Vorschaubilder
+daneben in `assets/img/` als `*-poster.webp`. Der Hinweiskasten ist raus, die Klasse
+`.note` samt CSS mit.
 
 So kommt ein Clip herein, damit der nächste gleich aussieht:
 - **Webfassung mit ffmpeg:** `ffmpeg -i quelle.mp4 -c:v libx264 -preset slow -crf 23
   -profile:v high -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k ziel.mp4`.
   Aus 23 MB Canva-Export (8 Mbit/s) wurden so 5,4 MB bei SSIM 0,987, also sichtbar
   gleich. **Ziel 5 bis 10 MB je Clip**, sonst lädt es am Handy über Mobilfunk zäh.
+  Körniges Material braucht mehr: Der Schwarzweiß-Beat-Clip kam mit CRF 23 auf 14,8 MB,
+  darum **CRF 26** (9,3 MB, SSIM 0,979). Ab 28 wird es in den hellen Gegenlichtflächen
+  flächig.
   `+faststart` ist Pflicht: Es stellt den Index an den Dateianfang, sonst muss der
   Browser erst die ganze Datei laden, bevor das erste Bild kommt.
 - **ffmpeg fehlt im Container.** `pip install imageio-ffmpeg` bringt eine fertige
@@ -409,6 +412,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v62** | **Der zweite Clip läuft, die Videografie-Seite ist fertig.** „Atmosphäre auf den Beat“ ist ein Film über Rheinhessen in Schwarzweiß: Weinberg aus der Luft, Trauben im Gegenlicht, Lese, Fass, Keller, Abfüllung, Glas, Titel am Anfang und am Ende. Der Nutzer hat ihn in Canva auf 28 MB gebracht (dafür 1 bis 2 Sekunden gekürzt, jetzt 23,7 s), hier ist er auf **9,3 MB** gerechnet, CRF 26 statt 23, weil das Korn im Schwarzweiß sich schlechter packen lässt (CRF 23 hätte 14,8 MB ergeben). Ton vom Nutzer geprüft. Vorschaubild ist die Titeltafel „Rheinhessen“ (7 KB). Der Hinweiskasten „Noch offen“ ist weg und mit ihm die Regel `.note`, die nirgends mehr benutzt wird. |
 | **v61** | **Der erste Clip läuft: „Match Cut im Wohnzimmer“.** Der Canva-Export (23 MB, 1280 × 720, 30 fps, 22,9 s) ist auf **5,4 MB** gebracht, H.264 mit CRF 23 und `+faststart`, bei SSIM 0,987 gegen das Original. Vorschaubild `match-cut-poster.webp` (27 KB) zeigt die hingestellten Schuhe, bewusst ohne die nackten Füße. Die kommen im Clip nur kurz und als Teil der Übung vor (vorher barfuß, nachher in Schuhen), das ist für die Bewerbung in Ordnung. Das Wohnzimmer ist durchgesehen, nichts Privates im Bild. **Service-Worker:** Videos laufen jetzt an ihm vorbei. Der Browser holt ein Video in Stücken (Range-Anfrage, Antwort 206), und die alte Regel „erst aus dem Cache“ hätte die ganze Datei geliefert, woran Safari scheitert. Vorgeladen werden Clips auch nicht, 5 MB gehören nicht in den Offline-Speicher; das Vorschaubild schon. Der Hinweiskasten sagt nur noch, dass der Beat-Clip folgt. In der README drei veraltete Stellen nachgezogen (Stand v59, Flutlicht-Brief mit 4:5 für das Mannschaftsfoto, „Länge erfragt“). |
 | **v60** | **Das Mannschaftsfoto ist drin, die Fotografie-Seite ist fertig** (sieben Bilder). Es steht als **breites Schlussbild** in einem eigenen Abschnitt „Die Mannschaft" am Ende der Strecke. Der alte Plan (4:5 neben dem Spielerporträt) ist damit hinfällig, der Nutzer hat im Querformat aufgenommen, und das ist für drei Reihen Spieler richtig. **Messung der Bearbeitung, vorher gegen nachher:** Weißpunkt 232 → **254**, Rotkanal auf null 4,16 % → **0,15 %**, Schwarzpunkt 3 → 5, Haut R minus G +13 Stufen an denselben Pixeln gemessen, kein Kanal über 0,74 % am oberen Anschlag. Alle Projektgrenzen eingehalten. **Neu im Skript:** `scripts/make_photos.py` nimmt jetzt je Bild eine eigene WebP-Qualität. Nötig geworden, weil das Korn von ISO 6400 sich schlecht komprimieren lässt: Mit der Normalqualität 82 wog die Datei 448 KB, mit 74 sind es 325 KB bei im Mittel 3,9 Helligkeitsstufen Unterschied im Gesichtsband. Der Hinweiskasten „Noch offen: Ein Mannschaftsfoto" ist von der Seite verschwunden. |
 | **v59** | **Drei Punkte aus dem Nutzer-Feedback zur Startseite.** **(1)** Das Torwartbild ist raus, es steht jetzt ein **Zweikampf** dort. Begründung des Nutzers, und sie stimmt: Bei einem einzelnen Menschen im Bild liest der Betrachter, das sei der Bewerber. Bei zwei Spielern im Duell ist klar, dass es die Arbeit ist und nicht das Motiv. **(2)** Das Bild ist deutlich kleiner (280 px statt 360 px Spaltenbreite, feste Deckelung per `max-width`). Grund war ein echter Fehler: Auf dem **Tablet im Querformat** waren die Kacheln unten abgeschnitten, und die Kacheln sind die Navigation der Seite. Der Kopfbereich hat jetzt auch weniger Polsterung. Nachgemessen mit Playwright bei 1024, 1112, 1180 und 1366 px Breite: Die Kacheln enden bei 591 px und damit über 100 px vor der Kante. Am Handy liegt die dritte Kachel weiter unter der Falz, das ist dort in Ordnung und ein Hinweis zum Weiterscrollen. **(3)** Der Regenbogen-Punkt ist weg, die Marke ist nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in der App. **Achtung:** Die App-Icons unter `icons/` sind weiter ein Farbrad, siehe „Erscheinungsbild". Nebenbei: Die zweite Sorge des Nutzers, die Startseite könne nach reinem Fotoportfolio aussehen, löst nicht das Layout, sondern das Material. Sobald die zwei Clips liegen, gehört dort ein Standbild aus einem Clip hin. |
