@@ -158,9 +158,6 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 .card .clip { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
   margin: 0 0 14px; border-radius: var(--r-img); background: #000; }
 .card .what { margin: 16px 0 3px; font-size: 13.5px; font-weight: 650; color: var(--text); }
-/* Stichworte als schlichte Zeile statt Pillen, getrennt durch einen Mittelpunkt. */
-.tags { display: flex; flex-wrap: wrap; margin-top: 14px; font-size: 12.5px; color: var(--muted); }
-.tags span + span::before { content: "\00b7"; margin: 0 8px; }
 
 /* ---------- Foto-Galerie ---------- */
 /* Eine Spalte am Handy: Fotos sollen gross sein, dafuer scrollt man laenger.

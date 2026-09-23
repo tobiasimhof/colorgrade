@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v69**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v70**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -472,6 +472,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v70** | **Stichworte unter den Clips entfernt** (Nutzer-Wunsch): Die drei Schlagwörter je Karte („Match Cut · Anschlüsse · allein gedreht“) lasen sich wie Hashtags. Was sie sagten, steht ohnehin in Rollen-Zeile und Text. Die Regeln `.tags` sind aus `assets/style.css` raus, die gleichnamige Klasse in der App ist davon unberührt (eigenes CSS). |
 | **v69** | **Die App läuft auf Archivo** (Fahrplan Punkt 7), gleiche Datei wie das Portfolio, vorgeladen, Fließtext bei 96 %, Marke und Kopf-Navigation bei 86 % Breite. Alle 52 Grafiken mit Text vorher einzeln geprüft, siehe Fahrplan. **Bedienelemente ohne Orange:** Der aktive Modus-Knopf ist weiß mit dunkler Schrift, Untertitel „Mein Lerntagebuch …“ grau, die aktuelle Lektion hat einen grauen Rahmen und eine weiße Nummer, die untere Leiste markiert weiß. Farbe in Grafiken, Empfehlungskästen und Rezepten bleibt, dort ist sie Inhalt. „hoch · Reel“ im Seitenverhältnis-Bild zweizeilig, es ragte schon immer aus dem schmalen Kasten. Geprüft in fünf Ansichten (Lektion, Berater, Farben, Rezepte, Video-Berater) bei 390 px, dazu Startseite bei 1280 px: kein Überlauf, keine Fehler. |
 | **v68** | **Ruhigere Oberfläche und eigenes Icon** (Fahrplan Punkt 4 und 6). **(1)** Die Kacheln der Startseite sind keine Karten mehr, sondern ein Begriff unter einer feinen Linie mit Pfeil, wie ein Register. Beim Darüberfahren wird die Linie weiß und der Pfeil rückt nach rechts. Die Karten der Videoseite haben keinen Rahmen und keinen hellen Grund mehr, der Clip ist der Kasten. Zwischenüberschriften („Der Moment“, „Worum es ging“) stehen normal gesetzt statt in grauen Versalien, die Stichworte als Zeile mit Mittelpunkt statt als Pillen. **(2)** Favicon und App-Icons zeigen **„TI“** weiß auf Schwarz statt des Farbrads, dazu erstmals ein echtes Favicon (`favicon.svg` plus 32er PNG). Vorher hatte der Browser-Tab gar keins. **(3)** Die Tab-Titel der Unterseiten tragen jetzt den Namen („Fotografie · Tobias Imhof“), passend zur Link-Vorschau. |
 | **v67** | **Eckige Fotos und kein Orange im Portfolio** (Fahrplan Punkt 3 und 5). Fotos, Clips, Startbild und Lightbox runden nur noch mit `--r-img: 2px` statt 10 bis 12 px. `--accent` ist hellgrau (`#c8c8ce`, Hover-Rahmen und Fokusring), `--accent-2` weiß (Rollen-Zeilen, Links). Tote Regeln raus: `.ph` samt Seitenverhältnis-Klassen, `.gal` und `.btn`. **Die App behält ihr Orange vorerst**, dort zeigt es an, wo man ist, und wird erst mit dem Schrift-Umbau (Punkt 7) angefasst. |
