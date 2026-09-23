@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v68**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v69**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -65,7 +65,9 @@ in Fotografie und Videografie entstanden ist.
 > oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
 > Feinschliff**, als nummerierter Fahrplan in sieben Punkten. Punkt 1 (404-Seite, v65) und
 > Punkt 2 (Link-Vorschau, v66) sind erledigt, 3 und 5 in v67, 4 und 6 in v68.
-> **Übrig ist nur noch Punkt 7**, Archivo und weniger Orange in der App.
+> Punkt 7 (Archivo und weniger Orange in der App) in v69. **Der Fahrplan ist damit
+> durch.** Mögliche Kleinigkeit danach: die grauen Versalien-Etiketten in der App
+> („LEKTION 1 · …“, „EMPFEHLUNG FÜR DIESES MOTIV“) wie im Portfolio normal setzen.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -199,7 +201,9 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
 4. **Ruhigere Oberfläche**, **gebaut in v68** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
    Zwischenüberschriften normal statt grauer Versalien. Betrifft alle Seiten, mit
    Screenshots abstimmen.
-5. **Akzent zurücknehmen**, **im Portfolio gebaut in v67**, die App folgt mit Punkt 7: Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
+5. **Akzent zurücknehmen**, **im Portfolio gebaut in v67, in der App in v69**
+   (nur Bedienelemente: Modus-Umschalter, Untertitel, aktive Lektion, untere Leiste;
+   in Grafiken, Empfehlungen und Rezepten bleibt die Farbe, dort ist sie Inhalt): Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
    aktiven Knöpfen. Auf Weiß oder Grau stellen, dann tragen allein die Bilder Farbe.
 6. **Favicon und App-Icons neu**, **gebaut in v68.** Entscheidung des Nutzers:
    **„TI“**, weiß auf Schwarz, in Archivo 700 bei 86 % Breite wie die Überschriften.
@@ -208,8 +212,14 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
    alle PNGs plus `icons/favicon.svg`. Wer die App schon installiert hat, sieht das
    neue Icon erst nach einmal Entfernen und neu Hinzufügen, das Betriebssystem merkt
    sich das alte.
-7. **Archivo auch in der App** (Punkt 1, Rest). Der größte Brocken, 165 SVG-Texte
-   hängen an den Schriftmaßen, nur mit Audit-Screenshots.
+7. **Archivo auch in der App**, **gebaut in v69** (Punkt 1, Rest). Alle 52 Grafiken
+   mit Text (210 Beschriftungen, einige entstehen erst im Skript) in Archivo gerendert
+   und geprüft, automatisch (Text außerhalb der `viewBox`, Text auf Text, Text ragt
+   aus seinem Kasten) und per Übersichtsbild. Ergebnis: Archivo bei 96 % Breite ist
+   schmaler als der alte Stack, alles passt. Einziger echter Befund, schon vorher da:
+   „hoch · Reel“ im 9:16-Kasten, jetzt zweizeilig. **Merke für das Prüfskript:**
+   `getBBox()` rechnet `transform="rotate(…)"` nicht mit, gedrehte Achsentexte werden
+   fälschlich als „aus der viewBox“ gemeldet.
 
 **Kein Punkt auf dem Fahrplan: Impressum.** Für eine rein private Bewerbungsseite ohne
 geschäftlichen Zweck gilt die Impressumspflicht in der Regel nicht, und eine Anschrift
@@ -224,9 +234,7 @@ herleiten muss:
 1. **Der System-Font-Stack**, **erledigt in v56.** Er war der größte Verräter, weil
    jede generierte Seite genau den benutzt. Das Portfolio läuft jetzt auf **Archivo**,
    seit v57 in schmaler Breite.
-   **Achtung, die App unter `app/` hat ihn noch:** Dort hängen 165 SVG-Texte an den
-   Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
-   rutscht Text aus den handgezeichneten Kästen.
+   **Die App ist seit v69 auch auf Archivo**, mit geprüften SVG-Texten.
 2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient), **erledigt in v59**,
    **das Farbrad der Icons in v68.**
    Die Marke ist jetzt nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in
@@ -464,6 +472,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v69** | **Die App läuft auf Archivo** (Fahrplan Punkt 7), gleiche Datei wie das Portfolio, vorgeladen, Fließtext bei 96 %, Marke und Kopf-Navigation bei 86 % Breite. Alle 52 Grafiken mit Text vorher einzeln geprüft, siehe Fahrplan. **Bedienelemente ohne Orange:** Der aktive Modus-Knopf ist weiß mit dunkler Schrift, Untertitel „Mein Lerntagebuch …“ grau, die aktuelle Lektion hat einen grauen Rahmen und eine weiße Nummer, die untere Leiste markiert weiß. Farbe in Grafiken, Empfehlungskästen und Rezepten bleibt, dort ist sie Inhalt. „hoch · Reel“ im Seitenverhältnis-Bild zweizeilig, es ragte schon immer aus dem schmalen Kasten. Geprüft in fünf Ansichten (Lektion, Berater, Farben, Rezepte, Video-Berater) bei 390 px, dazu Startseite bei 1280 px: kein Überlauf, keine Fehler. |
 | **v68** | **Ruhigere Oberfläche und eigenes Icon** (Fahrplan Punkt 4 und 6). **(1)** Die Kacheln der Startseite sind keine Karten mehr, sondern ein Begriff unter einer feinen Linie mit Pfeil, wie ein Register. Beim Darüberfahren wird die Linie weiß und der Pfeil rückt nach rechts. Die Karten der Videoseite haben keinen Rahmen und keinen hellen Grund mehr, der Clip ist der Kasten. Zwischenüberschriften („Der Moment“, „Worum es ging“) stehen normal gesetzt statt in grauen Versalien, die Stichworte als Zeile mit Mittelpunkt statt als Pillen. **(2)** Favicon und App-Icons zeigen **„TI“** weiß auf Schwarz statt des Farbrads, dazu erstmals ein echtes Favicon (`favicon.svg` plus 32er PNG). Vorher hatte der Browser-Tab gar keins. **(3)** Die Tab-Titel der Unterseiten tragen jetzt den Namen („Fotografie · Tobias Imhof“), passend zur Link-Vorschau. |
 | **v67** | **Eckige Fotos und kein Orange im Portfolio** (Fahrplan Punkt 3 und 5). Fotos, Clips, Startbild und Lightbox runden nur noch mit `--r-img: 2px` statt 10 bis 12 px. `--accent` ist hellgrau (`#c8c8ce`, Hover-Rahmen und Fokusring), `--accent-2` weiß (Rollen-Zeilen, Links). Tote Regeln raus: `.ph` samt Seitenverhältnis-Klassen, `.gal` und `.btn`. **Die App behält ihr Orange vorerst**, dort zeigt es an, wo man ist, und wird erst mit dem Schrift-Umbau (Punkt 7) angefasst. |
 | **v66** | **Link-Vorschau (Open Graph)** auf Startseite, Fotografie, Videografie und App, je mit eigenem Bild, Titel und Satz. Die Titel in der Vorschau tragen den Namen („Fotografie · Tobias Imhof“), nicht die Marke, weil der Empfänger einen Menschen erwartet und keine App. Die Beschreibung der App ist dabei neu: „Mein Lerntagebuch zu Bild, Video und Farbe, selbst gebaut als Web-App.“ statt des alten Produktsatzes. Punkt 8 (Unterschrift) ist vom Fahrplan gestrichen, Nutzer-Entscheidung. **Nicht geprüft:** die echte Vorschau bei WhatsApp oder Teams, die Umgebung erreicht `github.io` nicht. Lokal geprüft: alle Tags lesbar, alle vier Bilder werden als JPEG ausgeliefert. |
