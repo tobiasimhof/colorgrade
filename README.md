@@ -44,13 +44,15 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v59**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v61**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
 >
-> **Das Mannschaftsfoto ist seit v60 drin.** Offen sind nur noch die **zwei
-> Video-Dateien** (in Canva geschnitten, beide unter 30 Sekunden, einer davon 22).
+> **Das Mannschaftsfoto ist seit v60 drin, die Fotografie-Seite ist fertig.** Seit v61
+> läuft der Clip **„Match Cut im Wohnzimmer“**. Offen ist nur noch der Clip **„Atmosphäre
+> auf den Beat“**: Die Canva-Datei wiegt 32 MB, der Upload im Chat schafft 30 MB, der
+> Nutzer exportiert ihn kleiner. Er wird dann wie der erste auf etwa 5 MB gebracht.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -115,15 +117,37 @@ Lichtrichtung stimmte, die Hauthelligkeit lag über alle drei Reihen bei 134, 12
   dem Bild halten, die brennen aus.
 - **15 bis 20 Auslösungen**, einer blinzelt immer.
 
-Danach wie alle anderen: Beschnitt **4:5**, Schwarzpunkt unter 12, Weißpunkt über 245,
-kein Kanal über 2 Prozent am Anschlag, Hautton R minus G zwischen 35 und 40. Es gehört
-in den Abschnitt „Das Porträt" und macht daraus eine Zweierreihe.
+Danach wie alle anderen: Schwarzpunkt unter 12, Weißpunkt über 245, kein Kanal über
+2 Prozent am Anschlag, Hautton R minus G zwischen 35 und 40. Beschnitt 16:9 bei einer
+Gruppe, 4:5 bei einem Einzelnen.
 
-**Schritt 3 · Videografie** (Texte stehen seit v48)
+**Schritt 3 · Videografie** (Texte seit v48, erster Clip seit v61)
 Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
-Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). Offen sind nur
-noch die Dateien: nach `assets/video/`, längere über einen Hoster. Grenze bei
-GitHub: 100 MB je Datei. Länge und Dateigröße sind beim Nutzer erfragt.
+Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). **Der Match Cut
+läuft**, `assets/video/match-cut.mp4` mit Vorschaubild `assets/img/match-cut-poster.webp`.
+**Offen ist der Beat-Clip**, er ersetzt in der ersten Karte den Platzhalter „Clip folgt“,
+danach fliegt der Hinweiskasten unten auf der Seite raus.
+
+So kommt ein Clip herein, damit der nächste gleich aussieht:
+- **Webfassung mit ffmpeg:** `ffmpeg -i quelle.mp4 -c:v libx264 -preset slow -crf 23
+  -profile:v high -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k ziel.mp4`.
+  Aus 23 MB Canva-Export (8 Mbit/s) wurden so 5,4 MB bei SSIM 0,987, also sichtbar
+  gleich. **Ziel 5 bis 10 MB je Clip**, sonst lädt es am Handy über Mobilfunk zäh.
+  `+faststart` ist Pflicht: Es stellt den Index an den Dateianfang, sonst muss der
+  Browser erst die ganze Datei laden, bevor das erste Bild kommt.
+- **ffmpeg fehlt im Container.** `pip install imageio-ffmpeg` bringt eine fertige
+  Programmdatei mit.
+- **Vorschaubild** als WebP aus einem ruhigen Bild des Clips, bei `preload="none"` ist
+  es das Einzige, was vor dem Klick lädt. Beim Match Cut bewusst ein Bild ohne nackte
+  Füße (die Schuhe, wie sie hingestellt werden), damit der erste Eindruck die Übung
+  ist und nicht der Mensch.
+- **Vorher durchsehen**, bei Drehs zu Hause besonders: nichts mit Anschrift, keine
+  Post, keine Familienfotos im Bild. Beim Match Cut geprüft, nichts gefunden.
+- **Testen:** Playwrights Chromium hat **keinen H.264-Decoder** (`canPlayType` leer,
+  Fehlercode 4). Das ist kein Fehler der Datei, Chrome, Safari und Firefox spielen sie.
+  Die Datei darum mit `ffmpeg -v error -i clip.mp4 -f null -` prüfen.
+- Der Ton des Match Cuts ist leise (Mittel −37 dB, Spitze −26 dB), das ist Raumton
+  aus dem Wohnzimmer und so gelassen.
 
 **Schritt 4 · Apps** (erledigt in v47)
 Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Das
@@ -385,6 +409,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v61** | **Der erste Clip läuft: „Match Cut im Wohnzimmer“.** Der Canva-Export (23 MB, 1280 × 720, 30 fps, 22,9 s) ist auf **5,4 MB** gebracht, H.264 mit CRF 23 und `+faststart`, bei SSIM 0,987 gegen das Original. Vorschaubild `match-cut-poster.webp` (27 KB) zeigt die hingestellten Schuhe, bewusst ohne die nackten Füße. Die kommen im Clip nur kurz und als Teil der Übung vor (vorher barfuß, nachher in Schuhen), das ist für die Bewerbung in Ordnung. Das Wohnzimmer ist durchgesehen, nichts Privates im Bild. **Service-Worker:** Videos laufen jetzt an ihm vorbei. Der Browser holt ein Video in Stücken (Range-Anfrage, Antwort 206), und die alte Regel „erst aus dem Cache“ hätte die ganze Datei geliefert, woran Safari scheitert. Vorgeladen werden Clips auch nicht, 5 MB gehören nicht in den Offline-Speicher; das Vorschaubild schon. Der Hinweiskasten sagt nur noch, dass der Beat-Clip folgt. In der README drei veraltete Stellen nachgezogen (Stand v59, Flutlicht-Brief mit 4:5 für das Mannschaftsfoto, „Länge erfragt“). |
 | **v60** | **Das Mannschaftsfoto ist drin, die Fotografie-Seite ist fertig** (sieben Bilder). Es steht als **breites Schlussbild** in einem eigenen Abschnitt „Die Mannschaft" am Ende der Strecke. Der alte Plan (4:5 neben dem Spielerporträt) ist damit hinfällig, der Nutzer hat im Querformat aufgenommen, und das ist für drei Reihen Spieler richtig. **Messung der Bearbeitung, vorher gegen nachher:** Weißpunkt 232 → **254**, Rotkanal auf null 4,16 % → **0,15 %**, Schwarzpunkt 3 → 5, Haut R minus G +13 Stufen an denselben Pixeln gemessen, kein Kanal über 0,74 % am oberen Anschlag. Alle Projektgrenzen eingehalten. **Neu im Skript:** `scripts/make_photos.py` nimmt jetzt je Bild eine eigene WebP-Qualität. Nötig geworden, weil das Korn von ISO 6400 sich schlecht komprimieren lässt: Mit der Normalqualität 82 wog die Datei 448 KB, mit 74 sind es 325 KB bei im Mittel 3,9 Helligkeitsstufen Unterschied im Gesichtsband. Der Hinweiskasten „Noch offen: Ein Mannschaftsfoto" ist von der Seite verschwunden. |
 | **v59** | **Drei Punkte aus dem Nutzer-Feedback zur Startseite.** **(1)** Das Torwartbild ist raus, es steht jetzt ein **Zweikampf** dort. Begründung des Nutzers, und sie stimmt: Bei einem einzelnen Menschen im Bild liest der Betrachter, das sei der Bewerber. Bei zwei Spielern im Duell ist klar, dass es die Arbeit ist und nicht das Motiv. **(2)** Das Bild ist deutlich kleiner (280 px statt 360 px Spaltenbreite, feste Deckelung per `max-width`). Grund war ein echter Fehler: Auf dem **Tablet im Querformat** waren die Kacheln unten abgeschnitten, und die Kacheln sind die Navigation der Seite. Der Kopfbereich hat jetzt auch weniger Polsterung. Nachgemessen mit Playwright bei 1024, 1112, 1180 und 1366 px Breite: Die Kacheln enden bei 591 px und damit über 100 px vor der Kante. Am Handy liegt die dritte Kachel weiter unter der Falz, das ist dort in Ordnung und ein Hinweis zum Weiterscrollen. **(3)** Der Regenbogen-Punkt ist weg, die Marke ist nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in der App. **Achtung:** Die App-Icons unter `icons/` sind weiter ein Farbrad, siehe „Erscheinungsbild". Nebenbei: Die zweite Sorge des Nutzers, die Startseite könne nach reinem Fotoportfolio aussehen, löst nicht das Layout, sondern das Material. Sobald die zwei Clips liegen, gehört dort ein Standbild aus einem Clip hin. |
 | **v58** | **Erster Eindruck, Nutzer-Wunsch:** Die orangen Strich-Icons raus, die Begriffe groß, und mehr Leben in das schwarz-weiße Bild. **(1)** Die Kacheln tragen nur noch den Begriff (`clamp(21px, 5.6vw, 27px)` statt 15 px) und darunter die Erklärung. Eine Mindesthöhe hatten sie zwischendurch auch, die ist wieder raus: Ohne Symbol reißt sie Begriff und Erklärung nur auseinander. **(2)** Das Leben kommt nicht aus Farbe in der Oberfläche, sondern aus einem Foto. Im Kopfbereich steht ab 900 px links der Name und rechts der **Torwart-Faustgruß**, am Handy untereinander. Bewusst der Faustgruß und nicht das Aufmacherbild der Galerie: ein Gesicht, ein Lächeln, und es wiederholt nicht das erste Bild der Fotografie-Seite. Das Foto behält sein 4:5 und wird **nicht** beschnitten, der Beschnitt ist Sache der Bildbearbeitung und nicht des Layouts. Es lädt mit `fetchpriority="high"`, hat feste Maße gegen das Springen beim Laden und nimmt über `srcset` am Handy die 639er und am Rechner die 1278er Fassung. **Damit ist die Oberfläche der Startseite komplett schwarz und weiß**, der einzige Rest Farbe ist der Regenbogen-Punkt der Marke, siehe „Erscheinungsbild". Die toten Regeln `.tile .ti` und `.tt` sind mit raus. |
@@ -458,7 +483,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | `index.html` | Portfolio-Startseite: Name, ein Satz, drei Kacheln |
 | `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
-| `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio |
+| `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio (Clips als H.264-MP4, etwa 5 MB) |
 | `assets/fonts/` | Archivo als variable WebFont-Datei (Gewicht und Breite) plus OFL-Lizenz |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
 | `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |

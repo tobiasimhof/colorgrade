@@ -1,7 +1,7 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v60';
+const CACHE = 'colorgrade-v61';
 const ASSETS = [
   './',
   './index.html',
@@ -27,7 +27,8 @@ const ASSETS = [
   './assets/img/torwart-jubel.webp',
   './assets/img/trainer.webp',
   './assets/img/spielerportraet.webp',
-  './assets/img/mannschaft.webp'
+  './assets/img/mannschaft.webp',
+  './assets/img/match-cut-poster.webp'
 ];
 
 // GitHub Pages liefert mit `Cache-Control: max-age=600` aus. Der Browser darf
@@ -86,7 +87,13 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
-  if (new URL(req.url).origin !== self.location.origin) return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+  // Videos laufen am Service-Worker vorbei. Der Browser holt sie in Stuecken
+  // (Range-Anfragen, Antwort 206), und eine Antwort aus dem Cache waere die
+  // ganze Datei: Safari spielt das Video dann gar nicht ab. Vorgeladen werden
+  // sie auch nicht, fuenf MB pro Clip gehoeren nicht in den Offline-Speicher.
+  if (/\.(mp4|webm|mov)$/i.test(url.pathname)) return;
 
   const isHTML = req.mode === 'navigate' ||
     (req.headers.get('accept') || '').includes('text/html');
