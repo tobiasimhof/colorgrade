@@ -111,57 +111,56 @@ h1, h2, h3, .brand, .page-h, .sec-h, .site-nav a, .tile .tn, .card h3,
 .page-h { margin: 0 0 10px; font-size: 27px; letter-spacing: -.025em; font-weight: 700; }
 .lead { margin: 0 0 26px; font-size: 15px; color: var(--muted); max-width: 40em; }
 .sec-h {
-  margin: 34px 0 12px; font-size: 12px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+  margin: 40px 0 14px; font-size: 19px; font-weight: 650;
+  letter-spacing: -.015em; color: var(--text);
 }
 
 /* ---------- Kachel-Gitter der Startseite ---------- */
-.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Keine Karten mehr (v68): Jede Kachel ist ein Begriff unter einer feinen Linie,
+   wie ein Register. Beim Darueberfahren wird die Linie weiss und der Pfeil
+   rueckt nach rechts, das zeigt, dass es ein Link ist. */
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; }
 .tile {
   display: flex; flex-direction: column; gap: 6px;
-  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 16px 16px 15px; text-decoration: none; color: var(--text);
-  transition: border-color .15s, background .15s, transform .15s;
+  border-top: 1px solid var(--line);
+  padding: 14px 0 0; text-decoration: none; color: var(--text);
+  transition: border-color .15s;
 }
+.tile .tn::after { content: "\2192"; display: inline-block; margin-left: .3em; font-weight: 400; color: var(--muted);
+  transition: transform .15s, color .15s; }
 /* Die dritte Kachel liegt am Handy allein in der zweiten Zeile und nimmt
    deshalb die ganze Breite. */
 .tile.wide { grid-column: 1 / -1; }
 @media (min-width: 720px) {
-  .tiles { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  /* Keine Mindesthoehe mehr: Ohne Symbol ist die Kachel nur noch Begriff plus
-     Erklaerung, eine erzwungene Hoehe reisst die beiden auseinander. */
-  .tile { padding: 20px 18px 18px; }
+  .tiles { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .tile { padding-top: 18px; }
   .tile.wide { grid-column: auto; }
   .hero h1 { font-size: 54px; }
 }
-.tile:hover, .tile:focus-visible { border-color: var(--accent); background: var(--bg-card-2); }
-.tile:active { transform: scale(.985); }
+.tile:hover, .tile:focus-visible { border-color: var(--text); }
+.tile:hover .tn::after, .tile:focus-visible .tn::after { transform: translateX(4px); color: var(--text); }
+.tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 /* Der Begriff ist jetzt das Auffaellige an der Kachel, nicht mehr ein Symbol. */
 .tile .tn { font-size: clamp(21px, 5.6vw, 27px); font-weight: 700; letter-spacing: -.025em; line-height: 1.08; }
 .tile .td { font-size: 13px; color: var(--muted); line-height: 1.45; }
 
 /* ---------- Karten ---------- */
-.cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
-.card {
-  background: var(--bg-card); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 18px;
-}
-.card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 650; }
-.card .role { font-size: 12px; color: var(--accent-2); font-weight: 600; margin: 0 0 10px; }
+/* Ohne Rahmen und hellen Grund (v68): Der Clip ist der Kasten, der Text steht
+   frei darunter. Getrennt werden die zwei Spalten allein durch Abstand. */
+.cards { display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; gap: 36px; } }
+.card { min-width: 0; }
+.card h3 { margin: 0 0 4px; font-size: 19px; font-weight: 650; letter-spacing: -.015em; }
+.card .role { font-size: 13px; color: var(--muted); font-weight: 500; margin: 0 0 10px; }
 .card p { margin: 0 0 12px; font-size: 13.5px; color: #dcdce0; }
 .card p:last-child { margin-bottom: 0; }
 /* Clip in der Karte: gleiche Ecken wie die Fotos, schwarzer Grund, solange er laedt. */
 .card .clip { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
   margin: 0 0 14px; border-radius: var(--r-img); background: #000; }
-.card .what { margin: 0 0 4px; font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .05em; color: var(--muted); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.tags span {
-  font-size: 11px; font-weight: 600; color: var(--muted);
-  background: var(--bg-card-2); border: 1px solid var(--line);
-  padding: 3px 9px; border-radius: 999px;
-}
+.card .what { margin: 16px 0 3px; font-size: 13.5px; font-weight: 650; color: var(--text); }
+/* Stichworte als schlichte Zeile statt Pillen, getrennt durch einen Mittelpunkt. */
+.tags { display: flex; flex-wrap: wrap; margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+.tags span + span::before { content: "\00b7"; margin: 0 8px; }
 
 /* ---------- Foto-Galerie ---------- */
 /* Eine Spalte am Handy: Fotos sollen gross sein, dafuer scrollt man laenger.

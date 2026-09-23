@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v66**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v68**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -64,8 +64,8 @@ in Fotografie und Videografie entstanden ist.
 > Schwarzweiß). Seit v64 steht ein Standbild daraus auf der Startseite, und die App hat
 > oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
 > Feinschliff**, als nummerierter Fahrplan in sieben Punkten. Punkt 1 (404-Seite, v65) und
-> Punkt 2 (Link-Vorschau, v66) sind erledigt, **als Nächstes 3 und 5 zusammen**
-> (eckige Fotos, Orange zurücknehmen), mit Vorher-Nachher-Bild für den Nutzer.
+> Punkt 2 (Link-Vorschau, v66) sind erledigt, 3 und 5 in v67, 4 und 6 in v68.
+> **Übrig ist nur noch Punkt 7**, Archivo und weniger Orange in der App.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -196,14 +196,18 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
    merkt sich eine Vorschau lange, wer sie neu sehen will, hängt `?1` an den Link.
 3. **Eckige Fotos**, **gebaut in v67** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
    raus oder auf 2 px. Eine CSS-Zeile, Nutzer sieht vorher und nachher.
-4. **Ruhigere Oberfläche** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
+4. **Ruhigere Oberfläche**, **gebaut in v68** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
    Zwischenüberschriften normal statt grauer Versalien. Betrifft alle Seiten, mit
    Screenshots abstimmen.
 5. **Akzent zurücknehmen**, **im Portfolio gebaut in v67**, die App folgt mit Punkt 7: Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
    aktiven Knöpfen. Auf Weiß oder Grau stellen, dann tragen allein die Bilder Farbe.
-6. **Favicon und App-Icons neu** (Punkt 2, Rest). **Braucht eine Entscheidung:**
-   Vorschlag „TI“ oder „CG“ in Archivo, weiß auf Schwarz. Dann `scripts/make_icons.py`
-   anpassen, ein Lauf erzeugt alle Größen.
+6. **Favicon und App-Icons neu**, **gebaut in v68.** Entscheidung des Nutzers:
+   **„TI“**, weiß auf Schwarz, in Archivo 700 bei 86 % Breite wie die Überschriften.
+   `scripts/make_icons.py` liest die Umrisse direkt aus der Schriftdatei (fontTools,
+   `pip install fonttools brotli`) und zeichnet ohne Bildbibliothek, ein Lauf erzeugt
+   alle PNGs plus `icons/favicon.svg`. Wer die App schon installiert hat, sieht das
+   neue Icon erst nach einmal Entfernen und neu Hinzufügen, das Betriebssystem merkt
+   sich das alte.
 7. **Archivo auch in der App** (Punkt 1, Rest). Der größte Brocken, 165 SVG-Texte
    hängen an den Schriftmaßen, nur mit Audit-Screenshots.
 
@@ -223,17 +227,18 @@ herleiten muss:
    **Achtung, die App unter `app/` hat ihn noch:** Dort hängen 165 SVG-Texte an den
    Schriftmaßen, ein Tausch braucht einen eigenen Durchgang mit Screenshots, sonst
    rutscht Text aus den handgezeichneten Kästen.
-2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient), **erledigt in v59.**
+2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient), **erledigt in v59**,
+   **das Farbrad der Icons in v68.**
    Die Marke ist jetzt nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in
    der App. **Offen ist der gleiche Punkt an einer zweiten Stelle:** Die App-Icons unter
    `icons/` sind ein HSV-Farbrad (`scripts/make_icons.py`). Wer die App installiert hat,
    sieht es weiter auf dem Startbildschirm. Neues Zeichen erfordert eine Entscheidung
    des Nutzers, das Skript erzeugt die Icons dann in einem Lauf neu.
-3. **16 px runde Ecken an allem**, auch an den Fotos. Runde Bildecken lesen sich als
+3. **16 px runde Ecken an allem**, auch an den Fotos. **Fotos erledigt in v67.** Runde Bildecken lesen sich als
    App-Oberfläche, nicht als Fotografie.
 4. **Jeder Block ist eine umrandete Karte** (1 px Rahmen, runde Ecken, hellerer
-   Hintergrund). Standard-Optik von Dashboard-Templates.
-5. **Graue Versalien-Überschriften** (`.sec-h`). Gleiche Herkunft.
+   Hintergrund). Standard-Optik von Dashboard-Templates. **Erledigt in v68.**
+5. **Graue Versalien-Überschriften** (`.sec-h`). Gleiche Herkunft. **Erledigt in v68.**
 6. **Strich-Icons** auf den Startseiten-Kacheln (Lucide-Look), **erledigt in v58.**
    Die Kacheln tragen jetzt nur noch den Begriff, dafür groß.
 
@@ -459,6 +464,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v68** | **Ruhigere Oberfläche und eigenes Icon** (Fahrplan Punkt 4 und 6). **(1)** Die Kacheln der Startseite sind keine Karten mehr, sondern ein Begriff unter einer feinen Linie mit Pfeil, wie ein Register. Beim Darüberfahren wird die Linie weiß und der Pfeil rückt nach rechts. Die Karten der Videoseite haben keinen Rahmen und keinen hellen Grund mehr, der Clip ist der Kasten. Zwischenüberschriften („Der Moment“, „Worum es ging“) stehen normal gesetzt statt in grauen Versalien, die Stichworte als Zeile mit Mittelpunkt statt als Pillen. **(2)** Favicon und App-Icons zeigen **„TI“** weiß auf Schwarz statt des Farbrads, dazu erstmals ein echtes Favicon (`favicon.svg` plus 32er PNG). Vorher hatte der Browser-Tab gar keins. **(3)** Die Tab-Titel der Unterseiten tragen jetzt den Namen („Fotografie · Tobias Imhof“), passend zur Link-Vorschau. |
 | **v67** | **Eckige Fotos und kein Orange im Portfolio** (Fahrplan Punkt 3 und 5). Fotos, Clips, Startbild und Lightbox runden nur noch mit `--r-img: 2px` statt 10 bis 12 px. `--accent` ist hellgrau (`#c8c8ce`, Hover-Rahmen und Fokusring), `--accent-2` weiß (Rollen-Zeilen, Links). Tote Regeln raus: `.ph` samt Seitenverhältnis-Klassen, `.gal` und `.btn`. **Die App behält ihr Orange vorerst**, dort zeigt es an, wo man ist, und wird erst mit dem Schrift-Umbau (Punkt 7) angefasst. |
 | **v66** | **Link-Vorschau (Open Graph)** auf Startseite, Fotografie, Videografie und App, je mit eigenem Bild, Titel und Satz. Die Titel in der Vorschau tragen den Namen („Fotografie · Tobias Imhof“), nicht die Marke, weil der Empfänger einen Menschen erwartet und keine App. Die Beschreibung der App ist dabei neu: „Mein Lerntagebuch zu Bild, Video und Farbe, selbst gebaut als Web-App.“ statt des alten Produktsatzes. Punkt 8 (Unterschrift) ist vom Fahrplan gestrichen, Nutzer-Entscheidung. **Nicht geprüft:** die echte Vorschau bei WhatsApp oder Teams, die Umgebung erreicht `github.io` nicht. Lokal geprüft: alle Tags lesbar, alle vier Bilder werden als JPEG ausgeliefert. |
 | **v65** | **404-Seite** und der **Fahrplan für den Feinschliff** (Schritt 5, acht Punkte, geordnet von „ohne Entscheidung“ bis „aufwendig“). Die Fehlerseite hat den gleichen Kopf wie alle Seiten, den Satz „Diese Seite gibt es nicht“ und die drei Kacheln. Geprüft mit einer nachgestellten falschen Adresse `/colorgrade/a/b/c`: Schrift, CSS und alle acht Links lösen richtig auf, das geht nur über `<base href>`. Nicht im `ASSETS`-Cache, offline hilft sie niemandem. |

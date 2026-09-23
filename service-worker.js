@@ -1,7 +1,7 @@
 // Offline-Cache für ColorGrade (Portfolio + App).
 // Bei jeder Veröffentlichung die Versionsnummer erhöhen, damit Geräte
 // automatisch die neue Fassung bekommen.
-const CACHE = 'colorgrade-v67';
+const CACHE = 'colorgrade-v68';
 const ASSETS = [
   './',
   './index.html',
@@ -16,6 +16,8 @@ const ASSETS = [
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png',
+  './icons/favicon.svg',
+  './icons/favicon-32.png',
   './assets/img/spieltag-schuss-t.webp',
   './assets/img/spieltag-zweikampf-t.webp',
   './assets/img/torwart-jubel-t.webp',
