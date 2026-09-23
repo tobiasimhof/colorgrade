@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v64**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v65**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -63,7 +63,8 @@ in Fotografie und Videografie entstanden ist.
 > Cut im Wohnzimmer“ (v61) und „Atmosphäre auf den Beat“ (v62, ein Rheinhessen-Film in
 > Schwarzweiß). Seit v64 steht ein Standbild daraus auf der Startseite, und die App hat
 > oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
-> Feinschliff** (Open-Graph-Vorschaubild, Favicon, 404-Seite) und das Erscheinungsbild.
+> Feinschliff**, als nummerierter Fahrplan in acht Punkten. Punkt 1 (404-Seite) ist seit
+> v65 erledigt, **als Nächstes Punkt 2, die Link-Vorschau.**
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -173,10 +174,38 @@ gebaut in HTML, CSS und JavaScript.“ Das
 Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus, der
 Bereich gehört allein ColorGrade.
 
-**Schritt 5 · Feinschliff**
-Über mich und Kontakt sind seit v56 von der Startseite verschwunden, E-Mail und
-Werdegang stehen im Lebenslauf. Offen: Vorschaubild für geteilte Links (Open Graph),
-eigenes Favicon, 404-Seite.
+**Schritt 5 · Feinschliff: der Fahrplan zur seriösen Seite** (festgelegt in v65)
+Inhalte sind fertig, ab hier geht es nur noch um den Eindruck. Reihenfolge: erst was
+ohne Entscheidung des Nutzers geht, dann was eine kleine Entscheidung braucht, zum
+Schluss das Aufwendige. Abhaken, wenn erledigt:
+
+1. **404-Seite**, **erledigt in v65.** `404.html` im Wurzelordner, GitHub Pages liefert
+   sie für jede falsche Adresse aus. Gleicher Kopf, ein Satz, die drei Kacheln.
+   **Pflicht:** `<base href="/colorgrade/">`, sonst zeigen die Pfade bei einer falschen
+   Adresse wie `/colorgrade/a/b/c` ins Leere. Heißt das Repo einmal anders oder kommt
+   eine eigene Domain, muss diese Zeile mit.
+2. **Link-Vorschau (Open Graph).** Wenn jemand den Link per Mail, WhatsApp oder Teams
+   weiterreicht, erscheint eine Karte mit Bild, Name und Satz statt einer nackten
+   Adresse. Bild: die Trauben als 1200 × 630. Braucht absolute Adressen
+   (`https://tobiasimhof.github.io/colorgrade/…`). Keine Entscheidung nötig.
+3. **Eckige Fotos** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
+   raus oder auf 2 px. Eine CSS-Zeile, Nutzer sieht vorher und nachher.
+4. **Ruhigere Oberfläche** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
+   Zwischenüberschriften normal statt grauer Versalien. Betrifft alle Seiten, mit
+   Screenshots abstimmen.
+5. **Akzent zurücknehmen:** Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
+   aktiven Knöpfen. Auf Weiß oder Grau stellen, dann tragen allein die Bilder Farbe.
+6. **Favicon und App-Icons neu** (Punkt 2, Rest). **Braucht eine Entscheidung:**
+   Vorschlag „TI“ oder „CG“ in Archivo, weiß auf Schwarz. Dann `scripts/make_icons.py`
+   anpassen, ein Lauf erzeugt alle Größen.
+7. **Archivo auch in der App** (Punkt 1, Rest). Der größte Brocken, 165 SVG-Texte
+   hängen an den Schriftmaßen, nur mit Audit-Screenshots.
+8. **Optional:** Unterschrift im Fuß, sobald der Nutzer sie abfotografiert.
+
+**Kein Punkt auf dem Fahrplan: Impressum.** Für eine rein private Bewerbungsseite ohne
+geschäftlichen Zweck gilt die Impressumspflicht in der Regel nicht, und eine Anschrift
+widerspräche der Regel „keine privaten Daten“. Wird die Seite einmal gewerblich (Aufträge
+als Fotograf), neu prüfen.
 
 **Erscheinungsbild** (analysiert in v55, Punkt 1 erledigt in v56)
 Der Nutzer findet, dass Schrift, Aufmachung und Bedienelemente „nach KI" aussehen. Die
@@ -426,6 +455,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v65** | **404-Seite** und der **Fahrplan für den Feinschliff** (Schritt 5, acht Punkte, geordnet von „ohne Entscheidung“ bis „aufwendig“). Die Fehlerseite hat den gleichen Kopf wie alle Seiten, den Satz „Diese Seite gibt es nicht“ und die drei Kacheln. Geprüft mit einer nachgestellten falschen Adresse `/colorgrade/a/b/c`: Schrift, CSS und alle acht Links lösen richtig auf, das geht nur über `<base href>`. Nicht im `ASSETS`-Cache, offline hilft sie niemandem. |
 | **v64** | **Zwei Wünsche des Nutzers.** **(1)** Auf der Startseite steht statt des Zweikampfs ein **Standbild aus dem Rheinhessen-Clip**: Weintrauben im Gegenlicht, schwarzweiß, bei 5,4 s aus dem Canva-Export genommen und auf **4:5** geschnitten (576 × 720, mehr gibt ein 720p-Clip nicht her, reicht aber für 280 px auch bei doppelter Pixeldichte), 19 KB. Darunter die Zeile „Standbild aus ‚Rheinhessen‘ · Aufnahmen: Pixabay“, weil fremdes Material auf der Seite immer benannt wird. Die Kacheln enden bei 1024 × 768 bei 617 px, liegen also weiter über der Falz. **(2)** Die App hat oben ihren **einen Satz** wie Fotografie und Videografie: „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen Alltag. ColorGrade ist eins davon …“ Er steht bewusst nicht im festen Kopf, sondern als erstes Element in `main`, sonst würde er auf jedem Bereich Platz kosten. Der alte Kommentar im HTML zum Zweikampf ist mit ersetzt. |
 | **v63** | Auf der Karte „Atmosphäre auf den Beat“ steht jetzt, woher die Bilder kommen: „Die Aufnahmen sind von Pixabay, ausgesucht, geschnitten und in Schwarzweiß gesetzt habe ich sie selbst.“ Begründung: Wer aus der Medienbranche kommt, erkennt Stock-Material. Offen benannt wirkt es ehrlich, selbst entdeckt fällt es auf die Arbeit zurück. |
 | **v62** | **Der zweite Clip läuft, die Videografie-Seite ist fertig.** „Atmosphäre auf den Beat“ ist ein Film über Rheinhessen in Schwarzweiß: Weinberg aus der Luft, Trauben im Gegenlicht, Lese, Fass, Keller, Abfüllung, Glas, Titel am Anfang und am Ende. Der Nutzer hat ihn in Canva auf 28 MB gebracht (dafür 1 bis 2 Sekunden gekürzt, jetzt 23,7 s), hier ist er auf **9,3 MB** gerechnet, CRF 26 statt 23, weil das Korn im Schwarzweiß sich schlechter packen lässt (CRF 23 hätte 14,8 MB ergeben). Ton vom Nutzer geprüft. Vorschaubild ist die Titeltafel „Rheinhessen“ (7 KB). Der Hinweiskasten „Noch offen“ ist weg und mit ihm die Regel `.note`, die nirgends mehr benutzt wird. |
@@ -502,6 +532,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 |-------|-------|
 | `index.html` | Portfolio-Startseite: Name, ein Satz, ein Standbild, drei Kacheln |
 | `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
+| `404.html` | Fehlerseite für falsche Adressen, mit `<base href="/colorgrade/">` |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio (Clips als H.264-MP4, etwa 5 MB) |
 | `assets/fonts/` | Archivo als variable WebFont-Datei (Gewicht und Breite) plus OFL-Lizenz |
