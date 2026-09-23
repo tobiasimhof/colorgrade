@@ -54,7 +54,7 @@ in Fotografie und Videografie entstanden ist.
 
 ## Offene Aufgaben für den nächsten Chat
 
-> Stand nach **v65**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
+> Stand nach **v66**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
 > und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
 > (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
 > Videografie-Texte stehen, die App ist entschlackt.
@@ -63,8 +63,9 @@ in Fotografie und Videografie entstanden ist.
 > Cut im Wohnzimmer“ (v61) und „Atmosphäre auf den Beat“ (v62, ein Rheinhessen-Film in
 > Schwarzweiß). Seit v64 steht ein Standbild daraus auf der Startseite, und die App hat
 > oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
-> Feinschliff**, als nummerierter Fahrplan in acht Punkten. Punkt 1 (404-Seite) ist seit
-> v65 erledigt, **als Nächstes Punkt 2, die Link-Vorschau.**
+> Feinschliff**, als nummerierter Fahrplan in sieben Punkten. Punkt 1 (404-Seite, v65) und
+> Punkt 2 (Link-Vorschau, v66) sind erledigt, **als Nächstes 3 und 5 zusammen**
+> (eckige Fotos, Orange zurücknehmen), mit Vorher-Nachher-Bild für den Nutzer.
 >
 > **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
 > hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
@@ -174,7 +175,7 @@ gebaut in HTML, CSS und JavaScript.“ Das
 Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus, der
 Bereich gehört allein ColorGrade.
 
-**Schritt 5 · Feinschliff: der Fahrplan zur seriösen Seite** (festgelegt in v65)
+**Schritt 5 · Feinschliff: der Fahrplan zur seriösen Seite** (festgelegt in v65, sieben Punkte)
 Inhalte sind fertig, ab hier geht es nur noch um den Eindruck. Reihenfolge: erst was
 ohne Entscheidung des Nutzers geht, dann was eine kleine Entscheidung braucht, zum
 Schluss das Aufwendige. Abhaken, wenn erledigt:
@@ -184,10 +185,15 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
    **Pflicht:** `<base href="/colorgrade/">`, sonst zeigen die Pfade bei einer falschen
    Adresse wie `/colorgrade/a/b/c` ins Leere. Heißt das Repo einmal anders oder kommt
    eine eigene Domain, muss diese Zeile mit.
-2. **Link-Vorschau (Open Graph).** Wenn jemand den Link per Mail, WhatsApp oder Teams
-   weiterreicht, erscheint eine Karte mit Bild, Name und Satz statt einer nackten
-   Adresse. Bild: die Trauben als 1200 × 630. Braucht absolute Adressen
-   (`https://tobiasimhof.github.io/colorgrade/…`). Keine Entscheidung nötig.
+2. **Link-Vorschau (Open Graph)**, **erledigt in v66.** Wird ein Link per Mail,
+   WhatsApp oder Teams geteilt, erscheint eine Karte mit Bild, Titel und Satz. Jede
+   Seite hat ihr eigenes Bild in `assets/og/` (1200 × 630, JPEG, weil nicht jeder
+   Dienst WebP liest): Startseite die Trauben, Fotografie das Laufduell, Videografie
+   die Titeltafel „Rheinhessen“, App ein Bildschirmfoto der App (600 × 315 mit doppelter
+   Pixeldichte aufgenommen, sonst ist die Schrift in der Vorschau unlesbar). Alle
+   Adressen absolut auf `https://tobiasimhof.github.io/colorgrade/`, **bei einem neuen
+   GitHub-Namen oder einer eigenen Domain müssen alle `og:`-Zeilen mit.** WhatsApp
+   merkt sich eine Vorschau lange, wer sie neu sehen will, hängt `?1` an den Link.
 3. **Eckige Fotos** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
    raus oder auf 2 px. Eine CSS-Zeile, Nutzer sieht vorher und nachher.
 4. **Ruhigere Oberfläche** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
@@ -200,7 +206,6 @@ Schluss das Aufwendige. Abhaken, wenn erledigt:
    anpassen, ein Lauf erzeugt alle Größen.
 7. **Archivo auch in der App** (Punkt 1, Rest). Der größte Brocken, 165 SVG-Texte
    hängen an den Schriftmaßen, nur mit Audit-Screenshots.
-8. **Optional:** Unterschrift im Fuß, sobald der Nutzer sie abfotografiert.
 
 **Kein Punkt auf dem Fahrplan: Impressum.** Für eine rein private Bewerbungsseite ohne
 geschäftlichen Zweck gilt die Impressumspflicht in der Regel nicht, und eine Anschrift
@@ -256,9 +261,8 @@ Edlen ins Plakathafte, das war die Abwägung. **Pflicht:** Die Spanne
 `font-stretch: 62% 125%` muss im `@font-face`-Block stehen, sonst greift `font-stretch`
 an den Elementen nicht.
 
-**Material, das der Nutzer beisteuern könnte:** seine Unterschrift auf weißem Papier
-abfotografiert. Im Fuß der Seite wäre sie der stärkste Beleg dafür, dass hier ein
-Mensch gebaut hat.
+**Keine Unterschrift auf der Seite** (entschieden in v66): Sie steht schon in der
+Bewerbung, doppelt braucht es sie nicht.
 
 **Lehrstück aus der Bearbeitung des Mannschaftsfotos (v60):** Das Bild kam mit einem
 **Weißpunkt von 232** aus der Kamera, es gab also kein echtes Weiß, und der **Rotkanal
@@ -455,6 +459,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v66** | **Link-Vorschau (Open Graph)** auf Startseite, Fotografie, Videografie und App, je mit eigenem Bild, Titel und Satz. Die Titel in der Vorschau tragen den Namen („Fotografie · Tobias Imhof“), nicht die Marke, weil der Empfänger einen Menschen erwartet und keine App. Die Beschreibung der App ist dabei neu: „Mein Lerntagebuch zu Bild, Video und Farbe, selbst gebaut als Web-App.“ statt des alten Produktsatzes. Punkt 8 (Unterschrift) ist vom Fahrplan gestrichen, Nutzer-Entscheidung. **Nicht geprüft:** die echte Vorschau bei WhatsApp oder Teams, die Umgebung erreicht `github.io` nicht. Lokal geprüft: alle Tags lesbar, alle vier Bilder werden als JPEG ausgeliefert. |
 | **v65** | **404-Seite** und der **Fahrplan für den Feinschliff** (Schritt 5, acht Punkte, geordnet von „ohne Entscheidung“ bis „aufwendig“). Die Fehlerseite hat den gleichen Kopf wie alle Seiten, den Satz „Diese Seite gibt es nicht“ und die drei Kacheln. Geprüft mit einer nachgestellten falschen Adresse `/colorgrade/a/b/c`: Schrift, CSS und alle acht Links lösen richtig auf, das geht nur über `<base href>`. Nicht im `ASSETS`-Cache, offline hilft sie niemandem. |
 | **v64** | **Zwei Wünsche des Nutzers.** **(1)** Auf der Startseite steht statt des Zweikampfs ein **Standbild aus dem Rheinhessen-Clip**: Weintrauben im Gegenlicht, schwarzweiß, bei 5,4 s aus dem Canva-Export genommen und auf **4:5** geschnitten (576 × 720, mehr gibt ein 720p-Clip nicht her, reicht aber für 280 px auch bei doppelter Pixeldichte), 19 KB. Darunter die Zeile „Standbild aus ‚Rheinhessen‘ · Aufnahmen: Pixabay“, weil fremdes Material auf der Seite immer benannt wird. Die Kacheln enden bei 1024 × 768 bei 617 px, liegen also weiter über der Falz. **(2)** Die App hat oben ihren **einen Satz** wie Fotografie und Videografie: „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen Alltag. ColorGrade ist eins davon …“ Er steht bewusst nicht im festen Kopf, sondern als erstes Element in `main`, sonst würde er auf jedem Bereich Platz kosten. Der alte Kommentar im HTML zum Zweikampf ist mit ersetzt. |
 | **v63** | Auf der Karte „Atmosphäre auf den Beat“ steht jetzt, woher die Bilder kommen: „Die Aufnahmen sind von Pixabay, ausgesucht, geschnitten und in Schwarzweiß gesetzt habe ich sie selbst.“ Begründung: Wer aus der Medienbranche kommt, erkennt Stock-Material. Offen benannt wirkt es ehrlich, selbst entdeckt fällt es auf die Arbeit zurück. |
@@ -535,6 +540,7 @@ Das betrifft die App unter `app/`, nicht das Portfolio.
 | `404.html` | Fehlerseite für falsche Adressen, mit `<base href="/colorgrade/">` |
 | `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
 | `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio (Clips als H.264-MP4, etwa 5 MB) |
+| `assets/og/` | Vorschaubilder für geteilte Links, eins je Seite (1200 × 630) |
 | `assets/fonts/` | Archivo als variable WebFont-Datei (Gewicht und Breite) plus OFL-Lizenz |
 | `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
 | `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |
