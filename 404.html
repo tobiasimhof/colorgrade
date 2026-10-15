@@ -2,62 +2,37 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Seite nicht gefunden · Tobias Imhof</title>
-  <meta name="theme-color" content="#1c1c1e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ColorGrade</title>
   <meta name="robots" content="noindex" />
-  <!-- GitHub Pages liefert diese Seite fuer JEDE falsche Adresse aus, auch fuer
-       tief verschachtelte wie /colorgrade/a/b/c. Relative Pfade wuerden dort ins
-       Leere zeigen, deshalb loest base alle Links vom Wurzelordner des Repos auf. -->
-  <base href="/colorgrade/" />
-  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="preload" href="assets/fonts/archivo-wdth-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="theme-color" content="#1c1c1e" />
+  <!-- Bis v71 lagen hier auch das Portfolio und die App unter app/. Alte Links
+       (Lebenslauf, Lesezeichen, installierte App) landen jetzt auf dieser Seite
+       und werden weitergeleitet: Portfolio-Seiten ins Repo Portfolio, app/ auf
+       die Wurzel. Alles andere bekommt einen Link zur App. -->
+  <script>
+    (function () {
+      var p = location.pathname.replace(/^\/colorgrade\/?/i, '');
+      var portfolio = 'https://tobiasimhof.github.io/Portfolio/';
+      var ziel = null;
+      if (/^app(\/|$)/i.test(p)) ziel = '/colorgrade/';
+      else if (/^(fotografie|video)\.html$/i.test(p)) ziel = portfolio + p.toLowerCase();
+      else if (/^apps\.html$/i.test(p)) ziel = '/colorgrade/';
+      if (ziel) location.replace(ziel + location.hash);
+    })();
+  </script>
+  <style>
+    html, body { margin: 0; background: #131315; color: #f2f2f4; }
+    body { font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      padding: 48px 20px; max-width: 520px; margin: 0 auto; }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    p { color: #a0a0a8; margin: 0 0 16px; }
+    a { color: #f2f2f4; }
+  </style>
 </head>
 <body>
-
-  <header class="site-hd">
-    <div class="hd-in">
-      <a class="brand" href="index.html">ColorGrade</a>
-      <nav class="site-nav" aria-label="Bereiche">
-        <a href="fotografie.html">Fotografie</a>
-        <a href="video.html">Videografie</a>
-        <a href="app/index.html">Apps</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <h1 class="page-h">Diese Seite gibt es nicht</h1>
-    <p class="lead">Die Adresse ist falsch oder veraltet. Hier geht es weiter:</p>
-
-    <nav class="tiles" aria-label="Bereiche">
-
-      <a class="tile" href="fotografie.html">
-        <span class="tn">Fotografie</span>
-        <span class="td">Sport, Licht und der richtige Moment</span>
-      </a>
-
-      <a class="tile" href="video.html">
-        <span class="tn">Videografie</span>
-        <span class="td">Clips, Schnitt und Grading</span>
-      </a>
-
-      <a class="tile wide" href="app/index.html">
-        <span class="tn">Apps</span>
-        <span class="td">ColorGrade, mein Lerntagebuch als App</span>
-      </a>
-
-    </nav>
-  </main>
-
-  <footer class="site-ft">
-    <div class="ft-in">
-      <a href="index.html">Zur Startseite</a>
-    </div>
-  </footer>
-
+  <h1>Diese Seite gibt es nicht</h1>
+  <p>Die Adresse ist falsch oder veraltet.</p>
+  <p><a href="/colorgrade/">Zu ColorGrade</a></p>
 </body>
 </html>

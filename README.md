@@ -1,304 +1,50 @@
 # ColorGrade
 
-Portfolio von **Tobias Imhof**: Sportfotografie, Videografie und eigene Apps. Die
-Seite ist der Link im Lebenslauf für die Bewerbung um eine **Ausbildung zum
-Mediengestalter Bild und Ton**, ein Wechsel aus dem jetzigen Beruf heraus. Die
-Startseite zeigt den Namen, einen Satz aus Fakten, **ein Standbild** und die drei Kacheln
-Fotografie, Videografie und Apps. Seit v64 ist es ein **Standbild aus dem Rheinhessen-Clip**
-(Weintrauben im Gegenlicht, schwarzweiß), damit der erste Eindruck „Bild und Ton“ sagt.
-Die Startseite ist damit ganz schwarz und weiß, die Farbe kommt erst auf der
-Fotografie-Seite. Weil die Aufnahmen von Pixabay sind, steht darunter die Quelle.
+**ColorGrade** ist das Lerntagebuch von Tobias Imhof zu Bild, Video und Farbe, als
+installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät). Es ist kein
+Produkt für andere, sondern das Nachschlagewerk, das beim Einarbeiten in Fotografie und
+Videografie entstanden ist. HTML, CSS und JavaScript in einer Datei, keine Build-Tools.
 
-**Regel für das Bild auf der Startseite (v59, aus Nutzer-Feedback):** **Kein einzelner
-Mensch im Bild.** Er wird für den Bewerber selbst gehalten, das hat der Nutzer beim
-Torwartbild aus v58 sofort so gelesen. Von v59 bis v63 stand deshalb ein Zweikampf dort,
-seit v64 die Trauben ohne Menschen.
-Und es bleibt **klein** (280 px), sonst wirkt die Seite wie ein reines Fotoportfolio,
-während die Bewerbung auf Mediengestalter Bild **und Ton** läuft. Die Kachel **Apps** führt ohne
-Zwischenseite direkt in die ColorGrade App unter `app/`.
+Live unter **https://tobiasimhof.github.io/colorgrade/** (GitHub Pages aus `main`).
 
-**Über mich und Kontakt stehen bewusst nicht mehr auf der Seite.** Wer den Link
-anklickt, hat den Lebenslauf offen, dort stehen Werdegang und E-Mail bereits. Ein
-zweites Mal wirkt es wie Füllmaterial, und die Startseite soll in zwei Sekunden
-sagen, was es zu sehen gibt.
-
-**Jede Seite hat denselben Kopf**, die App eingeschlossen: links die Marke
-ColorGrade, die zur Startseite führt, rechts die Navigation Fotografie ·
-Videografie · Apps. Wer eine Seite ergänzt, baut diesen Kopf mit ein.
-
-**Was über den Nutzer bekannt ist** (für Texte auf der Seite): Schwerpunkt
-Sportfotografie, ehrenamtlich für das Sportportal **FuPa**, liefert dort an
-Spieltagen Bilder. Videografie ist neu und wird gerade erarbeitet. Nachname
-**Imhof**, seit v56 steht er auf der Startseite. Noch offen und nicht erfinden:
-jetziger Beruf und die Ausrüstung über „Nikon D3400, Telezoom" hinaus. Eine
-E-Mail-Adresse braucht die Seite nicht mehr.
-
-**Herkunft des Videomaterials:** Den **Match Cut** hat der Nutzer selbst gedreht. Die
-Aufnahmen im **Rheinhessen-Clip** („Atmosphäre auf den Beat“) sind **von Pixabay**,
-bewusst gutes Material, um Schnitt und Rhythmus zu üben. Auswahl, Schnitt und
-Schwarzweiß sind seine Arbeit. Das steht seit v63 offen auf der Karte, und so bleibt es:
-**Fremdes Material wird auf der Seite immer benannt.** Deshalb trägt auch das Standbild
-auf der Startseite (v64, Wunsch des Nutzers) eine Zeile „Aufnahmen: Pixabay“.
-
-Unter `app/` liegt zusätzlich **ColorGrade**, das Lerntagebuch zu Bild, Video und
-Farbe als installierbare Web-App (PWA, offline, alle Daten lokal auf dem Gerät).
-Es ist kein Produkt für andere, sondern das Nachschlagewerk, das beim Einarbeiten
-in Fotografie und Videografie entstanden ist.
+**Trennung vom Portfolio (v72):** Von v45 bis v71 lag in diesem Repo zusätzlich das
+Bewerbungsportfolio (Fotografie, Videografie), die App steckte damals unter `app/`.
+Das Portfolio hat jetzt ein eigenes Repo, **`tobiasimhof/Portfolio`**, live unter
+`https://tobiasimhof.github.io/Portfolio/`, und verlinkt die App nicht mehr. ColorGrade
+steht wieder allein im Wurzelverzeichnis wie bis v44. Die alten Adressen fängt
+`404.html` ab: `app/` führt auf die Wurzel, `fotografie.html` und `video.html` ins
+Portfolio. Die Änderungsverlauf-Zeilen v45 bis v71 stehen unten unverändert, auch die,
+die nur das Portfolio betreffen.
 
 > **Für Claude / neue Chats:** Diese README ist der aktuelle Projektstand **und**
 > die Arbeitsanleitung. Lies sie zuerst. Vier Regeln sind Pflicht:
 > **(1)** `service-worker.js` die Cache-Version um eins hochzählen, **(2)** unten im
 > **Änderungsverlauf** eine Zeile ergänzen, **(3)** keine Gedankenstriche im Text,
-> **(4)** **keine privaten Daten auf die Seite**: Vor- und Nachname genügen, keine
-> Anschrift, keine Telefonnummer, keine E-Mail. Das Repo ist öffentlich, alles darin ist lesbar.
+> **(4)** **keine privaten Daten**: keine Anschrift, keine Telefonnummer, keine
+> E-Mail. Das Repo ist öffentlich, alles darin ist lesbar.
 
-## Offene Aufgaben für den nächsten Chat
+## Erscheinungsbild
 
-> Stand nach **v71**: Die Startseite zeigt Name, einen Satz, ein kleines Aktionsfoto
-> und die drei Kacheln, das Portfolio läuft in einer eigenen, schmal gestellten Schrift
-> (Archivo, als Datei im Repo), die Marke ist nur noch der Schriftzug. Fotografie-Galerie steht mit sechs Bildern und Lightbox, die
-> Videografie-Texte stehen, die App ist entschlackt.
->
-> **Fotografie ist seit v60 fertig, Videografie seit v62:** Beide Clips laufen, „Match
-> Cut im Wohnzimmer“ (v61) und „Atmosphäre auf den Beat“ (v62, ein Rheinhessen-Film in
-> Schwarzweiß). Seit v64 steht ein Standbild daraus auf der Startseite, und die App hat
-> oben ihren einen Satz wie die anderen Seiten. **Offen ist nur noch Schritt 5,
-> Feinschliff**, als nummerierter Fahrplan in sieben Punkten. Punkt 1 (404-Seite, v65) und
-> Punkt 2 (Link-Vorschau, v66) sind erledigt, 3 und 5 in v67, 4 und 6 in v68.
-> Punkt 7 (Archivo und weniger Orange in der App) in v69. **Der Fahrplan ist damit
-> durch**, seit v71 sind auch die Versalien-Etiketten der App normal gesetzt. Offen ist
-> nichts mehr, neue Punkte kommen nur noch aus dem Feedback des Nutzers.
->
-> **Reihenfolge ist seit v56 umgedreht: Optik vor Inhalt.** Die fehlenden Inhalte
-> hängen an einem Drehtermin, die Optik nicht. Was am Erscheinungsbild noch offen
-> ist, steht unter „Erscheinungsbild".
+Aus der gemeinsamen Zeit mit dem Portfolio übernommen und weiter gültig:
 
-**Leitlinie des Nutzers für alle Texte:** Ein Personaler klickt sich durch, er liest
-nicht. Also kurz halten, keine Absätze, die nach Werbung oder nach KI klingen. Im
-Zweifel weglassen statt ausformulieren.
+- **Schrift Archivo** (seit v69, SIL Open Font License) als variable Datei unter
+  `assets/fonts/`, vorgeladen. Fließtext bei 96 % Breite, Kopf bei 86 %. **Pflicht:** Die
+  Spanne `font-stretch: 62% 125%` muss im `@font-face`-Block stehen. Alle 52 Grafiken mit
+  Text (210 Beschriftungen, einige entstehen erst im Skript) sind in Archivo gerendert und
+  geprüft, automatisch (Text außerhalb der `viewBox`, Text auf Text, Text ragt aus seinem
+  Kasten) und per Übersichtsbild. **Merke für das Prüfskript:** `getBBox()` rechnet
+  `transform="rotate(…)"` nicht mit, gedrehte Achsentexte werden fälschlich als „aus der
+  viewBox“ gemeldet.
+- **Bedienelemente ohne Orange** (v69): Modus-Umschalter, Untertitel, aktive Lektion und
+  untere Leiste zeigen Weiß statt Orange. In Grafiken, Empfehlungen und Rezepten bleibt
+  die Farbe, dort ist sie Inhalt.
+- **Etiketten ohne Versalien** (v71).
+- **Icon „TI“** (v68), weiß auf Schwarz in Archivo. `scripts/make_icons.py` erzeugt alle
+  PNGs plus `icons/favicon.svg` in einem Lauf (`pip install fonttools brotli`). Das Icon
+  stammt aus der Portfolio-Zeit und trägt die Initialen; ein eigenes Zeichen für
+  ColorGrade wäre eine Entscheidung des Nutzers.
 
-**Und keine Motivation auf der Seite.** Das Warum steht im Anschreiben, doppelt
-klingt es nach „ich will das unbedingt". Auf der Seite stehen Fakten: was gemacht
-wurde, womit, für wen. Die einzige Ausnahme ist der eine Satz am Kontakt, dass eine
-Ausbildung zum Mediengestalter Bild und Ton gesucht wird.
-
-**Schritt 2 · Fotografie** (Galerie steht seit v52, sechs Bilder seit v55)
-Sechs Bilder liegen in `assets/img/`. Ganz oben steht seit v53 das **Querformat als
-Aufmacher** ohne Überschrift, darunter drei Abschnitte: **Der Moment** (Schuss,
-Zweikampf), **Die Menschen** (Torwart, Trainer) und **Das Porträt** (Spielerporträt
-allein, `.shots.solo`). Seit v60 folgt darunter **Die Mannschaft** als breites Schlussbild. Lightbox mit
-Pfeiltasten und Escape ist gebaut. Die Fotografie-Seite ist damit **fertig**, sieben
-Bilder.
-
-**Korrektur am alten Plan:** In der README stand, das Mannschaftsfoto solle als 4:5 in
-den Abschnitt „Das Porträt" und dort eine Zweierreihe bilden. Der Nutzer hat es im
-**Querformat** aufgenommen und 16:9 geschnitten, und das ist richtig so, eine
-Mannschaft in drei Reihen gehört ins Querformat. Ein breites Bild nimmt in der Galerie
-die volle Satzbreite, also bekam es einen eigenen Abschnitt am Ende. Das Spielerporträt
-bleibt allein stehen.
-
-Regeln, die der Nutzer selbst erarbeitet hat und die für Nachschub gelten:
-Hochformate **durchgehend 4:5**, Querformate **16:9**, Schwarzpunkt unter 12,
-Weißpunkt über 245, **kein Farbkanal über 2 Prozent am Anschlag** (das sieht man im
-Helligkeits-Histogramm nicht, kostet aber unwiederbringlich Zeichnung) und bei
-Menschen im Bild **Hautton R minus G zwischen 35 und 40**. Bearbeitet wird in Snapseed, ein Look wird über
-Kopieren/Einfügen auf alle Bilder übertragen, damit die Galerie eine Handschrift
-hat. Der Firmenlauf ist nach Absprache raus.
-
-Neue Bilder kommen über `scripts/make_photos.py` herein: Quelldatei in die
-`BILDER`-Tabelle eintragen, Skript mit dem Quellordner aufrufen, fertig. Es legt je
-Bild eine 1600er Fassung für die Lightbox und eine 800er Kachel an. Breite Bilder
-(`breit = True`) bekommen nur die 1600er, weil sie die volle Satzbreite von 860 px
-füllen und eine 800er Kachel dort hochskaliert würde.
-
-**Das Mannschaftsfoto ist am 22.09.2026 bei Flutlicht entstanden** (Nikon D3400,
-25 mm, 1/50 s, f/6,3, ISO 6400). Der Aufnahme-Brief unten hat sich bewährt und bleibt
-als Anleitung für den nächsten Flutlicht-Termin stehen. Besonders die Zeit: 1/50 s hat
-die 100-Hertz-Pulsation sauber ausgemittelt, kein Streifen im Bild. Auch die
-Lichtrichtung stimmte, die Hauthelligkeit lag über alle drei Reihen bei 134, 126 und
-134, also praktisch gleich. Genau daran scheitern die meisten Flutlichtbilder:
-
-- **RAW aufnehmen.** Alle bisherigen Dateien sind Kamera-JPEGs. Unter Flutlicht ist
-  der Weißabgleich nicht vorhersagbar (Halogenmetalldampf zieht grün, LED je nach
-  Hersteller anders). Aus RAW ist der Farbstich verlustfrei zu korrigieren, aus JPEG
-  nicht. Snapseed kann RAW entwickeln.
-- **Zeit 1/100 oder 1/50 Sekunde.** Netzfrequenz 50 Hertz, Flutlicht pulsiert also
-  mit 100 Hertz. Bei 1/125, 1/160 oder 1/200 schwankt die Helligkeit von Bild zu Bild
-  und es entstehen Farbstreifen. Eine stehende Mannschaft braucht keine kurze Zeit.
-- **Stativ**, **Blende f/5,6** (Schärfentiefe für zwei Reihen), **ISO so niedrig wie
-  möglich** (D3400 gut bis 1600, brauchbar bis 3200; sonst lieber auf 1/50 runter).
-- **Lichtrichtung beachten:** Flutlicht steht hoch und wirft harte Schatten in die
-  Augenhöhlen. Nicht direkt unter den hellsten Mast stellen. Masten und Lampen aus
-  dem Bild halten, die brennen aus.
-- **15 bis 20 Auslösungen**, einer blinzelt immer.
-
-Danach wie alle anderen: Schwarzpunkt unter 12, Weißpunkt über 245, kein Kanal über
-2 Prozent am Anschlag, Hautton R minus G zwischen 35 und 40. Beschnitt 16:9 bei einer
-Gruppe, 4:5 bei einem Einzelnen.
-
-**Schritt 3 · Videografie** (Texte seit v48, beide Clips seit v62, **fertig**)
-Die zwei Übungen sind beschrieben: „Atmosphäre auf den Beat" (Schnitt auf den Takt,
-Zeitlupe) und „Match Cut im Wohnzimmer" (Anschlüsse, allein gedreht). Beide laufen:
-`assets/video/beat.mp4` (9,3 MB) und `assets/video/match-cut.mp4` (5,4 MB), Vorschaubilder
-daneben in `assets/img/` als `*-poster.webp`. Der Hinweiskasten ist raus, die Klasse
-`.note` samt CSS mit.
-
-So kommt ein Clip herein, damit der nächste gleich aussieht:
-- **Webfassung mit ffmpeg:** `ffmpeg -i quelle.mp4 -c:v libx264 -preset slow -crf 23
-  -profile:v high -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k ziel.mp4`.
-  Aus 23 MB Canva-Export (8 Mbit/s) wurden so 5,4 MB bei SSIM 0,987, also sichtbar
-  gleich. **Ziel 5 bis 10 MB je Clip**, sonst lädt es am Handy über Mobilfunk zäh.
-  Körniges Material braucht mehr: Der Schwarzweiß-Beat-Clip kam mit CRF 23 auf 14,8 MB,
-  darum **CRF 26** (9,3 MB, SSIM 0,979). Ab 28 wird es in den hellen Gegenlichtflächen
-  flächig.
-  `+faststart` ist Pflicht: Es stellt den Index an den Dateianfang, sonst muss der
-  Browser erst die ganze Datei laden, bevor das erste Bild kommt.
-- **ffmpeg fehlt im Container.** `pip install imageio-ffmpeg` bringt eine fertige
-  Programmdatei mit.
-- **Vorschaubild** als WebP aus einem ruhigen Bild des Clips, bei `preload="none"` ist
-  es das Einzige, was vor dem Klick lädt. Beim Match Cut bewusst ein Bild ohne nackte
-  Füße (die Schuhe, wie sie hingestellt werden), damit der erste Eindruck die Übung
-  ist und nicht der Mensch.
-- **Vorher durchsehen**, bei Drehs zu Hause besonders: nichts mit Anschrift, keine
-  Post, keine Familienfotos im Bild. Beim Match Cut geprüft, nichts gefunden.
-- **Testen:** Playwrights Chromium hat **keinen H.264-Decoder** (`canPlayType` leer,
-  Fehlercode 4). Das ist kein Fehler der Datei, Chrome, Safari und Firefox spielen sie.
-  Die Datei darum mit `ffmpeg -v error -i clip.mp4 -f null -` prüfen.
-- Der Ton des Match Cuts ist leise (Mittel −37 dB, Spitze −26 dB), das ist Raumton
-  aus dem Wohnzimmer und so gelassen.
-
-**Schritt 4 · Apps** (erledigt in v47, Einleitungssatz seit v64)
-Die Kachel führt direkt in die App, eine eigene Apps-Seite gibt es nicht mehr. Oben in
-der App steht seit v64 ein Satz in derselben Form wie auf Fotografie und Videografie
-(`.app-intro`, erstes Element in `main`, scrollt mit weg und kostet im festen Kopf
-keinen Platz): „Ich schreibe eigene kleine Programme für Aufgaben aus meinem digitalen
-Alltag. ColorGrade ist eins davon: mein Nachschlagewerk zu Bild, Video und Farbe,
-gebaut in HTML, CSS und JavaScript.“ Das
-Warenwirtschaftssystem für einen Winzer ist auf Wunsch des Nutzers wieder raus, der
-Bereich gehört allein ColorGrade.
-
-**Schritt 5 · Feinschliff: der Fahrplan zur seriösen Seite** (festgelegt in v65, sieben Punkte)
-Inhalte sind fertig, ab hier geht es nur noch um den Eindruck. Reihenfolge: erst was
-ohne Entscheidung des Nutzers geht, dann was eine kleine Entscheidung braucht, zum
-Schluss das Aufwendige. Abhaken, wenn erledigt:
-
-1. **404-Seite**, **erledigt in v65.** `404.html` im Wurzelordner, GitHub Pages liefert
-   sie für jede falsche Adresse aus. Gleicher Kopf, ein Satz, die drei Kacheln.
-   **Pflicht:** `<base href="/colorgrade/">`, sonst zeigen die Pfade bei einer falschen
-   Adresse wie `/colorgrade/a/b/c` ins Leere. Heißt das Repo einmal anders oder kommt
-   eine eigene Domain, muss diese Zeile mit.
-2. **Link-Vorschau (Open Graph)**, **erledigt in v66.** Wird ein Link per Mail,
-   WhatsApp oder Teams geteilt, erscheint eine Karte mit Bild, Titel und Satz. Jede
-   Seite hat ihr eigenes Bild in `assets/og/` (1200 × 630, JPEG, weil nicht jeder
-   Dienst WebP liest): Startseite die Trauben, Fotografie das Laufduell, Videografie
-   die Titeltafel „Rheinhessen“, App ein Bildschirmfoto der App (600 × 315 mit doppelter
-   Pixeldichte aufgenommen, sonst ist die Schrift in der Vorschau unlesbar). Alle
-   Adressen absolut auf `https://tobiasimhof.github.io/colorgrade/`, **bei einem neuen
-   GitHub-Namen oder einer eigenen Domain müssen alle `og:`-Zeilen mit.** WhatsApp
-   merkt sich eine Vorschau lange, wer sie neu sehen will, hängt `?1` an den Link.
-3. **Eckige Fotos**, **gebaut in v67** (Erscheinungsbild Punkt 3). Die 12 px Rundung an Fotos und Clips
-   raus oder auf 2 px. Eine CSS-Zeile, Nutzer sieht vorher und nachher.
-4. **Ruhigere Oberfläche**, **gebaut in v68** (Punkte 4 und 5): Karten ohne Rahmen und hellen Grund,
-   Zwischenüberschriften normal statt grauer Versalien. Betrifft alle Seiten, mit
-   Screenshots abstimmen.
-5. **Akzent zurücknehmen**, **im Portfolio gebaut in v67, in der App in v69**
-   (nur Bedienelemente: Modus-Umschalter, Untertitel, aktive Lektion, untere Leiste;
-   in Grafiken, Empfehlungen und Rezepten bleibt die Farbe, dort ist sie Inhalt): Das Orange (`#ff9f45`) steht noch an Rollen-Zeilen und
-   aktiven Knöpfen. Auf Weiß oder Grau stellen, dann tragen allein die Bilder Farbe.
-6. **Favicon und App-Icons neu**, **gebaut in v68.** Entscheidung des Nutzers:
-   **„TI“**, weiß auf Schwarz, in Archivo 700 bei 86 % Breite wie die Überschriften.
-   `scripts/make_icons.py` liest die Umrisse direkt aus der Schriftdatei (fontTools,
-   `pip install fonttools brotli`) und zeichnet ohne Bildbibliothek, ein Lauf erzeugt
-   alle PNGs plus `icons/favicon.svg`. Wer die App schon installiert hat, sieht das
-   neue Icon erst nach einmal Entfernen und neu Hinzufügen, das Betriebssystem merkt
-   sich das alte.
-7. **Archivo auch in der App**, **gebaut in v69** (Punkt 1, Rest). Alle 52 Grafiken
-   mit Text (210 Beschriftungen, einige entstehen erst im Skript) in Archivo gerendert
-   und geprüft, automatisch (Text außerhalb der `viewBox`, Text auf Text, Text ragt
-   aus seinem Kasten) und per Übersichtsbild. Ergebnis: Archivo bei 96 % Breite ist
-   schmaler als der alte Stack, alles passt. Einziger echter Befund, schon vorher da:
-   „hoch · Reel“ im 9:16-Kasten, jetzt zweizeilig. **Merke für das Prüfskript:**
-   `getBBox()` rechnet `transform="rotate(…)"` nicht mit, gedrehte Achsentexte werden
-   fälschlich als „aus der viewBox“ gemeldet.
-
-**Kein Punkt auf dem Fahrplan: Impressum.** Für eine rein private Bewerbungsseite ohne
-geschäftlichen Zweck gilt die Impressumspflicht in der Regel nicht, und eine Anschrift
-widerspräche der Regel „keine privaten Daten“. Wird die Seite einmal gewerblich (Aufträge
-als Fotograf), neu prüfen.
-
-**Erscheinungsbild** (analysiert in v55, Punkt 1 erledigt in v56)
-Der Nutzer findet, dass Schrift, Aufmachung und Bedienelemente „nach KI" aussehen. Die
-Analyse hat sechs konkrete Ursachen ergeben, damit der nächste Chat sie nicht neu
-herleiten muss:
-
-1. **Der System-Font-Stack**, **erledigt in v56.** Er war der größte Verräter, weil
-   jede generierte Seite genau den benutzt. Das Portfolio läuft jetzt auf **Archivo**,
-   seit v57 in schmaler Breite.
-   **Die App ist seit v69 auch auf Archivo**, mit geprüften SVG-Texten.
-2. **Der Regenbogen-Punkt** als Marke (`.dot`, conic-gradient), **erledigt in v59**,
-   **das Farbrad der Icons in v68.**
-   Die Marke ist jetzt nur noch der Schriftzug **ColorGrade**, auf allen Seiten und in
-   der App. **Offen ist der gleiche Punkt an einer zweiten Stelle:** Die App-Icons unter
-   `icons/` sind ein HSV-Farbrad (`scripts/make_icons.py`). Wer die App installiert hat,
-   sieht es weiter auf dem Startbildschirm. Neues Zeichen erfordert eine Entscheidung
-   des Nutzers, das Skript erzeugt die Icons dann in einem Lauf neu.
-3. **16 px runde Ecken an allem**, auch an den Fotos. **Fotos erledigt in v67.** Runde Bildecken lesen sich als
-   App-Oberfläche, nicht als Fotografie.
-4. **Jeder Block ist eine umrandete Karte** (1 px Rahmen, runde Ecken, hellerer
-   Hintergrund). Standard-Optik von Dashboard-Templates. **Erledigt in v68.**
-5. **Graue Versalien-Überschriften** (`.sec-h`). Gleiche Herkunft. **Erledigt in v68.**
-6. **Strich-Icons** auf den Startseiten-Kacheln (Lucide-Look), **erledigt in v58.**
-   Die Kacheln tragen jetzt nur noch den Begriff, dafür groß.
-
-**Gemeinsamer Nenner:** Die Oberfläche macht zu viel Lärm um die Fotos herum. Ein
-Fotoportfolio wird professionell, wenn die Bedienelemente fast verschwinden und die
-Bilder die einzige Farbe im Layout sind.
-
-**Messung:** Die kräftigen Farben in den sechs Bildern sind Blau (220 Grad, 26 %,
-das Vereinstrikot), Grün (80 Grad, 7 %, der Rasen) und Rot (10 Grad, 4 %). Der
-Akzent der Seite ist Orange `#ff9f45` und kommt in keinem Bild vor. **Trotzdem nicht
-gegen Blau tauschen**, sondern den Akzent überhaupt zurücknehmen.
-
-**Die Schrift ist seit v56 gesetzt: Archivo** (Omnibus-Type, SIL Open Font License),
-eine Groteske aus der Zeitungsecke, hohe x-Höhe, schmale Formen, keine Verzierungen.
-Seit v57 liegt die Fassung mit **zwei Achsen** im Repo, Gewicht 400 bis 700 und Breite
-62 bis 125 Prozent, zusammen 90 KB unter `assets/fonts/`, vorgeladen in jeder Seite.
-Kein Google Fonts: Die Regel „keine externen Schriften" zielt auf den Datenschutz, eine
-Datei auf derselben Domain verletzt sie nicht.
-
-**Die Breite ist die Stellschraube für „edel":** Sie hängt an zwei Variablen oben in
-`assets/style.css`, `--w-head` (Überschriften und Bedienelemente, steht auf 86 %) und
-`--w-text` (Fließtext, 96 %). Eine Zahl ändern und die ganze Seite wird schmaler oder
-breiter, ohne dass ein Layout nachgezogen werden muss. Unter etwa 80 % kippt es vom
-Edlen ins Plakathafte, das war die Abwägung. **Pflicht:** Die Spanne
-`font-stretch: 62% 125%` muss im `@font-face`-Block stehen, sonst greift `font-stretch`
-an den Elementen nicht.
-
-**Keine Unterschrift auf der Seite** (entschieden in v66): Sie steht schon in der
-Bewerbung, doppelt braucht es sie nicht.
-
-**Lehrstück aus der Bearbeitung des Mannschaftsfotos (v60):** Das Bild kam mit einem
-**Weißpunkt von 232** aus der Kamera, es gab also kein echtes Weiß, und der **Rotkanal
-lag in 4,16 Prozent der Pixel auf null** (in der Spielerzone sogar 4,72), wodurch die
-tiefen Schatten ins Kühle kippten. Beides sieht man im Helligkeits-Histogramm nicht.
-Behoben über zwei Griffe in den Kurven: rechter Endpunkt der RGB-Kurve nach links
-(Weißpunkt jetzt **254**) und linker Endpunkt der **Rotkurve** leicht angehoben (Rot
-auf null jetzt **0,15 Prozent**). Die Haut wurde dabei um 13 Stufen wärmer, R minus G
-von 30 auf 43 gemessen an denselben Pixeln. **Zwei Merksätze:**
-**(1)** Bei hohem ISO steigt mit jeder Aufhellung das Korn mit, hier von 5,8 auf 7,1
-Standardabweichung in den flachen Flächen. Beim Verkleinern auf die 1600er Fassung
-verschwindet es wieder, man darf es also **nicht bei 100 Prozent beurteilen**, sonst
-überkorrigiert man.
-**(2)** **Korn kostet Dateigröße.** Mit der Normalqualität 82 wog die WebP-Datei
-448 KB, mit 74 sind es 325 KB, und der Unterschied liegt im Gesichtsband bei im Mittel
-3,9 Helligkeitsstufen, fällt also aufs Rauschen und nicht auf die Gesichter. Dafür hat
-`scripts/make_photos.py` seit v60 eine **Qualitätsangabe je Bild**.
-
-**Standbild aus einem Clip auf der Startseite:** erledigt in v64. Der erste Eindruck
-sagt damit „Bild und Ton“ statt nur „Bild“.
-
-**Laufend:** SVG-Feinschliff in der App (siehe „SVG-Grafiken prüfen").
-## Die App unter `app/` (ColorGrade Lerntagebuch)
+## Die App
 
 > Hinweis: Der folgende Abschnitt beschreibt den Grundaufbau. Was seit v25 dazukam
 > (Ziel-Ebene im Berater, Farbrad neu, Rezepte-Kopf, Emoji-/KI-Handschrift-Entschlackung,
@@ -423,9 +169,8 @@ Konzept jederzeit zur Grundlage springen kann.
 
 ## Arbeitsweise (wichtig für neue Chats)
 
-- **Zwei Teile:** Das **Portfolio** sind mehrere kleine Seiten im Wurzelverzeichnis
-  mit einem gemeinsamen `assets/style.css`. Die **App** steckt komplett in
-  `app/index.html` (HTML + CSS + JS in einer Datei). Keine Build-Tools, kein Framework.
+- **Aufbau:** Die App steckt komplett in `index.html` (HTML + CSS + JS in einer Datei).
+  Keine Build-Tools, kein Framework. Das Portfolio liegt im Repo `Portfolio`.
 - **Live gehen:** GitHub Pages veröffentlicht von **`main`**. Jede fertige Änderung
   auf dem zugewiesenen Feature-Branch committen, dann per **Fast-Forward in `main`**
   mergen und `main` pushen; den Feature-Branch nachziehen.
@@ -434,15 +179,14 @@ Konzept jederzeit zur Grundlage springen kann.
   Gilt für Seitentexte, App-Texte, Commit-Nachrichten und diese README. Zahlenbereiche
   als „18 bis 55 mm". Werbliche KI-Sätze vermeiden.
 - **Privatsphäre:** Keine Anschrift, keine Telefonnummer, keine Tracker, keine externen
-  Schriften. Alle Seiten tragen `<meta name="robots" content="noindex" />`. Das ist eine
-  bewusste Entscheidung, damit die Seite nur über den Link im Lebenslauf erreicht wird.
+  Schriften. Alle Daten der App bleiben in `localStorage` auf dem Gerät.
 - **Zwischenspeicher, zwei Ebenen:** GitHub Pages liefert mit `Cache-Control: max-age=600`
   aus. Der Browser darf eine Seite also zehn Minuten lang aus seinem eigenen Speicher
   bedienen, auch wenn der Service-Worker „erst das Netz fragen" sagt. Deshalb holt der
   Service-Worker Seiten seit v48 ausdrücklich frisch (`cache: 'reload'`). Seit v49
   lädt eine neue Fassung offene Fenster zusätzlich einmal selbst neu. Merke: Ein
   manuelles Neuladen umgeht den Browser-Cache ohnehin, ein normaler Klick auf einen
-  Link nicht. Deshalb blieb die App hängen, während die Startseite frisch war.
+  Link nicht.
   Wer sofort nach dem Push nachsieht, prüft am besten in einem privaten Fenster.
 - **Cache-Version:** Nach **jeder** inhaltlichen Änderung die Konstante `CACHE` in
   `service-worker.js` um eins hochzählen (`colorgrade-vNN`), sonst laden installierte
@@ -450,11 +194,10 @@ Konzept jederzeit zur Grundlage springen kann.
 - **Änderungsverlauf:** Bei **jeder** Version unten eine Zeile ergänzen.
 - **Testen vor dem Push:** Chromium ist vorinstalliert, Playwright global unter
   `/opt/node22/lib/node_modules`. Lokal `python3 -m http.server 8099` starten, dann jede
-  Seite in 1280 und in 390 Pixel Breite laden und prüfen auf: HTTP 200, keine
+  App in 1280 und in 390 Pixel Breite laden und prüfen auf: HTTP 200, keine
   Konsolenfehler, kein horizontales Scrollen
-  (`document.documentElement.scrollWidth > window.innerWidth`). Der Überlauf-Test ist
-  nicht optional, genau daran ist die Galerie beim ersten Anlauf gescheitert.
-  Fallstrick in der App: In JS-Strings **typografische** Anführungszeichen „…" benutzen,
+  (`document.documentElement.scrollWidth > window.innerWidth`).
+  Fallstrick: In JS-Strings **typografische** Anführungszeichen „…" benutzen,
   keine geraden, die beenden den String und brechen das Script.
 - **SVG-Grafiken prüfen:** Die ~65 Grafiken in der App sind handgezeichnete SVGs
   (Koordinaten im Code), da rutscht schnell Text aus einer Box oder ein Pfeil endet
@@ -472,6 +215,7 @@ Konzept jederzeit zur Grundlage springen kann.
 
 | Version | Was |
 |---------|-----|
+| **v72** | **ColorGrade steht wieder allein.** Das Portfolio (Startseite, Fotografie, Videografie, 404-Seite, Bilder, Clips, Vorschaubilder, `assets/style.css`, `scripts/make_photos.py`) ist ins eigene Repo `tobiasimhof/Portfolio` umgezogen. Die App liegt wieder im Wurzelverzeichnis wie bis v44: `app/index.html` ist jetzt `index.html`, `app/manifest.webmanifest` ist `manifest.webmanifest` (Icon-Pfade und `id` nachgezogen). Im Kopf der App stehen nur noch Marke und Modus-Umschalter, die Portfolio-Navigation und der Einleitungssatz für Personaler sind raus, samt CSS (`.brandlink`, `.site-nav`, `.app-intro`). Link-Vorschau auf `/colorgrade/`. Der Service-Worker cacht nur noch App, Schrift und Icons. Neue `404.html` leitet alte Adressen weiter: `app/` auf die Wurzel, `fotografie.html` und `video.html` ins Portfolio. |
 | **v71** | **App-Etiketten ohne Versalien**, wie im Portfolio seit v68. Alle 17 Regeln mit `text-transform: uppercase` in einem Block am Ende des App-CSS überschrieben, Originale unangetastet: Zwischenüberschriften („Das bewegte Bild · die Technik“, „Motiv abheben · 3 Trennungs-Achsen“) 15 px halbfett, Etiketten in Kästen („Merke“, „Probier's aus“, „Empfehlung für dieses Motiv“) 13 px halbfett, Farben wie gehabt. Beim Durchsehen zwei Reste Orange an Bedienelementen gefunden und weiß gestellt: der Knopf „Weiter: …“ am Ende jeder Lektion (`.lk-next`) und alle vollen Knöpfe (`.btn` ohne `ghost`, etwa „+ Eigenes Rezept“). Die Phasen-Überschriften der Video-Lektionen sind weiß statt orange, das Etikett „Lektion 1 · …“ grau. |
 | **v70** | **Stichworte unter den Clips entfernt** (Nutzer-Wunsch): Die drei Schlagwörter je Karte („Match Cut · Anschlüsse · allein gedreht“) lasen sich wie Hashtags. Was sie sagten, steht ohnehin in Rollen-Zeile und Text. Die Regeln `.tags` sind aus `assets/style.css` raus, die gleichnamige Klasse in der App ist davon unberührt (eigenes CSS). |
 | **v69** | **Die App läuft auf Archivo** (Fahrplan Punkt 7), gleiche Datei wie das Portfolio, vorgeladen, Fließtext bei 96 %, Marke und Kopf-Navigation bei 86 % Breite. Alle 52 Grafiken mit Text vorher einzeln geprüft, siehe Fahrplan. **Bedienelemente ohne Orange:** Der aktive Modus-Knopf ist weiß mit dunkler Schrift, Untertitel „Mein Lerntagebuch …“ grau, die aktuelle Lektion hat einen grauen Rahmen und eine weiße Nummer, die untere Leiste markiert weiß. Farbe in Grafiken, Empfehlungskästen und Rezepten bleibt, dort ist sie Inhalt. „hoch · Reel“ im Seitenverhältnis-Bild zweizeilig, es ragte schon immer aus dem schmalen Kasten. Geprüft in fünf Ansichten (Lektion, Berater, Farben, Rezepte, Video-Berater) bei 390 px, dazu Startseite bei 1280 px: kein Überlauf, keine Fehler. |
@@ -532,41 +276,35 @@ Konzept jederzeit zur Grundlage springen kann.
 | **v14** | Wissens-Tab zu „Lernen + Nachschlagen" umgebaut; 8 Grundlagen-Lektionen mit Grafiken; Wissen wird Startseite. |
 | **v13** | Ausgangsstand vor dem Lern-Umbau: Berater, Rezepte, Farbrad, Wissen als reines Glossar. |
 
+
 ---
 
 ## Auf dem Tablet als App installieren
 
-Das betrifft die App unter `app/`, nicht das Portfolio.
-
 1. **Veröffentlichen** über GitHub Pages: Repo-Einstellungen → *Pages* → Source
    `Deploy from a branch`, Branch `main`, Ordner `/ (root)`. Nach ein bis zwei
-   Minuten liegt das Portfolio unter `https://<benutzername>.github.io/colorgrade/`
-   und die App unter `.../colorgrade/app/`.
-   Hinweis: Bei einem **privaten** Repo braucht GitHub Pages einen Bezahlplan.
-2. Die Adresse `.../colorgrade/app/` am Tablet im Browser öffnen.
+   Minuten liegt die App unter `https://tobiasimhof.github.io/colorgrade/`.
+2. Die Adresse am Tablet im Browser öffnen.
 3. **Zum Startbildschirm hinzufügen**, fertig: eigenes Icon, Vollbild, offline nutzbar.
 
-> Wer die App schon vor v45 installiert hatte, muss sie einmal neu hinzufügen: Die
-> alte Verknüpfung zeigt auf die Wurzel und öffnet jetzt das Portfolio. Der
+> Wer die App zwischen v45 und v71 unter `.../colorgrade/app/` installiert hatte, muss
+> sie einmal neu hinzufügen. Die alte Verknüpfung landet über `404.html` zwar auf der
+> neuen Adresse, aber außerhalb ihres alten Bereichs, also mit Adressleiste. Der
 > gespeicherte Fortschritt bleibt erhalten, er liegt unter derselben Domain.
+
 ## Dateien
 
 | Datei | Zweck |
 |-------|-------|
-| `index.html` | Portfolio-Startseite: Name, ein Satz, ein Standbild, drei Kacheln |
-| `fotografie.html` · `video.html` | die Unterseiten (Apps hat keine, die Kachel führt in die App) |
-| `404.html` | Fehlerseite für falsche Adressen, mit `<base href="/colorgrade/">` |
-| `assets/style.css` | gemeinsames Design aller Portfolio-Seiten |
-| `assets/img/` · `assets/video/` | Bilder und Clips fürs Portfolio (Clips als H.264-MP4, etwa 5 MB) |
-| `assets/og/` | Vorschaubilder für geteilte Links, eins je Seite (1200 × 630) |
+| `index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
+| `manifest.webmanifest` | Installation der App |
+| `service-worker.js` | Offline-Cache (Version hier hochzählen) |
+| `404.html` | leitet alte Adressen aus der Portfolio-Zeit weiter |
 | `assets/fonts/` | Archivo als variable WebFont-Datei (Gewicht und Breite) plus OFL-Lizenz |
-| `app/index.html` | die komplette Lern-App (HTML, CSS, JS in einer Datei) |
-| `app/manifest.webmanifest` | Installation der App (eigener Scope `app/`) |
-| `manifest.webmanifest` | Manifest des Portfolios |
-| `service-worker.js` | Offline-Cache für Portfolio **und** App (Version hier hochzählen) |
+| `assets/og/app.jpg` | Vorschaubild für geteilte Links (1200 × 630) |
 | `icons/` | Icons (aus `scripts/make_icons.py` erzeugt) |
-| `scripts/make_icons.py` | erzeugt die Icons neu (reines Python) |
-| `scripts/make_photos.py` | macht aus den Originalfotos die WebP-Dateien der Galerie, mit Qualitätsangabe je Bild |
+| `scripts/make_icons.py` | erzeugt die Icons neu (fontTools, liest die Archivo-Datei) |
+
 ## Technische Notizen (Orientierung im Code)
 
 - **Lektionen (Wissen):** `<article class="lk-lesson" data-lek="N">` in `#lernLesson`;

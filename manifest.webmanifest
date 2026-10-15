@@ -1,7 +1,7 @@
 {
-  "name": "ColorGrade Portfolio",
+  "name": "ColorGrade",
   "short_name": "ColorGrade",
-  "description": "Portfolio: Fotografie, Videografie und eigene Apps.",
+  "description": "Lerntagebuch zu Bild- und Videobearbeitung: Wissen, Berater, Farbe und Rezepte.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -16,5 +16,5 @@
   ],
   "id": "./index.html",
   "display_override": ["standalone", "minimal-ui"],
-  "categories": ["photo", "portfolio"]
+  "categories": ["photo", "education", "productivity"]
 }
